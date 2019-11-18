@@ -1,20 +1,30 @@
-import React, {useState, useCallback} from 'react'
-import {useAmount} from '../../custom-hooks/use-amount'
+import React from 'react'
+import {Button, Typography} from 'antd'
+import counterDecorator from '../../decorators/counter'
 
 function Dish(props) {
-  const {amount, decrease, increase} = useAmount(0)
-  const {dish} = props
+  const {dish, amount, decrease, increase} = props
   return (
     <div>
-      <h3>{dish.name}</h3>
-      <p>{dish.price}</p>
+      <Typography.Title level={2}>{dish.name}</Typography.Title>
+      <Typography.Text>{dish.price}</Typography.Text>
       <div>
-        <button onClick={decrease}>-</button>
+        <Button
+          shape="circle"
+          icon="minus"
+          type={'primary'}
+          onClick={decrease}
+        />
         {amount}
-        <button onClick={increase}>+</button>
+        <Button
+          shape="circle"
+          icon="plus"
+          type={'primary'}
+          onClick={increase}
+        />
       </div>
     </div>
   )
 }
 
-export default Dish
+export default counterDecorator(Dish)
