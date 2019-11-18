@@ -9,19 +9,9 @@ function Dish(props) {
       <Typography.Title level={2}>{dish.name}</Typography.Title>
       <Typography.Text>{dish.price}</Typography.Text>
       <div>
-        <Button
-          shape="circle"
-          icon="minus"
-          type={'primary'}
-          onClick={decrease}
-        />
+        <Button shape="circle" icon="minus" type="primary" onClick={decrease} />
         {amount}
-        <Button
-          shape="circle"
-          icon="plus"
-          type={'primary'}
-          onClick={increase}
-        />
+        <Button shape="circle" icon="plus" type="primary" onClick={increase} />
       </div>
     </div>
   )
