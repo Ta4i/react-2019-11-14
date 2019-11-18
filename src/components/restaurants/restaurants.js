@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Dishes from '../dishes'
+import Restaurant from '../restaurant'
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)
@@ -19,8 +20,7 @@ function Restaurants(props) {
           )
         })}
       </ul>
-      <h2>{restaurant.name}</h2>
-      <Dishes menu={restaurant.menu} />
+      <Restaurant restaurant={restaurant} />
     </div>
   )
 }
