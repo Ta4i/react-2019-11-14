@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Dishes from '../dishes'
 import Restaurant from '../restaurant'
 
 function Restaurants(props) {
