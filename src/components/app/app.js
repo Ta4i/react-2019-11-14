@@ -1,44 +1,22 @@
 import React, {Component} from 'react'
+import Restaurants from '../restaurants'
 
 class App extends Component {
-  state = {
-    count: 0,
-  }
-
-  constructor(props) {
-    super(props)
-    console.log(props)
-
-    // this.state = {
-    //   count: 0
-    // }
-
-    // this.handleClick = this.handleClick.bind(this)
-  }
-
   componentDidMount() {
     console.log('mounted to DOM')
   }
 
   componentDidUpdate() {
-    console.log('updated')
+    console.log('updated', this.state.count)
   }
 
   render() {
+    const {restaurants} = this.props
     return (
       <div>
-        <h2>{this.state.count}</h2>
-        <button onClick={this.handleClick}>+</button>
+        <Restaurants restaurants={restaurants} />
       </div>
     )
-  }
-
-  handleClick = () => {
-    this.setState(state => {
-      return {
-        count: state.count + 1,
-      }
-    })
   }
 }
 
