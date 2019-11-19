@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import Dishes from '../dishes'
 import Rating from '../rating'
-import Review from '../review'
+import Reviews from '../reviews'
 
-import {Layout, Row, Col, Button} from 'antd'
+import {Row} from 'antd'
 
 class Restaurant extends Component {
   render() {
@@ -26,8 +26,7 @@ class Restaurant extends Component {
           <Rating rating={avarageRatingNumber()} />
         </Row>
         <Dishes menu={restaurant.menu} />
-        <b>Reviews:</b>
-        <Review />
+        <Reviews reviews={restaurant.reviews} />
       </div>
     )
   }

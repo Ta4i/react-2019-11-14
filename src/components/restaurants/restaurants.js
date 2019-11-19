@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Restaurant from '../restaurant'
-import {Layout, Row, Col, Button} from 'antd'
+import {Row, Col, Button} from 'antd'
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)

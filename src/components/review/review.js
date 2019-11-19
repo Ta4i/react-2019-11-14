@@ -1,12 +1,15 @@
 import React, {Component} from 'react'
-import {Rate} from 'antd'
+import Rating from '../rating'
 
 class Review extends Component {
   render() {
-    const props = this.props
+    const {review} = this.props
+    console.log(review)
     return (
       <div>
-        <h1>REVIEW!!!!</h1>
+        <b>{review.user}</b>
+        <p>{review.text}</p>
+        <Rating rating={review.rating} />
       </div>
     )
   }
