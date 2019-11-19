@@ -8,7 +8,7 @@ function Restaurants(props) {
     restaurant => restaurant.id === currentId
   )
   return (
-    <div>
+    <div className="container">
       <Row type="flex" gutter={16}>
         {props.restaurants.map(restaurant => {
           return (
