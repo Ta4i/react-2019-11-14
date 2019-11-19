@@ -11,14 +11,13 @@ class Rating extends Component {
     }
 
     return (
-      <div>
-        <Rate
-          disabled
-          allowHalf
-          defaultValue={0}
-          value={numRound(rating, roundingToNum)}
-        />
-      </div>
+      <Rate
+        className={this.props.className}
+        disabled
+        allowHalf
+        defaultValue={0}
+        value={numRound(rating, roundingToNum)}
+      />
     )
   }
 }

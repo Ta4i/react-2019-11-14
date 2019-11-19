@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 import Dishes from '../dishes'
 import Rating from '../rating'
 import Reviews from '../reviews'
+import {Typography, Row} from 'antd'
 
-import {Row} from 'antd'
+const {Title} = Typography
 
 class Restaurant extends Component {
   render() {
@@ -20,10 +21,18 @@ class Restaurant extends Component {
     }
 
     return (
-      <div>
-        <Row type="flex">
-          <h1>{restaurant.name}</h1>
-          <Rating rating={avarageRatingNumber()} />
+      <div className="restaurant">
+        <Row
+          type="flex"
+          justify="center"
+          align="center"
+          className="restaurant__title"
+        >
+          <Title>{restaurant.name}</Title>
+          <Rating
+            className="restaurant__rating"
+            rating={avarageRatingNumber()}
+          />
         </Row>
         <Dishes menu={restaurant.menu} />
         <Reviews reviews={restaurant.reviews} />

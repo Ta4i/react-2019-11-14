@@ -1,14 +1,26 @@
 import React from 'react'
-import {Button, Typography, Col} from 'antd'
+import {Button, Typography, Col, Row} from 'antd'
 import counterDecorator from '../../decorators/counter'
+
+import {Card} from 'antd'
 
 function Dish(props) {
   const {dish, amount, decrease, increase} = props
+
+  const style = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%',
+  }
+
   return (
-    <Col>
-      <Typography.Title level={2}>{dish.name}</Typography.Title>
-      <Typography.Text>{dish.price}$</Typography.Text>
-      <div>
+    <Card
+      title={dish.name}
+      extra={dish.price + '$'}
+      className="dish"
+      bodyStyle={style}
+    >
+      <div className="counter">
         <Button
           shape="circle"
           icon="minus"
@@ -25,7 +37,7 @@ function Dish(props) {
           onClick={increase}
         />
       </div>
-    </Col>
+    </Card>
   )
 }
 

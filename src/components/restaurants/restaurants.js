@@ -9,7 +9,7 @@ function Restaurants(props) {
   )
   return (
     <div className="container">
-      <Row type="flex" gutter={16}>
+      <Row type="flex" gutter={16} justify="center">
         {props.restaurants.map(restaurant => {
           return (
             <Col key={restaurant.id}>
