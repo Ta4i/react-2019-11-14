@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {Layout, Menu, Typography} from 'antd'
 import Dishes from '../dishes'
 
 function Restaurants(props) {
@@ -6,22 +7,38 @@ function Restaurants(props) {
   const restaurant = props.restaurants.find(
     restaurant => restaurant.id === currentId
   )
+  const {Header, Sider, Content} = Layout
+
   return (
-    <div>
-      <ul>
-        {props.restaurants.map(restaurant => {
-          return (
-            <li key={restaurant.id}>
-              <button onClick={() => setCurrentId(restaurant.id)}>
-                {restaurant.name}
-              </button>
-            </li>
-          )
-        })}
-      </ul>
-      <h2>{restaurant.name}</h2>
-      <Dishes menu={restaurant.menu} />
-    </div>
+    <Layout>
+      <Header style={{background: '#fff', flexBasis: '100%'}}>
+        <Typography.Title style={{margin: '.5em 0'}}>
+          Restaurants
+        </Typography.Title>
+      </Header>
+      <Content>
+        <Layout>
+          <Sider width={250} theme="light">
+            <Menu mode={'vertical'} defaultSelectedKeys={[currentId]}>
+              {props.restaurants.map(restaurant => {
+                return (
+                  <Menu.Item
+                    key={restaurant.id}
+                    onClick={() => setCurrentId(restaurant.id)}
+                  >
+                    {restaurant.name}
+                  </Menu.Item>
+                )
+              })}
+            </Menu>
+          </Sider>
+          <Content style={{background: '#fff', padding: '0 30px 50px'}}>
+            <h2>{restaurant.name}</h2>
+            <Dishes menu={restaurant.menu} />
+          </Content>
+        </Layout>
+      </Content>
+    </Layout>
   )
 }
 
