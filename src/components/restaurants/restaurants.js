@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Restaurant from '../restaurant'
 import Dishes from '../dishes'
 
 function Restaurants(props) {
@@ -19,7 +20,8 @@ function Restaurants(props) {
           )
         })}
       </ul>
-      <h2>{restaurant.name}</h2>
+      {/* <h1>{restaurant.name}</h1> */}
+      <Restaurant currentRestaurant={restaurant} />
       <Dishes menu={restaurant.menu} />
     </div>
   )
