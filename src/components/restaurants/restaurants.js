@@ -2,8 +2,6 @@ import React, {useState} from 'react'
 import Restaurant from '../restaurant'
 import {Layout, Row, Col, Button} from 'antd'
 
-const {Header, Footer, Sider, Content} = Layout
-
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)
   const restaurant = props.restaurants.find(
@@ -11,10 +9,10 @@ function Restaurants(props) {
   )
   return (
     <div>
-      <ul>
+      <Row type="flex" gutter={16}>
         {props.restaurants.map(restaurant => {
           return (
-            <li key={restaurant.id}>
+            <Col key={restaurant.id}>
               <Button
                 type="primary"
                 block
@@ -23,10 +21,10 @@ function Restaurants(props) {
               >
                 {restaurant.name}
               </Button>
-            </li>
+            </Col>
           )
         })}
-      </ul>
+      </Row>
       <Restaurant restaurant={restaurant} />
     </div>
   )

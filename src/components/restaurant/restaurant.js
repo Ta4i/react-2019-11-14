@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import Dishes from '../dishes'
 import Rating from '../rating'
+import Review from '../review'
+
+import {Layout, Row, Col, Button} from 'antd'
 
 class Restaurant extends Component {
   render() {
@@ -18,9 +21,13 @@ class Restaurant extends Component {
 
     return (
       <div>
-        <h2>{restaurant.name}</h2>
-        <Rating rating={avarageRatingNumber()} />
+        <Row type="flex">
+          <h1>{restaurant.name}</h1>
+          <Rating rating={avarageRatingNumber()} />
+        </Row>
         <Dishes menu={restaurant.menu} />
+        <b>Reviews:</b>
+        <Review />
       </div>
     )
   }

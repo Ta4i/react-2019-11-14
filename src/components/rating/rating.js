@@ -12,7 +12,6 @@ class Rating extends Component {
 
     return (
       <div>
-        <h2>Rate Comp</h2>
         <Rate
           disbled
           allowHalf
