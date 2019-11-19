@@ -13,7 +13,7 @@ class Rating extends Component {
     return (
       <div>
         <Rate
-          disbled
+          disabled
           allowHalf
           defaultValue={0}
           value={numRound(rating, roundingToNum)}
