@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import Dishes from '../dishes'
+import Restaurant from '../restaurant'
+import {Row, Col, Button} from 'antd'
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)
@@ -7,20 +8,24 @@ function Restaurants(props) {
     restaurant => restaurant.id === currentId
   )
   return (
-    <div>
-      <ul>
+    <div className="container">
+      <Row type="flex" gutter={16} justify="center">
         {props.restaurants.map(restaurant => {
           return (
-            <li key={restaurant.id}>
-              <button onClick={() => setCurrentId(restaurant.id)}>
+            <Col key={restaurant.id}>
+              <Button
+                type="primary"
+                block
+                size="large"
+                onClick={() => setCurrentId(restaurant.id)}
+              >
                 {restaurant.name}
-              </button>
-            </li>
+              </Button>
+            </Col>
           )
         })}
-      </ul>
-      <h2>{restaurant.name}</h2>
-      <Dishes menu={restaurant.menu} />
+      </Row>
+      <Restaurant restaurant={restaurant} />
     </div>
   )
 }

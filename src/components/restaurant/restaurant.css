@@ -1,0 +1,13 @@
+.restaurant {
+}
+
+.restaurant__title h1.ant-typography {
+  margin-bottom: 0;
+}
+
+.restaurant__rating {
+  display: flex;
+  align-items: center;
+
+  margin-left: 15px;
+}
