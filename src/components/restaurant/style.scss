@@ -1,0 +1,22 @@
+.restaurant {
+  display: block;
+  margin: 0 0 15px;
+  padding-left: 25px;
+  position: relative;
+  border: 5px solid salmon;
+  border-radius: 10px;
+  &__menu {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  &__info {
+    &-name {
+      display: flex;
+    }
+    &-raiting {
+      margin-bottom: 25px;
+    }
+  }
+}
