@@ -7,11 +7,11 @@ class Restaurant extends Component {
     const {restaurant} = this.props
     const reviews = restaurant.reviews
 
-    function avarageNumber(arr) {
-      const summ = arr.reduce((acc, review) => {
+    const avarageRatingNumber = () => {
+      const summ = reviews.reduce((acc, review) => {
         return acc + review.rating
       }, 0)
-      const average = summ / arr.length
+      const average = summ / reviews.length
 
       return average
     }
@@ -19,7 +19,7 @@ class Restaurant extends Component {
     return (
       <div>
         <h2>{restaurant.name}</h2>
-        <Rating rating={avarageNumber(reviews)} />
+        <Rating rating={avarageRatingNumber()} />
         <Dishes menu={restaurant.menu} />
       </div>
     )
