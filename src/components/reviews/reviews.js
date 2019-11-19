@@ -16,4 +16,3 @@ class Reviews extends Component {
 }
 
 export default Reviews
-//<Review key={review.id} review={review} />
