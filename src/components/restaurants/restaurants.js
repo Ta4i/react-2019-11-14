@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
 import Restaurant from '../restaurant'
+import {Layout, Row, Col, Button} from 'antd'
+
+const {Header, Footer, Sider, Content} = Layout
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)
@@ -12,9 +15,14 @@ function Restaurants(props) {
         {props.restaurants.map(restaurant => {
           return (
             <li key={restaurant.id}>
-              <button onClick={() => setCurrentId(restaurant.id)}>
+              <Button
+                type="primary"
+                block
+                size="large"
+                onClick={() => setCurrentId(restaurant.id)}
+              >
                 {restaurant.name}
-              </button>
+              </Button>
             </li>
           )
         })}
