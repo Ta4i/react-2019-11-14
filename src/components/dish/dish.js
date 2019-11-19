@@ -7,7 +7,7 @@ function Dish(props) {
   return (
     <div>
       <Typography.Title level={2}>{dish.name}</Typography.Title>
-      <Typography.Text>{dish.price}</Typography.Text>
+      <Typography.Text>Price: {dish.price}$</Typography.Text>
       <div>
         <Button
           shape="circle"
