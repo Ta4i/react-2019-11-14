@@ -153,13 +153,13 @@ const restaurants = [
         user: 'Sam',
         text:
           'Finally! This place is amazing place for breakfast, lunch, dinner and supper',
-        rating: 5,
+        rating: 2,
       },
       {
         id: '381b0c31-6360-43ff-80d1-581a116159d8',
         user: 'Rebeca',
         text: 'Meat here is extremely delicious',
-        rating: 5,
+        rating: 1,
       },
     ],
   },

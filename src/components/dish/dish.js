@@ -7,7 +7,7 @@ function Dish(props) {
   return (
     <div>
       <Typography.Title level={2}>{dish.name}</Typography.Title>
-      <Typography.Text>{dish.price}</Typography.Text>
+      <Typography.Text>Price: {dish.price}$</Typography.Text>
       <div>
         <Button
           shape="circle"
@@ -15,7 +15,7 @@ function Dish(props) {
           type={'primary'}
           onClick={decrease}
         />
-        {amount}
+        <span style={{padding: '0 10px'}}>{amount}</span>
         <Button
           shape="circle"
           icon="plus"

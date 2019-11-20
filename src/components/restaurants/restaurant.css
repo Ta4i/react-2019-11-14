@@ -1,0 +1,32 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+button {
+  width: 150px;
+  margin-bottom: 10px;
+}
+.title {
+  text-align: center;
+}
+.holder {
+  display: flex;
+}
+
+.leftMenu {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 20px;
+}
+
+.dishesWrap {
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.content {
+  width: 100%;
+}

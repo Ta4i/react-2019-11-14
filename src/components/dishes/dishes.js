@@ -5,7 +5,7 @@ class Dishes extends Component {
   render() {
     const {menu} = this.props
     return (
-      <div>
+      <div className="dishesWrap">
         {menu.map(dish => (
           <Dish key={dish.id} dish={dish} />
         ))}
