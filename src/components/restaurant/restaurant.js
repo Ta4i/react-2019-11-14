@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Dishes from '../dishes'
 import Reviews from '../reviews'
+import Rating from '../rating'
 
 import {Typography} from 'antd'
 
@@ -14,10 +15,15 @@ class Restaurant extends Component {
           <img
             className="restaurant__item-heading-img"
             src="logo192.png"
-            alt=""
+            alt="Logo"
           />
           {restaurant.name}
         </Typography.Title>
+
+        <div className="restaurant__item-rating">
+          <h6 className="restaurant__item-rating-heading">Rating</h6>
+          <Rating reviews={restaurant.reviews} />
+        </div>
 
         <div className="restaurant__item-menu">
           <Typography.Title level={3} className="restaurant__item-menu-heading">
