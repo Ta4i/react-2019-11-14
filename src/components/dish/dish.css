@@ -1,0 +1,49 @@
+.dish-counter {
+  display: grid;
+  grid-template-columns: auto minmax(1.5em, auto) auto;
+  grid-gap: 0.5em;
+  align-items: center;
+  justify-content: left;
+  justify-items: center;
+}
+
+.dish-orders-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dish-orders-block__divider {
+  height: 2em;
+}
+
+.dish-ingredients {
+  list-style: none;
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+.dish-ingredients__item {
+  float: left;
+  margin: 0;
+}
+
+.dish-ingredients__item:last-child::after {
+  content: '.';
+}
+
+.dish-ingredients__item:not(:last-child)::after {
+  content: ',\00a0';
+}
+
+.dish-card-grid--orders-block {
+  width: 100%;
+  padding: 1em;
+}
+
+.dish-card-grid--meta {
+  width: 100%;
+  padding: 2em;
+}
