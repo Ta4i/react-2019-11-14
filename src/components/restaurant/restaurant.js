@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Dishes from '../dishes'
+import Reviews from '../reviews'
 
 import {Typography} from 'antd'
 
@@ -9,12 +10,26 @@ class Restaurant extends Component {
 
     return (
       <div className="restaurant__item">
-        <h2 className="restaurant__item-heading">
-          Restaurant: {restaurant.name}
-        </h2>
+        <Typography.Title level={1} className="restaurant__item-heading">
+          {restaurant.name}
+        </Typography.Title>
 
-        <Typography.Title level={3}>Restaurant menu:</Typography.Title>
-        <Dishes menu={restaurant.menu} />
+        <div className="restaurant__item-menu">
+          <Typography.Title level={3} className="restaurant__item-menu-heading">
+            Restaurant menu
+          </Typography.Title>
+          <Dishes menu={restaurant.menu} />
+        </div>
+
+        <div className="restaurant__item-reviews">
+          <Typography.Title
+            level={3}
+            className="restaurant__item-reviews-heading"
+          >
+            Restaurant reviews
+          </Typography.Title>
+          <Reviews reviews={restaurant.reviews} />
+        </div>
       </div>
     )
   }

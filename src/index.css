@@ -16,13 +16,13 @@ code {
 }
 
 .main {
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .main__page {
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
   background-color: rgba(33, 150, 243, 0.05);
 }
 
@@ -56,19 +56,34 @@ code {
   margin: 30px;
 }
 
-.restaurant__item-heading {
+.restaurant__item-heading.ant-typography {
   text-align: center;
   color: #1890ff;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+/* ---------- Restaurant Menu ---------- */
+.restaurant__item-menu {
+  margin-bottom: 40px;
+}
+
+.restaurant__item-menu-heading {
+  text-align: center;
+  border-top: 2px solid #1890ff;
   border-bottom: 2px solid #1890ff;
-  padding-bottom: 40px;
+  padding: 20px 0;
   margin-bottom: 20px;
 }
 
 /* ---------- Dish Item ---------- */
 .dish__item {
-  border-top: 1px solid #d9d9d9;
   padding-top: 20px;
   margin-top: 20px;
+}
+
+.dish__item:not(:first-child) {
+  border-top: 1px solid #d9d9d9;
 }
 
 .dish__item-price {
@@ -87,4 +102,23 @@ code {
 
 .dish__item-amount-counter-text {
   padding: 0 5px;
+}
+
+/* ---------- Reviews List ---------- */
+.restaurant__item-reviews-heading {
+  text-align: center;
+  border-top: 2px solid #1890ff;
+  border-bottom: 2px solid #1890ff;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+/* ---------- Review Item ---------- */
+.review__item {
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.review__item:not(:first-child) {
+  border-top: 1px solid #d9d9d9;
 }
