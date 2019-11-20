@@ -4,6 +4,7 @@ import Dish from '../dish'
 class Dishes extends Component {
   render() {
     const {menu} = this.props
+
     return (
       <div className="dishes">
         {menu.map(dish => (

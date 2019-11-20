@@ -1,5 +1,6 @@
 import React from 'react'
 import {Typography} from 'antd'
+import './review.css'
 
 function Review(props) {
   const {review} = props

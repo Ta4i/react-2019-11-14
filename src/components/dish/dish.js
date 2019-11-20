@@ -1,6 +1,7 @@
 import React from 'react'
-import {Button, Typography} from 'antd'
 import counterDecorator from '../../decorators/counter'
+import {Button, Typography} from 'antd'
+import './dish.css'
 
 function Dish(props) {
   const {dish, amount, decrease, increase} = props

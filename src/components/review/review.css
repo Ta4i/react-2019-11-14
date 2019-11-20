@@ -1,0 +1,9 @@
+/* ---------- Review Item ---------- */
+.review__item {
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.review__item:not(:first-child) {
+  border-top: 1px solid #d9d9d9;
+}

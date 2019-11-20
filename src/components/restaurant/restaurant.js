@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import Dishes from '../dishes'
 import Reviews from '../reviews'
 import Rating from '../rating'
-
 import {Typography} from 'antd'
+import './restaurant.css'
 
 class Restaurant extends Component {
   render() {
@@ -25,8 +25,11 @@ class Restaurant extends Component {
           <Rating reviews={restaurant.reviews} />
         </div>
 
-        <div className="restaurant__item-menu">
-          <Typography.Title level={3} className="restaurant__item-menu-heading">
+        <div className="restaurant__item-dishes">
+          <Typography.Title
+            level={3}
+            className="restaurant__item-dishes-heading"
+          >
             Restaurant menu
           </Typography.Title>
           <Dishes menu={restaurant.menu} />

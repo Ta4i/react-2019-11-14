@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import Restaurant from '../restaurant'
-
 import {Button, Typography} from 'antd'
+import './restaurants.css'
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)
+
   const restaurant = props.restaurants.find(
     restaurant => restaurant.id === currentId
   )
