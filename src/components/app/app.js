@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     const {restaurants} = this.props
     return (
-      <div>
+      <div className="main__page">
         <Restaurants restaurants={restaurants} />
       </div>
     )

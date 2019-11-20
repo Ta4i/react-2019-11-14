@@ -1,5 +1,6 @@
 @import '~antd/dist/antd.css';
 
+/* ---------- Common Styles ---------- */
 body {
   margin: 0;
   padding: 0;
@@ -13,4 +14,78 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+}
+
+.main__page {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 150, 243, 0.05);
+}
+
+/* ---------- Restaurants List ---------- */
+.restaurants {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+.restaurants__list {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 10px;
+  margin-bottom: 40px;
+}
+
+.restaurants__list-item {
+  display: block;
+  margin: 10px;
+}
+
+/* ---------- Restaurant Item ---------- */
+.restaurant__item {
+  min-width: 50vw;
+  background-color: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  padding: 40px 20px;
+  margin: 30px;
+}
+
+.restaurant__item-heading {
+  text-align: center;
+  color: #1890ff;
+  border-bottom: 2px solid #1890ff;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+}
+
+/* ---------- Dish Item ---------- */
+.dish__item {
+  border-top: 1px solid #d9d9d9;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.dish__item-price {
+  padding: 10px 0;
+}
+
+.dish__item-amount {
+  display: flex;
+  align-items: center;
+}
+
+.dish__item-amount-heading {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.dish__item-amount-counter-text {
+  padding: 0 5px;
 }

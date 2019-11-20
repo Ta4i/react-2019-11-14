@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import Restaurant from '../restaurant'
 
+import {Button, Typography} from 'antd'
+
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)
   const restaurant = props.restaurants.find(
@@ -8,19 +10,22 @@ function Restaurants(props) {
   )
 
   return (
-    <div>
-      <ul>
+    <div className="restaurants">
+      <Typography.Title level={3} className="restaurants__heading">
+        Choose restaurant
+      </Typography.Title>
+      <ul className="restaurants__list">
         {props.restaurants.map(restaurant => {
           return (
-            <li key={restaurant.id}>
-              <button onClick={() => setCurrentId(restaurant.id)}>
+            <li key={restaurant.id} className="restaurants__list-item">
+              <Button onClick={() => setCurrentId(restaurant.id)}>
                 {restaurant.name}
-              </button>
+              </Button>
             </li>
           )
         })}
       </ul>
-      <h2>{restaurant.name}</h2>
+
       <Restaurant restaurant={restaurant} />
     </div>
   )
