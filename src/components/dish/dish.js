@@ -1,14 +1,15 @@
 import React from 'react'
-import {Button, Typography} from 'antd'
+import {Button, Divider, Typography} from 'antd'
 import counterDecorator from '../../decorators/counter'
 
 function Dish(props) {
   const {dish, amount, decrease, increase} = props
   return (
     <div>
-      <Typography.Title level={2}>{dish.name}</Typography.Title>
-      <Typography.Text>{dish.price}</Typography.Text>
-      <div>
+      <Typography.Title level={3}>{dish.name}</Typography.Title>
+      <Typography.Title level={4}>Price{dish.price}$</Typography.Title>
+      <Typography.Text>{dish.ingredients.toString()}</Typography.Text>
+      <div style={{padding: '10px 0 0'}}>
         <Button
           shape="circle"
           icon="minus"
@@ -23,6 +24,7 @@ function Dish(props) {
           onClick={increase}
         />
       </div>
+      <Divider />
     </div>
   )
 }

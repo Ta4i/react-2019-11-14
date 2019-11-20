@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
-import Dishes from '../dishes'
+import Restaurant from '../restaurant'
+import {Layout, Menu} from 'antd'
+const {Header} = Layout
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)
@@ -8,19 +10,29 @@ function Restaurants(props) {
   )
   return (
     <div>
-      <ul>
-        {props.restaurants.map(restaurant => {
-          return (
-            <li key={restaurant.id}>
-              <button onClick={() => setCurrentId(restaurant.id)}>
-                {restaurant.name}
-              </button>
-            </li>
-          )
-        })}
-      </ul>
-      <h2>{restaurant.name}</h2>
-      <Dishes menu={restaurant.menu} />
+      <Layout className="layout">
+        <Header>
+          <div className="logo" />
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['2']}
+            style={{lineHeight: '64px'}}
+          >
+            {props.restaurants.map(restaurant => {
+              return (
+                <Menu.Item
+                  key={restaurant.id}
+                  onClick={() => setCurrentId(restaurant.id)}
+                >
+                  {restaurant.name}
+                </Menu.Item>
+              )
+            })}
+          </Menu>
+        </Header>
+      </Layout>
+      <Restaurant {...restaurant} />
     </div>
   )
 }

@@ -83,7 +83,7 @@ const restaurants = [
         id: 'abc0c5e1-cd57-4f0a-99d9-00e6b4533b3a',
         user: 'Lolly',
         text: 'Good for lunch',
-        rating: 5,
+        rating: 1,
       },
     ],
   },
