@@ -6,6 +6,17 @@ function Restaurants(props) {
   const restaurant = props.restaurants.find(
     restaurant => restaurant.id === currentId
   )
+
+  let averageRating = 0
+
+  restaurant.reviews.forEach(review => {
+    averageRating += review.rating
+  })
+
+  restaurant.averageRating = Math.round(
+    averageRating / restaurant.reviews.length
+  )
+
   return (
     <div>
       <ul>
