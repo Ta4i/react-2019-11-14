@@ -9,9 +9,7 @@ function Review(props) {
       <Typography.Title level={4} className="review__item-heading">
         User: {review.user}
       </Typography.Title>
-      <div className="review__item-description">
-        Description: {review.text}{' '}
-      </div>
+      <div className="review__item-description">Description: {review.text}</div>
       <div className="review__item-rating">Rating: {review.rating}</div>
     </div>
   )

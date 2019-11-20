@@ -2,12 +2,15 @@
 
 /* ---------- Common Styles ---------- */
 body {
-  margin: 0;
-  padding: 0;
   font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, Helvetica, Arial,
     sans-serif;
+  font-size: 16px;
+  color: #111111;
+  font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
 }
 
 code {
@@ -24,6 +27,10 @@ code {
   min-width: 100%;
   min-height: 100%;
   background-color: rgba(33, 150, 243, 0.05);
+}
+
+.main__page .ant-btn {
+  font-weight: 700;
 }
 
 /* ---------- Restaurants List ---------- */
@@ -57,10 +64,22 @@ code {
 }
 
 .restaurant__item-heading.ant-typography {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  color: #1890ff;
+  color: #0288d1;
   padding-bottom: 20px;
   margin-bottom: 20px;
+}
+.restaurant__item-heading-img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-image: url('/public/logo192.png');
+  background-size: contain;
+  background-position: center;
+  margin-right: 10px;
 }
 
 /* ---------- Restaurant Menu ---------- */
@@ -70,8 +89,8 @@ code {
 
 .restaurant__item-menu-heading {
   text-align: center;
-  border-top: 2px solid #1890ff;
-  border-bottom: 2px solid #1890ff;
+  border-top: 2px solid #03a9f4;
+  border-bottom: 2px solid #03a9f4;
   padding: 20px 0;
   margin-bottom: 20px;
 }

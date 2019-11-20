@@ -11,6 +11,11 @@ class Restaurant extends Component {
     return (
       <div className="restaurant__item">
         <Typography.Title level={1} className="restaurant__item-heading">
+          <img
+            className="restaurant__item-heading-img"
+            src="logo192.png"
+            alt=""
+          />
           {restaurant.name}
         </Typography.Title>
 
