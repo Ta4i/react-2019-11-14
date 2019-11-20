@@ -4,10 +4,7 @@ export function useRating(ratings) {
   const [rating, setRating] = useState(average(ratings))
 
   useEffect(() => {
-    const newRating = average(ratings)
-    if (rating !== newRating) {
-      setRating(newRating)
-    }
+    setRating(average(ratings))
   }, [ratings])
 
   return [rating, setRating]
