@@ -15,7 +15,7 @@ function Dish(props) {
           type={'primary'}
           onClick={decrease}
         />
-        {amount}
+        <span style={{padding: '0 10px'}}>{amount}</span>
         <Button
           shape="circle"
           icon="plus"

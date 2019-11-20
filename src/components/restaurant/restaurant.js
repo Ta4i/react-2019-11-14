@@ -1,6 +1,7 @@
 import React from 'react'
 import Dishes from '../dishes'
-import {Rate} from 'antd'
+import Comments from '../comment'
+import {Rate, Typography} from 'antd'
 
 function Restaurant(props) {
   const {restaurant} = props
@@ -12,18 +13,18 @@ function Restaurant(props) {
     ) / 1
 
   return (
-    <div>
-      <h2>{restaurant.name}</h2>
+    <div className="content">
+      <Typography.Title level={2}>
+        Restaurant {restaurant.name}
+      </Typography.Title>
+      <Typography.Title level={3}>Menu</Typography.Title>
       <Dishes menu={restaurant.menu} />
-      <h2>Feedback</h2>
+      <Typography.Title level={3}>Feedback</Typography.Title>
       <Rate key={restaurant.id} disabled defaultValue={averageRatingArr} />
 
       <div>
         {restaurant.reviews.map(reviewer => (
-          <div key={reviewer.id}>
-            <h2>{reviewer.user}</h2>
-            <p>{reviewer.text}</p>
-          </div>
+          <Comments reviewer={reviewer} />
         ))}
       </div>
     </div>
