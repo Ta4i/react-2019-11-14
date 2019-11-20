@@ -1,0 +1,67 @@
+.Dash {
+  margin-bottom: 20px;
+}
+
+.Dash p {
+  margin-bottom: 0;
+}
+
+.Dash:last-child {
+  margin-bottom: 0;
+}
+
+.Dash__data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Dash__data h4 {
+  margin-bottom: 0;
+}
+
+.Dash__data span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.Dash__info {
+  max-width: 70%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Dash__title {
+  max-width: 65%;
+  width: 100%;
+}
+
+.Dash__price {
+  display: flex;
+}
+
+.Dash__priceText {
+  display: flex;
+  font-size: 18px;
+  margin-bottom: 0;
+  color: #333333;
+}
+
+.Dash__priceNumber {
+  min-width: 40px;
+  text-align: right;
+}
+
+.Dash__btnGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 25%;
+  width: 100%;
+}
+
+.Dash__btnGroup p {
+  font-size: 30px;
+}
