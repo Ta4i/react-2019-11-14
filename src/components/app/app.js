@@ -1,13 +1,15 @@
 import React, {Component} from 'react'
 import Restaurants from '../restaurants'
 
+
 class App extends Component {
+  
   componentDidMount() {
-    console.log('mounted to DOM')
+    // console.log('mounted to DOM')
   }
 
   componentDidUpdate() {
-    console.log('updated', this.state.count)
+    // console.log('updated', this.state.count)
   }
 
   render() {

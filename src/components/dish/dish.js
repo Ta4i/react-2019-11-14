@@ -6,7 +6,7 @@ function Dish(props) {
   const {dish, amount, decrease, increase} = props
   return (
     <div>
-      <Typography.Title level={2}>{dish.name}</Typography.Title>
+      <Typography.Title level={3}>{dish.name}</Typography.Title>
       <Typography.Text>{dish.price}</Typography.Text>
       <div>
         <Button

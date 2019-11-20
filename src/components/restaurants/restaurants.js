@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
+import Restaurant from '../restaurant'
 import Dishes from '../dishes'
+import { Divider } from 'antd'
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)
@@ -7,11 +9,11 @@ function Restaurants(props) {
     restaurant => restaurant.id === currentId
   )
   return (
-    <div>
+    <div style={{textAlign: 'center'}}>
       <ul>
         {props.restaurants.map(restaurant => {
           return (
-            <li key={restaurant.id}>
+            <li key={restaurant.id} style={{listStyle:'none', display:'inline', padding:'20px'}}>
               <button onClick={() => setCurrentId(restaurant.id)}>
                 {restaurant.name}
               </button>
@@ -19,9 +21,12 @@ function Restaurants(props) {
           )
         })}
       </ul>
-      <h2>{restaurant.name}</h2>
+        <Divider orientation="center" style={{display: 'inline-block', backgroundColor: '#555555', minWidth: '0px', width: '50%'}} />
+      <Restaurant currentRestaurant={restaurant} />
+        <Divider orientation="center" style={{display: 'inline-block', backgroundColor: '#555555', minWidth: '0px', width: '50%'}} />
       <Dishes menu={restaurant.menu} />
     </div>
+    
   )
 }
 
