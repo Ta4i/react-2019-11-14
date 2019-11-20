@@ -4,8 +4,9 @@ import Dish from '../dish'
 class Dishes extends Component {
   render() {
     const {menu} = this.props
+
     return (
-      <div>
+      <div className="dishes">
         {menu.map(dish => (
           <Dish key={dish.id} dish={dish} />
         ))}

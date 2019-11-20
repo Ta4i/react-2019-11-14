@@ -1,0 +1,37 @@
+/* ---------- Dish Item ---------- */
+.dish__item {
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.dish__item:not(:first-child) {
+  border-top: 1px solid #d9d9d9;
+}
+
+.dish__item-price {
+  padding: 10px 0;
+}
+
+.dish__item-amount {
+  display: flex;
+  align-items: center;
+}
+
+.dish__item-amount-heading {
+  margin-right: 10px;
+}
+
+.dish__item-amount-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dish__item-amount-counter-text {
+  width: 35px;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
