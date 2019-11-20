@@ -6,9 +6,9 @@ class Dishes extends Component {
     const {menu} = this.props
     return (
       <div>
-        {menu.map(dish => (
-          <Dish key={dish.id} dish={dish} />
-        ))}
+        {menu.map(dish => {
+          return <Dish key={dish.id} dish={dish} />
+        })}
       </div>
     )
   }

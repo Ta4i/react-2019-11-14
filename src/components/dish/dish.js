@@ -6,22 +6,12 @@ function Dish(props) {
   const {dish, amount, decrease, increase} = props
   return (
     <div>
-      <Typography.Title level={2}>{dish.name}</Typography.Title>
-      <Typography.Text>{dish.price}</Typography.Text>
+      <Typography.Title level={3}>{dish.name}</Typography.Title>
+      <Typography.Text>Price: {dish.price} $</Typography.Text>
       <div>
-        <Button
-          shape="circle"
-          icon="minus"
-          type={'primary'}
-          onClick={decrease}
-        />
+        <Button onClick={decrease}>-</Button>
         {amount}
-        <Button
-          shape="circle"
-          icon="plus"
-          type={'primary'}
-          onClick={increase}
-        />
+        <Button onClick={increase}>+</Button>
       </div>
     </div>
   )
