@@ -11,6 +11,7 @@ class RestaurantsNavigation extends Component {
             className={styles.restaurant}
             key={id}
             onClick={() => onRestaurantChange(id)}
+            data-automation-id={`RESTAURANT_NAVIGATION_${id}`}
           >
             {name}
           </span>

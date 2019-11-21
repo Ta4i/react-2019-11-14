@@ -9,7 +9,11 @@ function Hero({img = DefaultHeroImg, heading, description, children}) {
     <div className={styles.hero}>
       <img src={img} className={styles.heroImg} alt="hero-banner" />
       <div className={styles.heroCaption}>
-        <Typography.Title level={2} className={styles.heading}>
+        <Typography.Title
+          data-automation-id="RESTAURANT_NAME"
+          level={2}
+          className={styles.heading}
+        >
           {heading}
         </Typography.Title>
         <Typography.Text className={styles.description}>

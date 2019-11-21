@@ -11,7 +11,7 @@ function Restaurants(props) {
     setCurrentId,
   ])
   return (
-    <div>
+    <div data-automation-id="RESTAURANTS">
       <RestaurantsNavigation
         restaurants={props.restaurants}
         onRestaurantChange={handleRestaurantChange}
