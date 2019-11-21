@@ -13,7 +13,7 @@ describe('Restaurant', () => {
     expect(wrapper.find('div[data-automation-id="RESTAURANTS"]').length).toBe(1)
   })
 
-  it.only('should fetch data if possible', function(done) {
+  it('should fetch data if possible', function(done) {
     mount(
       <Restaurants restaurants={restaurants} fetchRestaurants={() => done()} />
     )
@@ -32,10 +32,10 @@ describe('Restaurant', () => {
         .simulate('click')
       expect(
         wrapper
-          .find('div[data-automation-id="RESTAURANT_NAME"]')
+          .find('h2[data-automation-id="RESTAURANT_NAME"]')
           .first()
           .text()
-      ).toBe(restaurants[1].name)
+      ).toBe(secondRestaurant.name)
     })
   })
 })
