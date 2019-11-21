@@ -6,6 +6,14 @@ import Hero from '../hero'
 import styles from './restaurant.module.css'
 
 class Restaurant extends Component {
+  state = {
+    error: null,
+  }
+
+  componentDidCatch(error, errorInfo) {
+    this.setState({error})
+  }
+
   render() {
     const {
       restaurant: {name, menu, reviews},
@@ -13,7 +21,7 @@ class Restaurant extends Component {
     return (
       <div>
         <Hero heading={name}>
-          <AverageRating reviews={reviews} />
+          {this.state.error ? null : <AverageRating reviews={reviews} />}
         </Hero>
         <div className={styles.restaurantContent}>
           <Reviews reviews={reviews} />
