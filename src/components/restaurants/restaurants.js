@@ -1,9 +1,14 @@
-import React, {useCallback, useState} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import Restaurant from '../restaurant'
 import RestaurantsNavigation from '../restaurants-navigation'
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)
+
+  useEffect(() => {
+    props.fetchRestaurants && props.fetchRestaurants()
+  }, [])
+
   const restaurant = props.restaurants.find(
     restaurant => restaurant.id === currentId
   )

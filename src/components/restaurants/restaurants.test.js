@@ -13,6 +13,12 @@ describe('Restaurant', () => {
     expect(wrapper.find('div[data-automation-id="RESTAURANTS"]').length).toBe(1)
   })
 
+  it.only('should fetch data if possible', function(done) {
+    mount(
+      <Restaurants restaurants={restaurants} fetchRestaurants={() => done()} />
+    )
+  })
+
   describe('when Restaurant navigation clicked', function() {
     it('should render selected Restaurant', () => {
       const secondRestaurant = restaurants[1]
