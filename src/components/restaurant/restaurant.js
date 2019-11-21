@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import Dishes from '../dishes'
 import AverageRating from '../average-rating'
 import Reviews from '../reviews'
+import Hero from '../hero'
+import styles from './restaurant.module.css'
 
 class Restaurant extends Component {
   render() {
@@ -10,10 +12,13 @@ class Restaurant extends Component {
     } = this.props
     return (
       <div>
-        <h2>{name}</h2>
-        <AverageRating reviews={reviews} />
-        <Reviews reviews={reviews} />
-        <Dishes menu={menu} />
+        <Hero heading={name}>
+          <AverageRating reviews={reviews} />
+        </Hero>
+        <div className={styles.restaurantContent}>
+          <Reviews reviews={reviews} />
+          <Dishes menu={menu} />
+        </div>
       </div>
     )
   }

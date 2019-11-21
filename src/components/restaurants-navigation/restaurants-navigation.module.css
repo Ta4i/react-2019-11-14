@@ -1,0 +1,14 @@
+.list {
+  height: auto;
+  text-align: center;
+  padding: 6px;
+}
+
+.restaurant {
+  padding: 6px 12px;
+}
+
+.active {
+  color: red;
+  border-bottom: 2px solid red;
+}
