@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {Rate} from 'antd'
 
 function AverageRating({reviews}) {
@@ -14,8 +15,19 @@ function AverageRating({reviews}) {
   )
 }
 
-AverageRating.defaultProps = {
-  reviews: [],
+// AverageRating.defaultProps = {
+//   reviews: [],
+// }
+
+AverageRating.propTypes = {
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      user: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 }
 
 export default AverageRating
