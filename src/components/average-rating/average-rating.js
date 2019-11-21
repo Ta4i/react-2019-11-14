@@ -14,4 +14,8 @@ function AverageRating({reviews}) {
   )
 }
 
+AverageRating.defaultProps = {
+  reviews: [],
+}
+
 export default AverageRating
