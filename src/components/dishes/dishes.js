@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import Dish from '../dish'
 
 class Dishes extends Component {
@@ -12,6 +13,17 @@ class Dishes extends Component {
       </div>
     )
   }
+}
+
+Dishes.propTypes = {
+  menu: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      ingredients: PropTypes.array,
+    })
+  ).isRequired,
 }
 
 export default Dishes

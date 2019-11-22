@@ -1,4 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react'
+import PropTypes from 'prop-types'
 import Restaurant from '../restaurant'
 import RestaurantsNavigation from '../restaurants-navigation'
 
@@ -7,7 +8,7 @@ function Restaurants(props) {
 
   useEffect(() => {
     props.fetchRestaurants && props.fetchRestaurants()
-  }, [])
+  }, [props])
 
   const restaurant = props.restaurants.find(
     restaurant => restaurant.id === currentId
@@ -15,6 +16,7 @@ function Restaurants(props) {
   const handleRestaurantChange = useCallback(id => setCurrentId(id), [
     setCurrentId,
   ])
+
   return (
     <div data-automation-id="RESTAURANTS">
       <RestaurantsNavigation
@@ -24,6 +26,23 @@ function Restaurants(props) {
       <Restaurant restaurant={restaurant} />
     </div>
   )
+}
+
+Restaurants.defaultProps = {
+  restaurant: {},
+}
+
+Restaurants.propTypes = {
+  restaurant: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      location: PropTypes.object,
+      image: PropTypes.string,
+      menu: PropTypes.array,
+      reviews: PropTypes.array,
+    })
+  ).isRequired,
 }
 
 export default Restaurants
