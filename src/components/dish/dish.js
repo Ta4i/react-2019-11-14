@@ -15,13 +15,16 @@ function Dish(props) {
   } = props
 
   const name = dish.name ? dish.name : 'Omlet' // Простая проверка входных данных, выдача дефолтных значений в случае чего
-  const ingredients = dish.ingredients
+  const ingredients = dish.ingredients // --- the same ---
     ? dish.ingredients
-    : ['milk', 'egg', 'tomato'] // --- the same ---
+    : ['milk', 'egg', 'tomato']
   const price = dish.price ? dish.price : 999999 // --- the same ---
 
   return (
-    <Card className={styles.productDetailedOrderCard}>
+    <Card
+      className={styles.productDetailedOrderCard}
+      data-automation-id={`RESTAURANT_MENU_DISH_${dish.id}`}
+    >
       <Row type="flex" justify="space-between">
         <Col xs={16} md={16} lg={20} align="left">
           <Typography.Title
