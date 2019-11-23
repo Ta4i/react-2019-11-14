@@ -9,6 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f0f2f5;
+  overflow-y: scroll; /* убираем `скачок` по горизонтали при переключении между ресторанами - сейчас есть на некоторых разрешениях */
 }
 
 code {

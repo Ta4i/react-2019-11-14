@@ -3,6 +3,7 @@ import Dishes from '../dishes'
 import AverageRating from '../average-rating'
 import Reviews from '../reviews'
 import Hero from '../hero'
+import PropTypes from 'prop-types'
 import styles from './restaurant.module.css'
 
 class Restaurant extends Component {
@@ -31,5 +32,9 @@ class Restaurant extends Component {
     )
   }
 }
+
+Restaurant.propTypes = {
+  restaurant: PropTypes.object.isRequired, // Проверим наличие обязательного объекта в пропсах
+} // Дети дальше пусть сами разбираются
 
 export default Restaurant

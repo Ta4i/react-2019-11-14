@@ -1,5 +1,6 @@
 import React from 'react'
 import {Card, Typography, Button, Row, Col} from 'antd'
+import PropTypes from 'prop-types'
 import styles from './dish.module.css'
 import counter from '../../decorators/counter'
 
@@ -13,8 +14,17 @@ function Dish(props) {
     decrease,
   } = props
 
+  const name = dish.name ? dish.name : 'Omlet' // Простая проверка входных данных, выдача дефолтных значений в случае чего
+  const ingredients = dish.ingredients // --- the same ---
+    ? dish.ingredients
+    : ['milk', 'egg', 'tomato']
+  const price = dish.price ? dish.price : 999999 // --- the same ---
+
   return (
-    <Card className={styles.productDetailedOrderCard}>
+    <Card
+      className={styles.productDetailedOrderCard}
+      data-automation-id={`RESTAURANT_MENU_DISH_${dish.id}`}
+    >
       <Row type="flex" justify="space-between">
         <Col xs={16} md={16} lg={20} align="left">
           <Typography.Title
@@ -22,12 +32,12 @@ function Dish(props) {
             className={styles.title}
             data-automation-id="DISH_NAME"
           >
-            {dish.name}
+            {name}
           </Typography.Title>
           <Typography.Paragraph className={styles.description}>
-            {dish.ingredients.join(', ')}
+            {ingredients.join(', ')}
           </Typography.Paragraph>
-          <div className={styles.price}>{dish.price} $</div>
+          <div className={styles.price}>{price} $</div>
         </Col>
         <Col xs={8} md={6} lg={4} align="right">
           <div className={styles.counter}>
@@ -53,6 +63,15 @@ function Dish(props) {
       </Row>
     </Card>
   )
+}
+
+Dish.propTypes = {
+  dish: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    ingredients: PropTypes.array,
+  }).isRequired,
 }
 
 export default counter(Dish)
