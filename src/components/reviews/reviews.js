@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import Review from './review'
+import PropTypes from 'prop-types'
 import {Col, Row} from 'antd'
 
 class Reviews extends Component {
-  static defaultProps = {
-    reviews: [],
-  }
+  // static defaultProps = {
+  //   reviews: [],
+  // }
   render() {
     const {reviews} = this.props
     return (
@@ -18,6 +19,17 @@ class Reviews extends Component {
       </Row>
     )
   }
+}
+
+Reviews.propTypes = {
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      user: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 }
 
 export default Reviews

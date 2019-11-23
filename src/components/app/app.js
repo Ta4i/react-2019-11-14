@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Restaurants from '../restaurants'
 import {Layout} from 'antd'
 import Header from '../header'
+import PropTypes from 'prop-types'
 import './app.css'
 
 class App extends Component {
@@ -19,5 +20,9 @@ class App extends Component {
     )
   }
 }
+
+App.propTypes = {
+  restaurants: PropTypes.arrayOf(PropTypes.object).isRequired, // Проверим наличие обязательного массива в пропсах
+} // Дети дальше пусть сами разбираются
 
 export default App
