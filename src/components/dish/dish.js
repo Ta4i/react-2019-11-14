@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {Card, Typography, Button, Row, Col} from 'antd'
 import styles from './dish.module.css'
 import counter from '../../decorators/counter'
@@ -53,6 +54,17 @@ function Dish(props) {
       </Row>
     </Card>
   )
+}
+Dish.propTypes = {
+  amount: PropTypes.number.isRequired,
+  increase: PropTypes.func.isRequired,
+  decrease: PropTypes.func.isRequired,
+  dish: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    ingredients: PropTypes.array,
+  }).isRequired,
 }
 
 export default counter(Dish)
