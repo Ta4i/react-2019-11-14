@@ -15,7 +15,10 @@ function Dish(props) {
   } = props
 
   return (
-    <Card className={styles.productDetailedOrderCard}>
+    <Card
+      className={styles.productDetailedOrderCard}
+      data-automation-id={`DISH_${dish.id}`}
+    >
       <Row type="flex" justify="space-between">
         <Col xs={16} md={16} lg={20} align="left">
           <Typography.Title
