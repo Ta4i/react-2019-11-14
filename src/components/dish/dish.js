@@ -2,6 +2,8 @@ import React from 'react'
 import {Card, Typography, Button, Row, Col} from 'antd'
 import styles from './dish.module.css'
 import counter from '../../decorators/counter'
+import PropTypes from 'prop-types'
+import AverageRating from '../average-rating'
 
 function Dish(props) {
   const {
@@ -27,7 +29,9 @@ function Dish(props) {
           <Typography.Paragraph className={styles.description}>
             {dish.ingredients.join(', ')}
           </Typography.Paragraph>
-          <div className={styles.price}>{dish.price} $</div>
+          <div className={styles.price} data-automation-id="PRICE">
+            {dish.price} $
+          </div>
         </Col>
         <Col xs={8} md={6} lg={4} align="right">
           <div className={styles.counter}>
@@ -53,6 +57,18 @@ function Dish(props) {
       </Row>
     </Card>
   )
+}
+
+AverageRating.propTypes = {
+  dish: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    ingredients: PropTypes.array.isRequired,
+  }).isRequired,
+  amount: PropTypes.func.isRequired,
+  increase: PropTypes.func.isRequired,
+  decrease: PropTypes.func.isRequired,
 }
 
 export default counter(Dish)
