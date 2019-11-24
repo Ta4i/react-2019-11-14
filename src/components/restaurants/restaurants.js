@@ -1,4 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react'
+import PropTypes from 'prop-types'
 import Restaurant from '../restaurant'
 import RestaurantsNavigation from '../restaurants-navigation'
 
@@ -24,6 +25,14 @@ function Restaurants(props) {
       <Restaurant restaurant={restaurant} />
     </div>
   )
+}
+
+Restaurants.propTypes = {
+  restaurants: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    })
+  ),
 }
 
 export default Restaurants

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import styles from './restaurants-navigation.module.css'
 
 class RestaurantsNavigation extends Component {
@@ -19,6 +20,16 @@ class RestaurantsNavigation extends Component {
       </div>
     )
   }
+}
+
+RestaurantsNavigation.propTypes = {
+  restaurants: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onRestaurantChange: PropTypes.func.isRequired,
 }
 
 export default RestaurantsNavigation

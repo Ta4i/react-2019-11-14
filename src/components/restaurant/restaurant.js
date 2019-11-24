@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import Dishes from '../dishes'
 import AverageRating from '../average-rating'
 import Reviews from '../reviews'
@@ -30,6 +31,14 @@ class Restaurant extends Component {
       </div>
     )
   }
+}
+
+Restaurant.propTypes = {
+  restaurant: PropTypes.shape({
+    name: PropTypes.any.isRequired,
+    menu: PropTypes.any.isRequired,
+    reviews: PropTypes.any,
+  }).isRequired,
 }
 
 export default Restaurant
