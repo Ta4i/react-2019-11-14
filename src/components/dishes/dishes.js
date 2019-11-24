@@ -7,7 +7,7 @@ class Dishes extends Component {
     const {menu} = this.props
 
     return (
-      <div>
+      <div data-automation-id="DISHES">
         {menu.map(dish => (
           <Dish key={dish.id} dish={dish} />
         ))}
