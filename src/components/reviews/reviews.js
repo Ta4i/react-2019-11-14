@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import Review from './review'
 import {Col, Row} from 'antd'
 
@@ -18,6 +19,10 @@ class Reviews extends Component {
       </Row>
     )
   }
+}
+
+Reviews.propTypes = {
+  reviews: PropTypes.array.isRequired,
 }
 
 export default Reviews

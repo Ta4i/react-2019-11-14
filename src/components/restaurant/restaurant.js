@@ -3,6 +3,8 @@ import Dishes from '../dishes'
 import AverageRating from '../average-rating'
 import Reviews from '../reviews'
 import Hero from '../hero'
+import PropTypes from 'prop-types'
+
 import styles from './restaurant.module.css'
 
 class Restaurant extends Component {
@@ -30,6 +32,14 @@ class Restaurant extends Component {
       </div>
     )
   }
+}
+
+Restaurant.propTypes = {
+  restaurant: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    menu: PropTypes.array.isRequired,
+    reviews: PropTypes.array.isRequired,
+  }).isRequired,
 }
 
 export default Restaurant
