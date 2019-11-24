@@ -23,6 +23,7 @@ describe('Restaurant', () => {
     it('should render selected Restaurant', () => {
       const secondRestaurant = restaurants[1]
       const wrapper = mount(<Restaurants restaurants={restaurants} />)
+
       wrapper
         .find(
           `span[data-automation-id="RESTAURANT_NAVIGATION_${
@@ -30,6 +31,7 @@ describe('Restaurant', () => {
           }"]`
         )
         .simulate('click')
+
       expect(
         wrapper
           .find('h2[data-automation-id="RESTAURANT_NAME"]')
