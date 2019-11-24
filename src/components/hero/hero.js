@@ -1,6 +1,6 @@
 import React from 'react'
-
 import DefaultHeroImg from './hero-banner.jpg'
+import PropTypes from 'prop-types'
 import styles from './hero.module.css'
 import {Typography} from 'antd'
 
@@ -16,13 +16,19 @@ function Hero({img = DefaultHeroImg, heading, description, children}) {
         >
           {heading}
         </Typography.Title>
-        <Typography.Text className={styles.description}>
+        {/* <Typography.Text className={styles.description}>
           {description}
-        </Typography.Text>
+        </Typography.Text> */}
         <div className={styles.colorWhite}>{children}</div>
       </div>
     </div>
   )
+}
+Hero.propTypes = {
+  heading: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  children: PropTypes.node,
+  img: PropTypes.string,
 }
 
 export default Hero
