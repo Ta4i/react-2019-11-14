@@ -6,9 +6,9 @@ class Dishes extends Component {
   render() {
     const {menu} = this.props
     return (
-      <div>
+      <div data-automation-id="DISHES_CONTAINER">
         {menu.map(dish => (
-          <Dish key={dish.id} dish={dish} />
+          <Dish key={dish.id} dish={dish} dataId={`DISH_KEY_${dish.id}`} />
         ))}
       </div>
     )
@@ -20,7 +20,7 @@ Dishes.defaultProps = {
 }
 
 Dishes.propTypes = {
-  menu: PropTypes.array,
+  menu: PropTypes.array.isRequired,
 }
 
 export default Dishes

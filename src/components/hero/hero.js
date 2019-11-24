@@ -27,7 +27,6 @@ function Hero({img = DefaultHeroImg, heading, description, children}) {
 
 Hero.propTypes = {
   heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
-    .isRequired,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 }
 export default Hero
