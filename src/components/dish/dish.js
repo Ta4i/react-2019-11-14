@@ -2,6 +2,7 @@ import React from 'react'
 import {Card, Typography, Button, Row, Col} from 'antd'
 import styles from './dish.module.css'
 import counter from '../../decorators/counter'
+import PropTypes from 'prop-types'
 
 function Dish(props) {
   const {
@@ -24,10 +25,15 @@ function Dish(props) {
           >
             {dish.name}
           </Typography.Title>
-          <Typography.Paragraph className={styles.description}>
+          <Typography.Paragraph
+            className={styles.description}
+            data-automation-id="DISH_DESCRIPTION"
+          >
             {dish.ingredients.join(', ')}
           </Typography.Paragraph>
-          <div className={styles.price}>{dish.price} $</div>
+          <div data-automation-id="DISH_PRICE" className={styles.price}>
+            {dish.price} $
+          </div>
         </Col>
         <Col xs={8} md={6} lg={4} align="right">
           <div className={styles.counter}>
@@ -53,6 +59,15 @@ function Dish(props) {
       </Row>
     </Card>
   )
+}
+
+Dish.propTypes = {
+  dish: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    ingredients: PropTypes.array.isRequired,
+  }).isRequired,
 }
 
 export default counter(Dish)
