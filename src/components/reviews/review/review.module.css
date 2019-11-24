@@ -27,10 +27,6 @@
     padding: 16px !important;
   }
 
-  .review:last-child {
-    margin-bottom: 0;
-  }
-
   .rateColumn {
     position: absolute;
     top: 10px;

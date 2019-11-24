@@ -15,10 +15,6 @@ function AverageRating({reviews}) {
   )
 }
 
-// AverageRating.defaultProps = {
-//   reviews: [],
-// }
-
 AverageRating.propTypes = {
   reviews: PropTypes.arrayOf(
     PropTypes.shape({

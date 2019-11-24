@@ -1,5 +1,4 @@
 import React from 'react'
-
 import DefaultHeroImg from './hero-banner.jpg'
 import styles from './hero.module.css'
 import {Typography} from 'antd'

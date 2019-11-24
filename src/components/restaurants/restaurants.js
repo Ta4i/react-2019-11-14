@@ -1,4 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react'
+import PropTypes from 'prop-types'
 import Restaurant from '../restaurant'
 import RestaurantsNavigation from '../restaurants-navigation'
 
@@ -7,7 +8,7 @@ function Restaurants(props) {
 
   useEffect(() => {
     props.fetchRestaurants && props.fetchRestaurants()
-  }, [])
+  }, [props])
 
   const restaurant = props.restaurants.find(
     restaurant => restaurant.id === currentId
@@ -24,6 +25,10 @@ function Restaurants(props) {
       <Restaurant restaurant={restaurant} />
     </div>
   )
+}
+
+Restaurants.propTypes = {
+  restaurants: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 export default Restaurants
