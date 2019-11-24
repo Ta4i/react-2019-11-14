@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import Dish from '../dish'
+import PropTypes from 'prop-types'
 
 class Dishes extends Component {
   render() {
     const {menu} = this.props
     return (
-      <div>
+      <div data-automation-id="DISHES">
         {menu.map(dish => (
           <Dish key={dish.id} dish={dish} />
         ))}
@@ -14,4 +15,14 @@ class Dishes extends Component {
   }
 }
 
+Dishes.propTypes = {
+  menu: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      ingredients: PropTypes.array.isRequired,
+    })
+  ).isRequired,
+}
 export default Dishes
