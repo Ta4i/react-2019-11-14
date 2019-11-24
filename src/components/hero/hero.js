@@ -1,5 +1,5 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
 import DefaultHeroImg from './hero-banner.jpg'
 import styles from './hero.module.css'
 import {Typography} from 'antd'
@@ -25,4 +25,9 @@ function Hero({img = DefaultHeroImg, heading, description, children}) {
   )
 }
 
+Hero.propTypes = {
+  heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+    .isRequired,
+}
 export default Hero
