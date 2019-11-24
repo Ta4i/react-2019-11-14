@@ -1,13 +1,14 @@
 import React, {useCallback, useEffect, useState} from 'react'
 import Restaurant from '../restaurant'
 import RestaurantsNavigation from '../restaurants-navigation'
+import PropTypes from 'prop-types'
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)
 
   useEffect(() => {
     props.fetchRestaurants && props.fetchRestaurants()
-  }, [])
+  }, [props])
 
   const restaurant = props.restaurants.find(
     restaurant => restaurant.id === currentId
@@ -24,6 +25,15 @@ function Restaurants(props) {
       <Restaurant restaurant={restaurant} />
     </div>
   )
+}
+
+Restaurants.defaultProps = {
+  restaurants: [],
+}
+
+Restaurants.propTypes = {
+  restaurants: PropTypes.array,
+  fetchRestaurants: PropTypes.func,
 }
 
 export default Restaurants

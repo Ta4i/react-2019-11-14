@@ -2,19 +2,16 @@ import React from 'react'
 import {Card, Typography, Button, Row, Col} from 'antd'
 import styles from './dish.module.css'
 import counter from '../../decorators/counter'
+import PropTypes from 'prop-types'
 
 function Dish(props) {
-  const {
-    dish,
-
-    // from decorator
-    amount,
-    increase,
-    decrease,
-  } = props
+  const {dish, amount, increase, decrease, dataId} = props
 
   return (
-    <Card className={styles.productDetailedOrderCard}>
+    <Card
+      className={styles.productDetailedOrderCard}
+      data-automation-id={dataId}
+    >
       <Row type="flex" justify="space-between">
         <Col xs={16} md={16} lg={20} align="left">
           <Typography.Title
@@ -53,6 +50,14 @@ function Dish(props) {
       </Row>
     </Card>
   )
+}
+
+Dish.propTypes = {
+  dish: PropTypes.object.isRequired,
+  increase: PropTypes.func.isRequired,
+  decrease: PropTypes.func.isRequired,
+  amount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  dataId: PropTypes.string,
 }
 
 export default counter(Dish)

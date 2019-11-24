@@ -1,5 +1,4 @@
 import React from 'react'
-
 import LogoImg from './logo.svg'
 
 function Logo() {
