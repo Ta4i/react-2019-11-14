@@ -22,14 +22,7 @@ class Reviews extends Component {
 }
 
 Reviews.propTypes = {
-  reviews: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      user: PropTypes.string.isRequired,
-      text: PropTypes.string,
-      rating: PropTypes.number.isRequired,
-    })
-  ).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 export default Reviews

@@ -22,16 +22,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  restaurants: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      location: PropTypes.object,
-      image: PropTypes.string,
-      menu: PropTypes.array,
-      reviews: PropTypes.array,
-    })
-  ).isRequired,
+  restaurants: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 export default App

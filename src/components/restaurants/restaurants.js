@@ -16,7 +16,6 @@ function Restaurants(props) {
   const handleRestaurantChange = useCallback(id => setCurrentId(id), [
     setCurrentId,
   ])
-
   return (
     <div data-automation-id="RESTAURANTS">
       <RestaurantsNavigation
@@ -28,21 +27,8 @@ function Restaurants(props) {
   )
 }
 
-Restaurants.defaultProps = {
-  restaurant: {},
-}
-
 Restaurants.propTypes = {
-  restaurant: PropTypes.objectOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      location: PropTypes.object,
-      image: PropTypes.string,
-      menu: PropTypes.array,
-      reviews: PropTypes.array,
-    })
-  ).isRequired,
+  restaurants: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 export default Restaurants
