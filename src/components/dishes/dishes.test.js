@@ -21,4 +21,17 @@ describe('Dishes', () => {
     const wrapper = mount(<Dishes menu={menu} />)
     expect(wrapper.find(Dish).length).toBe(menu.length)
   })
+
+  it('should render dishes price', () => {
+    const dish = restaurants[2].menu[0]
+    const menu = restaurants[2].menu
+    const wrapper = mount(<Dishes menu={menu} />)
+    wrapper.find(`div[data-automation-id="DISH_${dish.id}"]`)
+    expect(
+      wrapper
+        .find('h4[data-automation-id="DISH_NAME"]')
+        .first()
+        .text()
+    ).toBe(dish.name)
+  })
 })
