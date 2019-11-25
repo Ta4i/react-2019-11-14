@@ -5,12 +5,20 @@ export const cartReducer = (
   action
 ) => {
   switch (action.type) {
-    case 'ADD_TO_CART':
+    case 'ADD_TO_CART': {
       const {id} = action.payload
       return {
         ...cartState,
         [id]: cartState[id] ? cartState[id] + 1 : 1,
       }
+    }
+    case 'REMOVE_FROM_CART': {
+      const {id} = action.payload
+      return {
+        ...cartState,
+        [id]: cartState[id] && cartState[id] > 0 ? cartState[id] - 1 : 0,
+      }
+    }
   }
   return cartState
 }
