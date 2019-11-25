@@ -8,7 +8,7 @@ function Header() {
   return (
     <header className={styles.header}>
       <Logo />
-      <CartBadge amount={0} />
+      <CartBadge />
     </header>
   )
 }

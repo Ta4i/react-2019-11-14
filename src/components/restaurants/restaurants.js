@@ -27,6 +27,8 @@ function Restaurants(props) {
   )
 }
 
-export default connect(state => ({
+const mapStateToProps = state => ({
   restaurants: state.restaurants,
-}))(Restaurants)
+})
+
+export default connect(mapStateToProps)(Restaurants)
