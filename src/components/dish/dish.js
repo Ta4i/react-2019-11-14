@@ -17,6 +17,7 @@ function Dish(props) {
     <Card
       className={styles.productDetailedOrderCard}
       data-automation-id={`DISH_${dish.id}`}
+      data-item="DISH"
     >
       <Row type="flex" justify="space-between">
         <Col xs={16} md={16} lg={20} align="left">

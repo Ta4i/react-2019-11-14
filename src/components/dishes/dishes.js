@@ -3,9 +3,9 @@ import Dish from '../dish'
 
 class Dishes extends Component {
   render() {
-    const {menu} = this.props
+    const {menu, id} = this.props
     return (
-      <div>
+      <div data-automation-id={`DISHES_${id}`}>
         {menu.map(dish => (
           <Dish key={dish.id} dish={dish} />
         ))}

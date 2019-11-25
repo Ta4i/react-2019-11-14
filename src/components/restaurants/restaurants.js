@@ -21,7 +21,7 @@ function Restaurants(props) {
         restaurants={props.restaurants}
         onRestaurantChange={handleRestaurantChange}
       />
-      <Restaurant restaurant={restaurant} />
+      <Restaurant restaurant={restaurant} id={restaurant.id} />
     </div>
   )
 }
