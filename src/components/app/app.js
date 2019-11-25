@@ -9,7 +9,6 @@ import Counter from '../counter'
 
 class App extends Component {
   render() {
-    const {restaurants} = this.props
     return (
       <Provider store={store}>
         <div>
@@ -17,7 +16,7 @@ class App extends Component {
             <Header />
             <Counter />
             <Layout.Content>
-              <Restaurants restaurants={restaurants} />
+              <Restaurants />
             </Layout.Content>
           </Layout>
         </div>

@@ -15,11 +15,7 @@ class Counter extends Component {
       </div>
     )
   }
-  decrease = () => {
-    this.props.dispatch({
-      type: 'DECREMENT',
-    })
-  }
+  decrease = () => {}
   increase = () => {
     this.props.incrementFromDispatch()
   }
