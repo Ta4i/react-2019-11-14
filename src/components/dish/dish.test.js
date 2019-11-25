@@ -72,5 +72,29 @@ function toTestDish(dish) {
           .text()
       ).toBe(dishCurrent.price + ' $')
     })
+
+    describe('Dish counter', () => {
+      const wrapper = mount(<Dish key={dish.id} dish={dish} />)
+
+      it('should increase', () => {
+        wrapper
+          .find('button[data-automation-id="INCREASE"]')
+          .first()
+          .simulate('click')
+        expect(wrapper.find('div[data-automation-id="AMOUNT"]').text()).toBe(
+          '1'
+        )
+      })
+
+      it('should decrease', () => {
+        wrapper
+          .find('button[data-automation-id="DECREASE"]')
+          .first()
+          .simulate('click')
+        expect(wrapper.find('div[data-automation-id="AMOUNT"]').text()).toBe(
+          '0'
+        )
+      })
+    })
   })
 }
