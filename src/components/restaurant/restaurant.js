@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import Dishes from '../dishes'
 import AverageRating from '../average-rating'
-import Reviews from '../reviews'
+import Reviews, {ReviewsPropTypes} from '../reviews'
 import Hero from '../hero'
 import styles from './restaurant.module.css'
+import {DishesPropTypes} from '../dishes/dishes'
 
 class Restaurant extends Component {
   state = {
@@ -30,6 +32,14 @@ class Restaurant extends Component {
       </div>
     )
   }
+}
+
+Restaurant.propTypes = {
+  restaurant: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    menu: DishesPropTypes.menu,
+    reviews: ReviewsPropTypes.reviews,
+  }),
 }
 
 export default Restaurant

@@ -4,7 +4,7 @@ import {useAmount} from '../custom-hooks/use-amount'
 
 function counterDecorator(OriginalComponent) {
   return props => {
-    const {amount, decrease, increase} = useAmount(0)
+    const {amount, decrease, increase} = useAmount(props.initialValue || 0)
 
     return (
       <OriginalComponent
