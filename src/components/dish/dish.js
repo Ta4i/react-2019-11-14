@@ -14,7 +14,10 @@ function Dish(props) {
   } = props
 
   return (
-    <Card className={styles.productDetailedOrderCard}>
+    <Card
+      className={styles.productDetailedOrderCard}
+      data-automation-id={`DISH_${dish.id}`}
+    >
       <Row type="flex" justify="space-between">
         <Col xs={16} md={16} lg={20} align="left">
           <Typography.Title
@@ -24,10 +27,15 @@ function Dish(props) {
           >
             {dish.name}
           </Typography.Title>
-          <Typography.Paragraph className={styles.description}>
+          <Typography.Paragraph
+            className={styles.description}
+            data-automation-id="DISH_INGREDIENTS"
+          >
             {dish.ingredients.join(', ')}
           </Typography.Paragraph>
-          <div className={styles.price}>{dish.price} $</div>
+          <div className={styles.price} data-automation-id="DISH_PRICE">
+            {dish.price} $
+          </div>
         </Col>
         <Col xs={8} md={6} lg={4} align="right">
           <div className={styles.counter}>
