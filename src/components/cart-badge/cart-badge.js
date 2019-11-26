@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {Badge, Button} from 'antd'
 import './cart-badge.css'
 import {connect} from 'react-redux'
+import {openModal} from '../../actions/modal'
 
 function CartBadge(props) {
   const {items} = props
@@ -20,6 +21,7 @@ function CartBadge(props) {
         size="large"
         type="primary"
         className="cart-button"
+        onClick={() => props.open('Ваша корзина')}
       />
     </Badge>
   )
@@ -33,8 +35,15 @@ CartBadge.propTypes = {
   items: PropTypes.object.isRequired,
 }
 
-export default connect(state => {
-  return {
-    items: state.cart.items,
-  }
-})(CartBadge)
+const mapStateToProps = state => ({
+  items: state.cart.items,
+})
+
+const mapDispatchToProps = {
+  open: openModal,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CartBadge)

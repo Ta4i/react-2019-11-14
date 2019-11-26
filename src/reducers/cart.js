@@ -23,7 +23,6 @@ export default (state = initialState, action) => {
             ].concat(action.payload.dishId),
           },
         },
-        count: state.count + 1,
       }
     case DISH_REMOVE:
       const toSlice = state.items[action.payload.restaurantId].filter(
