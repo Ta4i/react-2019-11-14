@@ -18,7 +18,7 @@ class Restaurant extends Component {
 
   render() {
     const {
-      restaurant: {name, menu, reviews},
+      restaurant: {name, menu, reviews, id},
     } = this.props
     return (
       <div>
@@ -27,7 +27,7 @@ class Restaurant extends Component {
         </Hero>
         <div className={styles.restaurantContent}>
           <Reviews reviews={reviews} />
-          <Dishes menu={menu} />
+          <Dishes menu={menu} restaurantId={id} />
         </div>
       </div>
     )

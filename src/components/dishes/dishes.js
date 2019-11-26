@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 
 class Dishes extends Component {
   render() {
-    const {menu} = this.props
+    const {menu, restaurantId} = this.props
     return (
       <div>
         {menu.map(dish => (
-          <Dish key={dish.id} dish={dish} />
+          <Dish key={dish.id} dish={dish} restaurantId={restaurantId} />
         ))}
       </div>
     )
