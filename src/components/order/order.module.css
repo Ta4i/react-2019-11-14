@@ -1,0 +1,30 @@
+.totalPrice {
+  display: block;
+  text-align: right;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #de9124;
+  margin: 26px 0 16px;
+}
+
+.restaurantName {
+  font-style: italic;
+  color: #999;
+  font-size: 14px;
+}
+.restaurantName::before {
+  content: '(';
+}
+.restaurantName::after {
+  content: ')';
+}
+
+.button,
+.button:hover,
+.button:focus,
+.button:active {
+  border-color: #f0ad4e;
+  background-color: #f0ad4e;
+  color: #fff !important;
+}
