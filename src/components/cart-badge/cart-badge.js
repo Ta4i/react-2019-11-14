@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Badge, Button} from 'antd'
+import {Badge} from 'antd'
 import './cart-badge.css'
 import {connect} from 'react-redux'
+import Order from '../order'
 
 function CartBadge(props) {
   return (
     <Badge count={props.totalAmount} className={'cart-button-container'}>
-      <Button
+      <Order
         icon="shopping-cart"
         size="large"
         type="primary"
