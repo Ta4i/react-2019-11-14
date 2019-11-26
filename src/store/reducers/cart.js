@@ -6,11 +6,21 @@ export const cartReducer = (
 ) => {
   switch (action.type) {
     case 'ADD_TO_CART':
-      const {id} = action.payload
+      const {addId} = action.payload
       return {
         ...cartState,
-        [id]: cartState[id] ? cartState[id] + 1 : 1,
+        [addId]: cartState[addId] ? cartState[addId] + 1 : 1,
       }
+
+    case 'REMOVE_FROM_CART':
+      const {removeId} = action.payload
+      return {
+        ...cartState,
+        [removeId]: cartState[removeId] ? cartState[removeId] - 1 : 0,
+      }
+
+    default:
+    // something
   }
   return cartState
 }
