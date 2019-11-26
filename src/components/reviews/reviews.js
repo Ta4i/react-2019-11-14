@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import Review from './review'
+import PropTypes from 'prop-types'
+import Review, {ReviewPropTypes} from './review'
 import {Col, Row} from 'antd'
 
 class Reviews extends Component {
@@ -19,5 +20,11 @@ class Reviews extends Component {
     )
   }
 }
+
+export const ReviewsPropTypes = {
+  reviews: PropTypes.arrayOf(PropTypes.shape(ReviewPropTypes)),
+}
+
+Review.propTypes = ReviewsPropTypes
 
 export default Reviews
