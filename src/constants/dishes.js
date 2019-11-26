@@ -1,4 +1,2 @@
 export const DISH_ADD = 'DISH_ADD'
 export const DISH_REMOVE = 'DISH_REMOVE'
-export const DISH_INCREMENT = 'DISH_INCREMENT'
-export const DISH_DECREMENT = 'DISH_DECREMENT'
