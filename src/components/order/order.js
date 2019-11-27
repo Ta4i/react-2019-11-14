@@ -11,17 +11,15 @@ class Order extends Component {
   }
 
   static findAllDishes(restaurants) {
-    let dishesArray = restaurants.reduce((acc, restaurant) => {
-      acc.push(...restaurant.menu)
-      return acc
-    }, [])
-    let dishesMap = dishesArray.reduce((map, dish) => {
-      map[dish.id] = dish
-      return map
-    }, [])
-    {
-      console.log(Object.keys(dishesMap).length + ' dishes found')
-    }
+    const dishesMap = restaurants.reduce(
+      (acc, restaurant) =>
+        restaurant.menu.reduce((acc, dish) => {
+          acc[dish.id] = dish
+          return acc
+        }, acc),
+      []
+    )
+    console.log(Object.keys(dishesMap).length + ' dishes found')
     return dishesMap
   }
 
