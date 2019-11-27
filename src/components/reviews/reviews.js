@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import Review, {ReviewPropTypes} from './review'
 import {Col, Row} from 'antd'
+import Order from '../order'
 
 class Reviews extends Component {
   static defaultProps = {
@@ -16,6 +17,7 @@ class Reviews extends Component {
             <Review review={review} key={review.id} />
           ))}
         </Col>
+        <Order />
       </Row>
     )
   }

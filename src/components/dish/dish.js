@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Card, Typography, Button, Row, Col} from 'antd'
 import styles from './dish.module.css'
-import counter from '../../decorators/counter'
-import {addToCart} from '../../store/action-creators'
+import {addToCart, removeFromCart} from '../../store/action-creators'
+import {orderList} from '../../store/action-creators'
 import {connect} from 'react-redux'
 
 function Dish(props) {
@@ -14,6 +14,7 @@ function Dish(props) {
     amount,
     increase,
     decrease,
+    addToOrder,
   } = props
 
   return (
@@ -41,13 +42,18 @@ function Dish(props) {
               <Button
                 className={styles.button}
                 icon="minus"
-                onClick={() => decrease(dish.id)}
+                onClick={() => {
+                  decrease(dish.id)
+                }}
                 data-automation-id="DECREASE"
               />
               <Button
                 className={styles.button}
                 icon="plus"
-                onClick={() => increase(dish.id)}
+                onClick={() => {
+                  increase(dish.id)
+                  addToOrder(dish.id, dish.name, amount + 1, dish.price)
+                }}
                 data-automation-id="INCREASE"
               />
             </Button.Group>
@@ -75,6 +81,8 @@ const mapsStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = {
   increase: addToCart,
+  decrease: removeFromCart,
+  addToOrder: orderList,
 }
 
 export default connect(
