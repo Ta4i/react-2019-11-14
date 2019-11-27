@@ -2,10 +2,9 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import Dishes from '../dishes'
 import AverageRating from '../average-rating'
-import Reviews, {ReviewsPropTypes} from '../reviews'
+import Reviews from '../reviews'
 import Hero from '../hero'
 import styles from './restaurant.module.css'
-import {DishesPropTypes} from '../dishes/dishes'
 
 class Restaurant extends Component {
   state = {
@@ -20,6 +19,7 @@ class Restaurant extends Component {
     const {
       restaurant: {name, menu, reviews},
     } = this.props
+
     return (
       <div>
         <Hero heading={name}>
@@ -37,9 +37,9 @@ class Restaurant extends Component {
 Restaurant.propTypes = {
   restaurant: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    menu: DishesPropTypes.menu,
-    reviews: ReviewsPropTypes.reviews,
-  }),
+    menu: PropTypes.array,
+    reviews: PropTypes.array,
+  }).isRequired,
 }
 
 export default Restaurant

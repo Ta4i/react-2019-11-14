@@ -1,7 +1,10 @@
 import React from 'react'
-import {mount} from 'enzyme'
+import {configure, mount} from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 import Restaurants from './restaurants'
 import {restaurants} from '../../fixtures'
+
+configure({adapter: new Adapter()})
 
 describe('Restaurant', () => {
   it('should work', () => {

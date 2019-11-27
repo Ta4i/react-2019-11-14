@@ -1,52 +1,25 @@
 import React from 'react'
-import {mount} from 'enzyme'
+import {configure, mount} from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 import Dishes from './dishes'
+import Dish from '../dish'
 import {restaurants} from '../../fixtures'
 
-const dishes = restaurants[0].menu
+configure({adapter: new Adapter()})
 
-describe('Dishes', function() {
-  it('should render all menu items', function() {
-    const wrapper = mount(<Dishes menu={dishes} />)
-    expect(wrapper.find('div[data-automation-id="DISH"]').length).toBe(3)
+const fixtureMenu = restaurants[1].menu
+
+describe('Dishes', () => {
+  it('should work', () => {
+    const wrapper = mount(<Dishes menu={fixtureMenu} />)
+    //примонтировали Dishes
+    expect(wrapper.find('div[data-automation-id="DISHES"]').length).toBe(1)
+    //находим div[data-automation-id="DISHES"]
   })
 
-  describe('when increase number of one dish', function() {
-    it('the dish should show more items', () => {
-      const wrapper = mount(<Dishes menu={dishes} />)
+  it('show all dishes', () => {
+    const wrapper = mount(<Dishes menu={fixtureMenu} />)
 
-      wrapper
-        .find('button[data-automation-id="INCREASE"]')
-        .first()
-        .simulate('click')
-        .simulate('click')
-      expect(
-        wrapper
-          .find('[data-automation-id="AMOUNT"]')
-          .first()
-          .text()
-      ).toBe('2')
-    })
-    it('other dishes should not be affected', () => {
-      const wrapper = mount(<Dishes menu={dishes} />)
-
-      wrapper
-        .find('button[data-automation-id="INCREASE"]')
-        .first()
-        .simulate('click')
-        .simulate('click')
-      expect(
-        wrapper
-          .find('[data-automation-id="AMOUNT"]')
-          .at(1)
-          .text()
-      ).toBe('0')
-      expect(
-        wrapper
-          .find('[data-automation-id="AMOUNT"]')
-          .at(2)
-          .text()
-      ).toBe('0')
-    })
+    expect(wrapper.find(Dish).length).toBe(fixtureMenu.length)
   })
 })
