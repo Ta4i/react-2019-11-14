@@ -43,6 +43,7 @@ class CartBadge extends Component {
           visible={this.state.orderVisible}
           onOk={this.handleOk}
           onCancel={this.handleOk}
+          bodyStyle={{padding: '0 10px'}}
         >
           <Order />
         </Modal>

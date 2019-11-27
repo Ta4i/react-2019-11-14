@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import connect from 'react-redux/es/connect/connect'
-import {Card, Typography, Button, Row, Col} from 'antd'
+import {Typography, Card, Row, Col} from 'antd'
+
+const {Text} = Typography
 
 class Order extends Component {
   constructor(props) {
@@ -31,26 +33,32 @@ class Order extends Component {
 
   render() {
     return (
-      <Card>
+      <Card bordered={false}>
         {Object.keys(this.props.cart).map(dishId => (
-          <div key={dishId}>
+          <Row key={dishId} type="flex" justify="space-between">
             <Col xs={16} md={16} lg={20} align="left">
-              <span>{this.state.allDishes[dishId].name}</span>
+              <Text>{this.state.allDishes[dishId].name}</Text>
             </Col>
             <Col xs={8} md={6} lg={4} align="right">
-              <span>
+              <Text>
                 {this.state.allDishes[dishId].price * this.props.cart[dishId]} $
-              </span>
+              </Text>
             </Col>
-          </div>
+          </Row>
         ))}
-        <div key="total" style={{paddingTop: 50}}>
-          <Col xs={16} md={16} lg={20} align="right">
-            <span>ИТОГО</span>
-          </Col>
-          <Col xs={8} md={6} lg={4} align="right">
-            <span>{this.computeTotalAmount()} $</span>
-          </Col>
+        <div key="total" style={{paddingTop: '10px'}}>
+          <Row type="flex" justify="space-between">
+            <Col xs={16} md={16} lg={20} align="right">
+              <Text style={{color: 'red'}} strong>
+                ИТОГО
+              </Text>
+            </Col>
+            <Col xs={8} md={6} lg={4} align="right">
+              <Text style={{color: 'red'}} strong>
+                {this.computeTotalAmount()} $
+              </Text>
+            </Col>
+          </Row>
         </div>
       </Card>
     )
