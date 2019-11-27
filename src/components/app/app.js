@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Restaurants from '../restaurants'
+import Order from '../order'
 import {Layout} from 'antd'
 import Header from '../header'
 import './app.css'
@@ -18,6 +19,7 @@ class App extends Component {
             <Layout.Content>
               <Restaurants />
             </Layout.Content>
+            <Order />
           </Layout>
         </div>
       </Provider>
