@@ -3,19 +3,21 @@ import PropTypes from 'prop-types'
 import {Card, Typography, Button, Row, Col} from 'antd'
 import styles from './dish.module.css'
 import counter from '../../decorators/counter'
+import {addToCart} from '../../store/action-creators'
+import {connect} from 'react-redux'
 
 function Dish(props) {
   const {
     dish,
 
-    // from decorator
+    // from store
     amount,
     increase,
     decrease,
   } = props
 
   return (
-    <Card className={styles.productDetailedOrderCard}>
+    <Card data-automation-id="DISH" className={styles.productDetailedOrderCard}>
       <Row type="flex" justify="space-between">
         <Col xs={16} md={16} lg={20} align="left">
           <Typography.Title
@@ -67,4 +69,26 @@ Dish.propTypes = {
   }).isRequired,
 }
 
-export default counter(Dish)
+export const DishPropTypes = {
+  dish: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+  }),
+}
+
+Dish.propTypes = DishPropTypes
+
+const mapsStateToProps = (state, ownProps) => ({
+  amount: state.cart[ownProps.dish.id] || 0,
+})
+
+const mapDispatchToProps = {
+  increase: addToCart,
+}
+
+export default connect(
+  mapsStateToProps,
+  mapDispatchToProps
+)(Dish)
