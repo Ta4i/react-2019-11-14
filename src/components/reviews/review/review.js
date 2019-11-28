@@ -22,12 +22,13 @@ const Review = ({review}) => (
 )
 
 export const ReviewPropTypes = {
-  id: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
 }
 
-Review.propTypes = ReviewPropTypes
+Review.propTypes = {
+  review: PropTypes.shape(ReviewPropTypes),
+}
 
 export default Review

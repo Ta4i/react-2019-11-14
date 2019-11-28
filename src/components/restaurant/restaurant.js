@@ -20,7 +20,7 @@ class Restaurant extends Component {
 
   render() {
     const {
-      restaurant: {name, menu, reviews},
+      restaurant: {id, name, menu, reviews},
     } = this.props
     return (
       <div>
@@ -29,7 +29,7 @@ class Restaurant extends Component {
         </Hero>
         <Row>
           <Col span={18} className={styles.restaurantContent}>
-            <Reviews reviews={reviews} />
+            <Reviews reviews={reviews} id={id} />
             <Dishes menu={menu} />
           </Col>
           <Col span={6}>
@@ -43,6 +43,7 @@ class Restaurant extends Component {
 
 Restaurant.propTypes = {
   restaurant: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     menu: DishesPropTypes.menu,
     reviews: ReviewsPropTypes.reviews,
