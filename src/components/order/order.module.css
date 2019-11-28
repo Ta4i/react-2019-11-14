@@ -1,0 +1,57 @@
+.title {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  margin: 0;
+}
+.productDetailedOrderCard {
+  position: absolute;
+  width: 100%;
+  padding: 12px;
+  top: 14%;
+  left: 50%;
+  transform: translate(-50%);
+  background: #e0e4cc;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+}
+
+.price {
+  margin-top: 8px;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #de9124;
+}
+
+.counter {
+  padding: 5px;
+  text-align: center;
+  display: inline-block;
+}
+
+.count {
+  color: #898989 !important;
+  margin-bottom: 5px;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+@media all and (max-width: 767px) {
+  .productDetailedOrderCard {
+    margin-bottom: 16px;
+  }
+
+  .productDetailedOrderCard > * {
+    padding: 16px;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

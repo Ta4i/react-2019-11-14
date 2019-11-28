@@ -11,7 +11,6 @@ class Restaurant extends Component {
   state = {
     error: null,
   }
-
   componentDidCatch(error, errorInfo) {
     this.setState({error})
   }

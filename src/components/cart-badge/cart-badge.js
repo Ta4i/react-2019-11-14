@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {Badge, Button} from 'antd'
 import './cart-badge.css'
 import {connect} from 'react-redux'
+import {showTotal} from '../../store/action-creators'
 
 function CartBadge(props) {
   return (
@@ -12,6 +13,7 @@ function CartBadge(props) {
         size="large"
         type="primary"
         className="cart-button"
+        onClick={() => props.showTotalFromDispatch()}
       />
     </Badge>
   )
@@ -19,17 +21,29 @@ function CartBadge(props) {
 
 CartBadge.defaultProps = {
   totalAmount: 0,
+  showTotal: false,
 }
 
 CartBadge.propTypes = {
   totalAmount: PropTypes.number.isRequired,
+  showTotal: PropTypes.bool.isRequired,
 }
 
-export default connect(state => {
+const mapStateToProps = state => {
   return {
+    showTotal: state.showTotal,
     totalAmount: Object.values(state.cart).reduce(
       (acc, amount) => acc + amount,
       0
     ),
   }
-})(CartBadge)
+}
+
+const mapDispatchToProps = {
+  showTotalFromDispatch: showTotal,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CartBadge)

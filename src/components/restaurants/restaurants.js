@@ -4,8 +4,8 @@ import RestaurantsNavigation from '../restaurants-navigation'
 import {connect} from 'react-redux'
 
 function Restaurants(props) {
+  // const restaurantsMenu = props.restaurants.map(restaurant => restaurant.menu)
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)
-
   useEffect(() => {
     props.fetchRestaurants && props.fetchRestaurants()
   }, [props])
@@ -29,6 +29,7 @@ function Restaurants(props) {
 
 const mapStateToProps = state => ({
   restaurants: state.restaurants,
+  selectedDishes: state.cart,
 })
 
 export default connect(mapStateToProps)(Restaurants)
