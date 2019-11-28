@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import Dishes from '../dishes'
 // import AverageRating from '../average-rating'
-// import Reviews from '../reviews'
+import Reviews from '../reviews'
 import Hero from '../hero'
 import styles from './restaurant.module.css'
 import {Col, Row} from 'antd'
@@ -28,7 +28,7 @@ class Restaurant extends Component {
         </Hero>
         <Row>
           <Col span={18} className={styles.restaurantContent}>
-            {/*<Reviews reviews={reviews} id={id} />*/}
+            <Reviews reviews={reviews} id={id} />
             <Dishes menu={menu} />
           </Col>
           <Col span={6}>
