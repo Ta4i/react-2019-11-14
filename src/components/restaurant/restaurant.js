@@ -6,6 +6,7 @@ import Reviews, {ReviewsPropTypes} from '../reviews'
 import Hero from '../hero'
 import styles from './restaurant.module.css'
 import {DishesPropTypes} from '../dishes/dishes'
+import Order from '../order'
 
 class Restaurant extends Component {
   state = {
@@ -26,8 +27,10 @@ class Restaurant extends Component {
           {this.state.error ? null : <AverageRating reviews={reviews} />}
         </Hero>
         <div className={styles.restaurantContent}>
-          <Reviews reviews={reviews} />
           <Dishes menu={menu} />
+          <Order />
+          <br />
+          <Reviews reviews={reviews} />
         </div>
       </div>
     )
