@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Dish, {DishPropTypes} from '../dish'
+import Dish from '../dish'
 import PropTypes from 'prop-types'
 
 class Dishes extends Component {
@@ -7,8 +7,8 @@ class Dishes extends Component {
     const {menu} = this.props
     return (
       <div>
-        {menu.map(dish => (
-          <Dish key={dish.id} dish={dish} />
+        {menu.map(dishId => (
+          <Dish key={dishId} id={dishId} />
         ))}
       </div>
     )
@@ -16,7 +16,7 @@ class Dishes extends Component {
 }
 
 export const DishesPropTypes = {
-  menu: PropTypes.arrayOf(DishPropTypes.dish),
+  menu: PropTypes.arrayOf(PropTypes.string),
 }
 
 Dishes.propTypes = DishesPropTypes

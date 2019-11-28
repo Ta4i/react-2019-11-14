@@ -58,6 +58,7 @@ function Dish(props) {
 }
 
 export const DishPropTypes = {
+  id: PropTypes.string,
   dish: PropTypes.shape({
     id: PropTypes.string.isRequired,
     ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -69,7 +70,8 @@ export const DishPropTypes = {
 Dish.propTypes = DishPropTypes
 
 const mapsStateToProps = (state, ownProps) => ({
-  amount: state.cart[ownProps.dish.id] || 0,
+  amount: state.cart[ownProps.id] || 0,
+  dish: state.dishes[ownProps.id],
 })
 
 const mapDispatchToProps = {
