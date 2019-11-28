@@ -29,4 +29,6 @@ export const ReviewsPropTypes = {
 
 Review.propTypes = ReviewsPropTypes
 
+// const mapStateToProps = selectReviews()
+
 export default Reviews
