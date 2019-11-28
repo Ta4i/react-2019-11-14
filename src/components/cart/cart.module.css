@@ -1,0 +1,27 @@
+.cart {
+  margin: 24px 16px 0 0;
+  padding: 13px 16px 20px;
+  background-color: #fff0db;
+}
+
+.cart hr {
+  margin: 10px 0 !important;
+}
+
+.title {
+  text-align: center;
+}
+
+.lastRow {
+  margin-bottom: 20px;
+}
+
+@media all and (max-width: 767px) {
+  .cart {
+    padding: 20px 24px;
+  }
+
+  .cart.isFlexbox {
+    padding-bottom: 36px;
+  }
+}

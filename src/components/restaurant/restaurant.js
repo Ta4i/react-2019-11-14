@@ -6,6 +6,8 @@ import Reviews, {ReviewsPropTypes} from '../reviews'
 import Hero from '../hero'
 import styles from './restaurant.module.css'
 import {DishesPropTypes} from '../dishes/dishes'
+import {Col, Row} from 'antd'
+import Cart from '../cart'
 
 class Restaurant extends Component {
   state = {
@@ -25,10 +27,15 @@ class Restaurant extends Component {
         <Hero heading={name}>
           {this.state.error ? null : <AverageRating reviews={reviews} />}
         </Hero>
-        <div className={styles.restaurantContent}>
-          <Reviews reviews={reviews} />
-          <Dishes menu={menu} />
-        </div>
+        <Row>
+          <Col span={18} className={styles.restaurantContent}>
+            <Reviews reviews={reviews} />
+            <Dishes menu={menu} />
+          </Col>
+          <Col span={6}>
+            <Cart />
+          </Col>
+        </Row>
       </div>
     )
   }
