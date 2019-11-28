@@ -4,6 +4,18 @@ export const increment = () => {
   }
 }
 
+export const decrement = () => {
+  return {
+    type: 'DECREMENT',
+  }
+}
+
+export const showTotal = () => {
+  return {
+    type: 'SHOW_TOTAL',
+  }
+}
+
 export const addToCart = dishId => {
   return {
     type: 'ADD_TO_CART',

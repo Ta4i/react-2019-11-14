@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Button} from 'antd'
 import {connect} from 'react-redux'
-import {increment} from '../../store/action-creators'
+import {increment, decrement} from '../../store/action-creators'
 
 class Counter extends Component {
   render() {
@@ -15,7 +15,10 @@ class Counter extends Component {
       </div>
     )
   }
-  decrease = () => {}
+
+  decrease = () => {
+    this.props.decrementFromDispatch()
+  }
   increase = () => {
     this.props.incrementFromDispatch()
   }
@@ -29,6 +32,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   incrementFromDispatch: increment,
+  decrementFromDispatch: decrement,
 }
 
 export default connect(
