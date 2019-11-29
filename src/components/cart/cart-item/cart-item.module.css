@@ -1,0 +1,27 @@
+.cartItem {
+  margin-bottom: 5px;
+}
+
+.counter {
+  display: inline-block;
+}
+
+.count {
+  color: #1d1d1d !important;
+}
+
+.button {
+  display: inline-block;
+  border-color: #8e8e8e !important;
+  background-color: #8e8e8e !important;
+  padding: 1px 3px !important;
+  margin: 3px;
+  color: #fff !important;
+}
+
+.button:hover,
+.button:focus {
+  border-color: #8e8e8e !important;
+  background-color: #8e8e8e !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+}

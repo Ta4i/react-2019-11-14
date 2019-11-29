@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react'
 import Restaurant from '../restaurant'
 import RestaurantsNavigation from '../restaurants-navigation'
 import {connect} from 'react-redux'
+import {selectRestaurants} from '../../store/selectors'
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)
@@ -28,7 +29,7 @@ function Restaurants(props) {
 }
 
 const mapStateToProps = state => ({
-  restaurants: state.restaurants,
+  restaurants: selectRestaurants(state),
 })
 
 export default connect(mapStateToProps)(Restaurants)

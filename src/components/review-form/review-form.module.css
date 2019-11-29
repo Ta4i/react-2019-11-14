@@ -1,0 +1,35 @@
+.reviewForm {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.addReviewTitle {
+  margin-bottom: 16px;
+}
+
+.inputName {
+  margin-bottom: 12px;
+}
+
+.submitButton {
+  height: 40px;
+  border: 1px solid #f0ad4e !important;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 28px;
+  text-align: center;
+  color: #f0ad4e !important;
+  text-transform: uppercase;
+  background-color: transparent !important;
+  margin-top: 25px;
+}
+
+.invalid:focus {
+  border-color: red !important;
+}
+
+@media all and (max-width: 767px) {
+  .reviewForm {
+    margin-bottom: 16px;
+  }
+}

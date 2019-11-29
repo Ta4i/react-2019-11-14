@@ -1,5 +1,8 @@
-import {restaurants} from '../../fixtures'
+import {normalizedRestaurants} from '../../fixtures'
 
-export const restaurantsReducer = (restaurantsState = restaurants, action) => {
+export const restaurantsReducer = (
+  restaurantsState = normalizedRestaurants,
+  action
+) => {
   return restaurantsState
 }

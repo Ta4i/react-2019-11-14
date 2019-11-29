@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 const Review = ({review}) => (
   <Card className={styles.review}>
     <Row type="flex" align="middle">
-      <Col xs={24} md={18} align="left">
+      <Col xs={24} md={16} align="left">
         <Typography.Title className={styles.name} level={4}>
           {review.user}
         </Typography.Title>
@@ -14,7 +14,7 @@ const Review = ({review}) => (
           {review.text}
         </Typography.Text>
       </Col>
-      <Col xs={8} md={6} align="right" className={styles.rateColumn}>
+      <Col xs={8} md={8} align="right" className={styles.rateColumn}>
         <Rate disabled value={review.rating} />
       </Col>
     </Row>
@@ -22,12 +22,13 @@ const Review = ({review}) => (
 )
 
 export const ReviewPropTypes = {
-  id: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
 }
 
-Review.propTypes = ReviewPropTypes
+Review.propTypes = {
+  review: PropTypes.shape(ReviewPropTypes),
+}
 
 export default Review
