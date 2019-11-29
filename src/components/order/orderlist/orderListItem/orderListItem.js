@@ -1,7 +1,5 @@
-import React, {Component, useState} from 'react'
-import {Modal, Button} from 'antd'
+import React from 'react'
 import {connect} from 'react-redux'
-import {arrayOf} from 'prop-types'
 
 function OrderListItem(props) {
   let values = ['Блюдо №1 5шт 100usd', ' ']

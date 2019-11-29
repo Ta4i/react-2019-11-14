@@ -1,5 +1,4 @@
 import React from 'react'
-import {Modal, Button} from 'antd'
 import OrderListItem from './orderListItem'
 
 function OrderList(props) {

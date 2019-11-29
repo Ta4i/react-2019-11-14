@@ -3,6 +3,11 @@ export const cartReducer = (cartState = {}, action) => {
 
   switch (action.type) {
     case 'ADD_TO_CART':
+      // const addObject = {
+      //   ...cartState,
+      //   [id]: cartState[id] ? cartState[id] + 1 : 1,
+      // }
+      // console.log(addObject)
       return {
         ...cartState,
         [id]: cartState[id] ? cartState[id] + 1 : 1,

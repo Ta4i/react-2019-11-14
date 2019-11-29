@@ -1,5 +1,5 @@
 export const orderListReducer = (orderListState = {}, action) => {
-  const dish = action.payload
+  // const dish = action.payload
 
   if (action.type === 'MAKE_ORDER_LIST') {
     orderListState = {
