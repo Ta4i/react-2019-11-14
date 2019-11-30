@@ -28,7 +28,7 @@ class Restaurant extends Component {
         </Hero>
         <Row>
           <Col span={18} className={styles.restaurantContent}>
-            <Reviews reviews={reviews} id={id} />
+            <Reviews reviewIds={reviews} restaurantId={id} />
             <Dishes menu={menu} />
           </Col>
           <Col span={6}>
