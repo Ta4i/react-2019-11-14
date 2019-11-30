@@ -9,11 +9,11 @@ class Reviews extends Component {
     reviews: [],
   }
   render() {
-    const {reviews, id} = this.props
+    const {reviewsId, id} = this.props
     return (
       <Row type="flex" justify="center" gutter={{xs: 8, sm: 16, md: 24}}>
         <Col xs={24} md={16}>
-          {reviews.map(reviewId => (
+          {reviewsId.map(reviewId => (
             <Review id={reviewId} key={reviewId} />
           ))}
           <ReviewForm id={id} />
