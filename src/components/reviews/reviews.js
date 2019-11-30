@@ -13,9 +13,9 @@ class Reviews extends Component {
     return (
       <Row type="flex" justify="center" gutter={{xs: 8, sm: 16, md: 24}}>
         <Col xs={24} md={16}>
-          {reviews.map(reviewId => (
-            <Review id={reviewId} key={reviewId} />
-          ))}
+          {/*{reviews.map(reviewId => (*/}
+          {/*/!*<Review id={reviewId} key={reviewId} />*!/*/}
+          {/*))}*/}
           <ReviewForm id={id} />
         </Col>
       </Row>
