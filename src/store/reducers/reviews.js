@@ -1,12 +1,23 @@
 import {normalizedReviews} from '../../fixtures'
+import {ADD_REVIEW} from '../common'
 
-const initialState = normalizedReviews.reduce((reviews, review) => {
-  return {
-    ...reviews,
-    [review.id]: review,
-  }
-}, {})
+const getInitialState = () =>
+  normalizedReviews.reduce((reviews, review) => {
+    return {
+      ...reviews,
+      [review.id]: review,
+    }
+  }, {})
+
+const initialState = getInitialState()
 
 export const reviewsReducer = (reviewsState = initialState, action) => {
-  return reviewsState
+  switch (action.type) {
+    case ADD_REVIEW: {
+      return getInitialState()
+    }
+    default: {
+      return reviewsState
+    }
+  }
 }

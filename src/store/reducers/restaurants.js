@@ -1,8 +1,16 @@
 import {normalizedRestaurants} from '../../fixtures'
+import {ADD_REVIEW} from '../common'
 
 export const restaurantsReducer = (
   restaurantsState = normalizedRestaurants,
   action
 ) => {
-  return restaurantsState
+  switch (action.type) {
+    case ADD_REVIEW: {
+      return restaurantsState.slice()
+    }
+    default: {
+      return restaurantsState
+    }
+  }
 }

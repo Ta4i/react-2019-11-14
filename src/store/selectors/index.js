@@ -10,14 +10,14 @@ export const selectCart = state => state.cart
 
 export const selectDishes = state => state.dishes
 
-export const selectAverageRating = ids =>
+export const selectAverageRating = reviewsIdArray =>
   createSelector(
     selectReviews,
     reviews => {
       const rawRating =
-        ids.reduce((acc, id) => {
+        reviewsIdArray.reduce((acc, id) => {
           return acc + reviews[id].rating
-        }, 0) / ids.length
+        }, 0) / reviewsIdArray.length
       const normalizedRating = Math.floor(rawRating * 2) / 2
       return normalizedRating
     }
@@ -25,7 +25,6 @@ export const selectAverageRating = ids =>
 
 export const selectReviewData = id =>
   createSelector(
-    //TODO
     selectReviews,
     selectUsers,
     (reviews, users) => {
@@ -42,7 +41,7 @@ export const selectOrderedDishes = createSelector(
   selectCart,
   selectDishes,
   (restaurants, cart, dishes) =>
-    restaurants.reduce(
+    Object.values(restaurants).reduce(
       (result, restaurant) => {
         restaurant.menu.forEach(dishId => {
           const amount = cart[dishId]

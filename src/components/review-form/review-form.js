@@ -1,25 +1,53 @@
 import {Button, Card, Col, Form, Input, Row, Typography, Rate} from 'antd'
 import React, {useState} from 'react'
+import {addReview} from '../../store/action-creators'
 import cx from 'classnames'
+import {connect} from 'react-redux'
 
 import styles from './review-form.module.css'
 
-const ReviewForm = ({id}) => {
+const ReviewForm = ({id: restaurantId, addReview, form}) => {
   const [name, setName] = useState('')
   const [text, setText] = useState('')
   const [rating, setRating] = useState(0)
 
+  const resetForm = () => {
+    setName('')
+    setText('')
+    setRating(0)
+    form.resetFields()
+  }
+
   const handleSubmit = ev => {
     ev.preventDefault()
     ev.persist()
-    console.log('Submit', name, text, rating)
+
+    form.validateFields(err => {
+      if (!err) {
+        console.log('Submit', name, text, rating)
+        addReview({restaurantId, name, text, rating})
+        resetForm()
+      }
+    })
   }
 
-  const handleNameChange = e => setName(e.target.value)
+  const handleNameChange = e => {
+    setName(e.target.value)
+    form.resetFields('name')
+    //form.setFieldsValue({name})
+  }
 
-  const handleTextChange = e => setText(e.target.value)
+  const handleTextChange = e => {
+    setText(e.target.value)
+    form.resetFields('text')
+    //form.setFieldsValue({text})
+  }
 
-  const handleRatingChange = setRating
+  const handleRatingChange = value => {
+    setRating(value)
+    form.resetFields('rating')
+    //form.setFieldsValue({rating})
+  }
 
   return (
     <Card className={styles.reviewForm}>
@@ -29,24 +57,62 @@ const ReviewForm = ({id}) => {
             Leave your review
           </Typography.Title>
           <Form onSubmit={handleSubmit}>
-            <Input
-              value={name}
-              onChange={handleNameChange}
-              placeholder="Your name"
-              className={cx(styles.inputName)}
-            />
-            <Input.TextArea
-              value={text}
-              onChange={handleTextChange}
-              rows={3}
-              size="large"
-            />
-            <div>
-              Rating: <Rate value={rating} onChange={handleRatingChange} />
-            </div>
-            <Button htmlType="submit" className={styles.submitButton}>
-              PUBLISH REVIEW
-            </Button>
+            <Form.Item>
+              {form.getFieldDecorator('name', {
+                initialValue: name,
+                rules: [
+                  {
+                    required: true,
+                    message: 'Please input your name!',
+                    whitespace: true,
+                  },
+                ],
+              })(
+                <Input
+                  onChange={handleNameChange}
+                  placeholder="Your name"
+                  className={cx(styles.inputName)}
+                />
+              )}
+            </Form.Item>
+            <Form.Item>
+              {form.getFieldDecorator('text', {
+                initialValue: text,
+                rules: [
+                  {
+                    required: true,
+                    message: 'Please leave a comment!',
+                    whitespace: true,
+                  },
+                ],
+              })(
+                <Input.TextArea
+                  onChange={handleTextChange}
+                  rows={3}
+                  size="large"
+                />
+              )}
+            </Form.Item>
+            <Form.Item>
+              <div>
+                Rating:{' '}
+                {form.getFieldDecorator('rating', {
+                  initialValue: rating,
+                  rules: [
+                    {
+                      required: true,
+                      pattern: /[1-5]/,
+                      message: 'Please set a rating!',
+                    },
+                  ],
+                })(<Rate onChange={handleRatingChange} />)}
+              </div>
+            </Form.Item>
+            <Form.Item>
+              <Button htmlType="submit" className={styles.submitButton}>
+                PUBLISH REVIEW
+              </Button>
+            </Form.Item>
           </Form>
         </Col>
       </Row>
@@ -54,4 +120,11 @@ const ReviewForm = ({id}) => {
   )
 }
 
-export default ReviewForm
+const WrappedReviewForm = Form.create()(ReviewForm)
+
+export default connect(
+  null,
+  {
+    addReview,
+  }
+)(WrappedReviewForm)
