@@ -18,7 +18,7 @@ class Reviews extends Component {
           {reviewIds.map(reviewId => (
             <Review id={reviewId} key={reviewId} />
           ))}
-          <ReviewForm id={restaurantId} />
+          <ReviewForm restaurantId={restaurantId} />
         </Col>
       </Row>
     )
