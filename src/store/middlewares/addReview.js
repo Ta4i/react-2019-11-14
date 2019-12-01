@@ -30,6 +30,11 @@ export const addReview = store => next => action => {
         .find(restaurant => restaurant.id === restaurantId)
         .reviews.push(reviewId)
 
+      action.payload = {
+        ...action.payload,
+        userId,
+        reviewId,
+      }
       break
     }
     default: {
