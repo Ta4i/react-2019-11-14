@@ -18,3 +18,12 @@ export const addToCart = dishId => {
     },
   }
 }
+
+export const removeFromCart = dishId => {
+  return {
+    type: 'REMOVE_FROM_CART',
+    payload: {
+      id: dishId,
+    },
+  }
+}
