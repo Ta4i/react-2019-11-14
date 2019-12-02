@@ -1,0 +1,50 @@
+.review {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.addReviewTitle {
+  margin-bottom: 16px;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.name {
+  margin: 0 0 5px;
+}
+
+.comment {
+  margin: 0;
+}
+
+@media all and (max-width: 767px) {
+  .review {
+    margin-bottom: 16px;
+  }
+
+  .review > * {
+    padding: 16px !important;
+  }
+
+  .review:last-child {
+    margin-bottom: 0;
+  }
+
+  .rateColumn {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+  }
+
+  .name {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+
+  .comment {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
