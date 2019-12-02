@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Review, {ReviewPropTypes} from './review'
 import {Col, Row} from 'antd'
 import ReviewForm from '../review-form'
+import {connect} from 'react-redux'
 
 class Reviews extends Component {
   static defaultProps = {
@@ -29,4 +30,8 @@ export const ReviewsPropTypes = {
 
 Review.propTypes = ReviewsPropTypes
 
-export default Reviews
+export default connect(state => {
+  return {
+    reviewsStore: state.reviews,
+  }
+})(Reviews)

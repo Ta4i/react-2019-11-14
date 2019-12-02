@@ -1,6 +1,16 @@
 .review {
   position: relative;
   margin-bottom: 16px;
+  animation: showReview 0.4s ease-in;
+}
+
+@keyframes showReview {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .addReviewTitle {
