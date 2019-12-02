@@ -1,10 +1,18 @@
 import {createSelector} from 'reselect'
+import {generateId} from './idGenerator'
+import {_selectAverageRating} from './_selectAverageRating'
 
 export const selectRestaurants = state => state.restaurants
 
 export const selectCart = state => state.cart
 
 export const selectDishes = state => state.dishes
+
+export const selectReviews = state => state.reviews
+
+export const selectAverageRating = _selectAverageRating
+
+export const selectNewId = generateId
 
 export const selectOrderedDishes = createSelector(
   selectRestaurants,

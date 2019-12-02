@@ -1,33 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Rate} from 'antd'
+import {connect} from 'react-redux'
+import {selectAverageRating} from '../../store/selectors'
 
-function AverageRating({reviews}) {
-  const rawRating =
-    reviews.reduce((acc, {rating}) => {
-      return acc + rating
-    }, 0) / reviews.length
-  const normalizedRating = Math.floor(rawRating * 2) / 2
+function AverageRating(props) {
+  const {averageReview} = props
   return (
     <div>
-      <Rate value={normalizedRating} disabled allowHalf />
+      <Rate value={averageReview} disabled allowHalf />
     </div>
   )
 }
 
-// AverageRating.defaultProps = {
-//   reviews: [],
-// }
-
 AverageRating.propTypes = {
-  reviews: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      user: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-    })
-  ).isRequired,
+  reviewsId: PropTypes.arrayOf(PropTypes.string).isRequired,
+  averageReview: PropTypes.number.isRequired,
 }
 
-export default AverageRating
+const mapsStateToProps = (state, ownProps) => ({
+  averageReview: selectAverageRating(state, ownProps),
+})
+
+export default connect(mapsStateToProps)(AverageRating)

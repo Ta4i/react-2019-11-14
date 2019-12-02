@@ -1,10 +1,13 @@
 import {Button, Card, Col, Form, Input, Row, Typography, Rate} from 'antd'
 import React, {useState} from 'react'
 import cx from 'classnames'
-
+import {connect} from 'react-redux'
+import {addReview} from '../../store/action-creators'
 import styles from './review-form.module.css'
 
-const ReviewForm = ({id}) => {
+const ReviewForm = props => {
+  const {id, addReview} = props
+
   const [name, setName] = useState('')
   const [text, setText] = useState('')
   const [rating, setRating] = useState(0)
@@ -12,7 +15,10 @@ const ReviewForm = ({id}) => {
   const handleSubmit = ev => {
     ev.preventDefault()
     ev.persist()
-    console.log('Submit', name, text, rating)
+    // console.log('Submit', name, text, rating)
+
+    if (name && text && rating) addReview(id, name, text, rating)
+    else alert('Заполните пож-та отзыв полностью')
   }
 
   const handleNameChange = e => setName(e.target.value)
@@ -54,4 +60,9 @@ const ReviewForm = ({id}) => {
   )
 }
 
-export default ReviewForm
+export default connect(
+  null,
+  {
+    addReview: addReview,
+  }
+)(ReviewForm)
