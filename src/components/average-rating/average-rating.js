@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Rate} from 'antd'
+import {connect} from 'react-redux'
 
-function AverageRating({reviews}) {
+function AverageRating({reviews, reviewsMap}) {
+  debugger
   const rawRating =
-    reviews.reduce((acc, {rating}) => {
-      return acc + rating
+    reviews.reduce((acc, reviewId) => {
+      return acc + reviewsMap[reviewId].rating
     }, 0) / reviews.length
   const normalizedRating = Math.floor(rawRating * 2) / 2
   return (
@@ -20,14 +22,11 @@ function AverageRating({reviews}) {
 // }
 
 AverageRating.propTypes = {
-  reviews: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      user: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-    })
-  ).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
-export default AverageRating
+const mapsStateToProps = (state, ownProps) => ({
+  reviewsMap: state.reviews,
+})
+
+export default connect(mapsStateToProps)(AverageRating)
