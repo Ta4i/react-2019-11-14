@@ -24,11 +24,11 @@ class Restaurant extends Component {
     return (
       <div>
         <Hero heading={name}>
-          {this.state.error ? null : <AverageRating reviews={reviews} />}
+          {this.state.error ? null : <AverageRating reviewIds={reviews} />}
         </Hero>
         <Row>
           <Col span={18} className={styles.restaurantContent}>
-            <Reviews reviews={reviews} id={id} />
+            <Reviews reviewIds={reviews} restaurantId={id} />
             <Dishes menu={menu} />
           </Col>
           <Col span={6}>

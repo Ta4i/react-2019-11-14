@@ -1,10 +1,11 @@
 import {Button, Card, Col, Form, Input, Row, Typography, Rate} from 'antd'
 import React, {useState} from 'react'
 import cx from 'classnames'
-
+import {newRestaurantReview} from '../../store/action-creators'
+import {connect} from 'react-redux'
 import styles from './review-form.module.css'
 
-const ReviewForm = ({id}) => {
+const ReviewForm = ({restaurantId, dispatchNewRestaurantReview}) => {
   const [name, setName] = useState('')
   const [text, setText] = useState('')
   const [rating, setRating] = useState(0)
@@ -13,6 +14,14 @@ const ReviewForm = ({id}) => {
     ev.preventDefault()
     ev.persist()
     console.log('Submit', name, text, rating)
+    dispatchNewRestaurantReview(restaurantId, name, text, rating)
+    clearForm()
+  }
+
+  const clearForm = () => {
+    setName('')
+    setText('')
+    setRating(0)
   }
 
   const handleNameChange = e => setName(e.target.value)
@@ -54,4 +63,11 @@ const ReviewForm = ({id}) => {
   )
 }
 
-export default ReviewForm
+const mapDispatchToProps = {
+  dispatchNewRestaurantReview: newRestaurantReview,
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ReviewForm)
