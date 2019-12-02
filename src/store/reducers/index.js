@@ -8,3 +8,8 @@ export const reducer = combineReducers({
   restaurants: restaurantsReducer,
   cart: cartReducer,
 })
+
+// reducer template
+// const reducer = (state, action) => {
+//   return state
+// }
