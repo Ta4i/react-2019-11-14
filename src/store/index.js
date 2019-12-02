@@ -4,4 +4,4 @@ import {reducer} from './reducers'
 export const store = createStore(reducer)
 
 // ONLY FOR DEV
-window.store = store
+window.store = store // store.getState() - вывести стейт
