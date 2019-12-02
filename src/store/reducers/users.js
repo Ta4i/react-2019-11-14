@@ -1,5 +1,5 @@
 import {normalizedUsers} from '../../fixtures'
-import {ADD_REVIEW} from '../common'
+import {ADD_USER} from '../common'
 
 const initialState = normalizedUsers.reduce(
   (users, user) => ({
@@ -11,12 +11,12 @@ const initialState = normalizedUsers.reduce(
 
 export const usersReducer = (usersState = initialState, action) => {
   switch (action.type) {
-    case ADD_REVIEW: {
-      const {userId, name} = action.payload
+    case ADD_USER: {
+      const {id, name} = action.payload
       return {
         ...usersState,
-        [userId]: {
-          id: userId,
+        [id]: {
+          id,
           name,
         },
       }

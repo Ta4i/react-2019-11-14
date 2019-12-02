@@ -1,7 +1,7 @@
 import {normalizedRestaurants} from '../../fixtures'
 import {ADD_REVIEW} from '../common'
 
-const initialState = JSON.parse(JSON.stringify(normalizedRestaurants))
+const initialState = normalizedRestaurants
 
 export const restaurantsReducer = (restaurantsState = initialState, action) => {
   switch (action.type) {
