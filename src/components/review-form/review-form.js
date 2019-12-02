@@ -18,7 +18,11 @@ const ReviewForm = ({restaurantId, dispatchNewRestaurantReview}) => {
     clearForm()
   }
 
-  const clearForm = () => {}
+  const clearForm = () => {
+    setName('')
+    setText('')
+    setRating(0)
+  }
 
   const handleNameChange = e => setName(e.target.value)
 
