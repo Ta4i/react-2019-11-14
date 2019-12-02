@@ -1,4 +1,11 @@
-import {ADD_TO_CART, DECREMENT, INCREMENT, REMOVE_FROM_CART} from '../common'
+import {
+  ADD_TO_CART,
+  DECREMENT,
+  INCREMENT,
+  REMOVE_FROM_CART,
+  ADD_REVIEW,
+  ADD_USER,
+} from '../common'
 
 export const increment = () => {
   return {
@@ -29,3 +36,18 @@ export const removeFromCart = dishId => {
     },
   }
 }
+
+export const addReview = data => ({
+  type: ADD_REVIEW,
+  payload: data,
+  needUserId: true,
+  needReviewId: true,
+})
+
+export const addUser = ({id, name}) => ({
+  type: ADD_USER,
+  payload: {
+    id,
+    name,
+  },
+})

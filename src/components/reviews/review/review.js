@@ -2,6 +2,8 @@ import React from 'react'
 import {Row, Col, Typography, Rate, Card} from 'antd'
 import styles from './review.module.css'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import {selectReviewData} from '../../../store/selectors'
 
 const Review = ({review}) => (
   <Card className={styles.review}>
@@ -21,14 +23,25 @@ const Review = ({review}) => (
   </Card>
 )
 
+export const UserPropTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
+}
+
 export const ReviewPropTypes = {
-  user: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
+  id: PropTypes.string,
+  review: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    user: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+  }),
 }
 
-Review.propTypes = {
-  review: PropTypes.shape(ReviewPropTypes),
-}
+Review.propTypes = ReviewPropTypes
 
-export default Review
+export default connect((state, ownProps) => ({
+  review: selectReviewData(ownProps.id)(state),
+}))(Review)
