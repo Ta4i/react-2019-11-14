@@ -4,5 +4,15 @@ export const restaurantsReducer = (
   restaurantsState = normalizedRestaurants,
   action
 ) => {
-  return restaurantsState
+  switch (action.type) {
+    case 'ADD_REVIEW':
+      const {id, restaurantId} = action.payload
+      return restaurantsState.map(restaurant => {
+        restaurant.id === restaurantId && restaurant.reviews.push(id)
+        return restaurant
+      })
+
+    default:
+      return restaurantsState
+  }
 }
