@@ -4,7 +4,6 @@ import {Rate} from 'antd'
 import {connect} from 'react-redux'
 
 function AverageRating({reviews, reviewsMap}) {
-  debugger
   const rawRating =
     reviews.reduce((acc, reviewId) => {
       return acc + reviewsMap[reviewId].rating

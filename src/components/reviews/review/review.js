@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 const Review = ({review, users}) => {
-  console.log(users)
   return (
     <Card className={styles.review}>
       <Row type="flex" align="middle">

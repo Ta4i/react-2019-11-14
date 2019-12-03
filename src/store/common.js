@@ -5,3 +5,13 @@ export const DECREMENT = 'DECREMENT'
 export const ADD_TO_CART = 'ADD_TO_CART'
 
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+
+export const CREATE_USER = 'CREATE_USER'
+
+export const CREATE_REVIEW = 'CREATE_REVIEW'
+
+export const ADD_REVIEW = 'ADD_REVIEW'
+
+export const LAST_ID_CREATE_USER = 'LAST_ID_' + CREATE_USER
+
+export const LAST_ID_CREATE_REVIEW = 'LAST_ID_' + CREATE_REVIEW

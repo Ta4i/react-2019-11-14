@@ -15,7 +15,6 @@ function Cart({className, orderedDishes}) {
   if (dishes.length === 0) {
     return null
   }
-  console.log('Cart render')
   return (
     <div className={cx(styles.cart, className)}>
       <TransitionGroup>
