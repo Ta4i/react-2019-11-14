@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Rate} from 'antd'
 import {connect} from 'react-redux'
-import {string} from 'postcss-selector-parser'
 
 function AverageRating({ratings}) {
   const rawRating =
@@ -22,7 +21,7 @@ AverageRating.defaultProps = {
 }
 
 AverageRating.propTypes = {
-  reviews: PropTypes.arrayOf(string).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 const mapStateToProps = (state, ownState) => {
