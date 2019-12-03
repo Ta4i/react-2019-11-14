@@ -1,4 +1,4 @@
-import {ADD_TO_CART, REMOVE_FROM_CART} from '../common'
+import {ADD_TO_CART, CREATE_USER, REMOVE_FROM_CART} from '../common'
 
 export const cartReducer = (
   cartState = {

@@ -11,6 +11,8 @@ function Restaurants(props) {
     props.fetchRestaurants && props.fetchRestaurants()
   }, [props])
 
+  console.log(props.restaurants)
+
   const restaurant = props.restaurants.find(
     restaurant => restaurant.id === currentId
   )
