@@ -14,7 +14,7 @@ class App extends Component {
         <div>
           <Layout>
             <Header />
-            <Counter />
+            {/*<Counter />*/}
             <Layout.Content>
               <Restaurants />
             </Layout.Content>

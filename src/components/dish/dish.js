@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Card, Typography, Button, Row, Col} from 'antd'
 import styles from './dish.module.css'
-import counter from '../../decorators/counter'
 import {addToCart, removeFromCart} from '../../store/action-creators'
 import {connect} from 'react-redux'
 

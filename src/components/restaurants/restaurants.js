@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react'
 import Restaurant from '../restaurant'
 import RestaurantsNavigation from '../restaurants-navigation'
 import {connect} from 'react-redux'
+import Cart from '../cart'
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(props.restaurants[0].id)
@@ -22,6 +23,7 @@ function Restaurants(props) {
         restaurants={props.restaurants}
         onRestaurantChange={handleRestaurantChange}
       />
+      <Cart />
       <Restaurant restaurant={restaurant} />
     </div>
   )

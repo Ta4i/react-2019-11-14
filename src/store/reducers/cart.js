@@ -7,7 +7,6 @@ export const cartReducer = (
   switch (action.type) {
     case 'ADD_TO_CART': {
       const {id} = action.payload
-      console.log(cartState)
       return {
         ...cartState,
         [id]: cartState[id] ? cartState[id] + 1 : 1,

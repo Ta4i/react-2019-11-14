@@ -1,0 +1,20 @@
+.cart {
+  padding: 12px;
+}
+
+.cartItem {
+  margin-bottom: 10px;
+}
+
+.cartItemPrice {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #de9124;
+}
+
+.cartItemQty {
+  color: #898989 !important;
+  font-size: 18px;
+  line-height: 28px;
+}
