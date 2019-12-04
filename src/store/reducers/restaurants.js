@@ -8,7 +8,12 @@ export const restaurantsReducer = (
     case 'ADD_REVIEW':
       const {id, restaurantId} = action.payload
       return restaurantsState.map(restaurant => {
-        restaurant.id === restaurantId && restaurant.reviews.push(id)
+        if (restaurant.id === restaurantId) {
+          let copyRestaurant = Object.assign({}, restaurant)
+          copyRestaurant.reviews = [...restaaddurant.reviews, id]
+          return copyRestaurant
+          // Как-то монструозненько
+        }
         return restaurant
       })
 
