@@ -37,7 +37,13 @@ export const removeFromCart = dishId => {
   }
 }
 
-export const addReview = (name, text, rating, restaurantId) => {
+export const addReview = (
+  name,
+  text,
+  rating,
+  restaurantId,
+  needIdReview = true
+) => {
   return {
     type: ADD_REVIEW,
     payload: {
@@ -45,16 +51,17 @@ export const addReview = (name, text, rating, restaurantId) => {
       text,
       rating,
       restaurantId,
+      needIdReview,
     },
   }
 }
 
-export const addUser = (name, id) => {
+export const addUser = (name, needUserId = true) => {
   return {
     type: ADD_USER,
     payload: {
-      id,
       name,
+      needUserId,
     },
   }
 }
