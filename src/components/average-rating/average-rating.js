@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Rate} from 'antd'
 import {connect} from 'react-redux'
+import {selectRatings} from '../../store/selectors'
 
 function AverageRating({ratings}) {
   const rawRating =
@@ -24,13 +25,8 @@ AverageRating.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
-const mapStateToProps = (state, ownState) => {
-  const ratings = ownState.reviews.map(
-    reviewId => state.reviews[reviewId].rating
-  )
-  return {
-    ratings,
-  }
-}
+const mapStateToProps = (state, ownState) => ({
+  ratings: selectRatings(state, ownState),
+})
 
 export default connect(mapStateToProps)(AverageRating)
