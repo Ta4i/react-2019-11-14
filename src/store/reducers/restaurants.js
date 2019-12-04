@@ -10,7 +10,7 @@ export const restaurantsReducer = (
       return restaurantsState.map(restaurant => {
         if (restaurant.id === restaurantId) {
           let copyRestaurant = Object.assign({}, restaurant)
-          copyRestaurant.reviews = [...restaaddurant.reviews, id]
+          copyRestaurant.reviews = [...restaurant.reviews, id]
           return copyRestaurant
           // Как-то монструозненько
         }
