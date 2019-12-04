@@ -6,6 +6,10 @@ export const selectCart = state => state.cart
 
 export const selectDishes = state => state.dishes
 
+export const selectReviews = state => state.reviews
+
+export const selectRestaurantReviews = (state, ownState) => ownState.reviews
+
 export const selectOrderedDishes = createSelector(
   selectRestaurants,
   selectCart,
@@ -33,4 +37,11 @@ export const selectOrderedDishes = createSelector(
         totalPrice: 0,
       }
     )
+)
+
+export const selectRatings = createSelector(
+  selectRestaurantReviews,
+  selectReviews,
+  (restaurantReviews, reviews) =>
+    restaurantReviews.map(id => reviews[id].rating)
 )
