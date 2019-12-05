@@ -1,12 +1,9 @@
 import {normalizedDishes} from '../../fixtures'
+import {arrayToMap} from '../utils'
 
-const initialState = normalizedDishes.reduce((dishes, dish) => {
-  return {
-    ...dishes,
-    [dish.id]: dish,
-  }
-}, {})
-
-export const dishesReducer = (dishesState = initialState, action) => {
+export const dishesReducer = (
+  dishesState = arrayToMap(normalizedDishes),
+  action
+) => {
   return dishesState
 }

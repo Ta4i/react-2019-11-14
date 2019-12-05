@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import Review, {ReviewPropTypes} from './review'
+import Review from './review'
 import {Col, Row} from 'antd'
 import ReviewForm from '../review-form'
+import {connect} from 'react-redux'
+import {selectReviews} from '../../store/selectors'
 
 class Reviews extends Component {
   static defaultProps = {
@@ -13,8 +15,8 @@ class Reviews extends Component {
     return (
       <Row type="flex" justify="center" gutter={{xs: 8, sm: 16, md: 24}}>
         <Col xs={24} md={16}>
-          {reviews.map(reviewId => (
-            <Review id={reviewId} key={reviewId} />
+          {reviews.map(review => (
+            <Review review={review} key={review.id} />
           ))}
           <ReviewForm id={id} />
         </Col>
@@ -24,9 +26,15 @@ class Reviews extends Component {
 }
 
 export const ReviewsPropTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.shape(ReviewPropTypes)),
+  id: PropTypes.string,
 }
 
 Review.propTypes = ReviewsPropTypes
 
-export default Reviews
+const mapStateToProps = (state, ownProps) => {
+  return {
+    reviews: selectReviews(state, ownProps),
+  }
+}
+
+export default connect(mapStateToProps)(Reviews)
