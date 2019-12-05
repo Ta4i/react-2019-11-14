@@ -6,6 +6,8 @@ export const selectCart = state => state.cart
 
 export const selectDishes = state => state.dishes
 
+export const selectUsers = state => state.users
+
 export const selectOrderedDishes = createSelector(
   selectRestaurants,
   selectCart,
