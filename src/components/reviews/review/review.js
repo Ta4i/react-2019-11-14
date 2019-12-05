@@ -1,5 +1,6 @@
 import React from 'react'
 import {Row, Col, Typography, Rate, Card} from 'antd'
+import {connect} from 'react-redux'
 import styles from './review.module.css'
 import PropTypes from 'prop-types'
 
@@ -31,4 +32,8 @@ Review.propTypes = {
   review: PropTypes.shape(ReviewPropTypes),
 }
 
-export default Review
+const mapStateToProps = (state, ownProps) => ({
+  review: state.reviews.find(review => review.id === ownProps.id),
+})
+
+export default connect(mapStateToProps)(Review)
