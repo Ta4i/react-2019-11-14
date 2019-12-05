@@ -14,6 +14,9 @@ function Dish(props) {
     increase,
     decrease,
   } = props
+  if (!dish) {
+    return null
+  }
 
   return (
     <Card data-automation-id="DISH" className={styles.productDetailedOrderCard}>

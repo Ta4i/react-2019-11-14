@@ -2,6 +2,7 @@ import {
   ADD_REVIEW,
   ADD_TO_CART,
   DECREMENT,
+  FETCH_DISHES,
   FETCH_RESTAURANTS,
   INCREMENT,
   REMOVE_FROM_CART,
@@ -53,3 +54,14 @@ export const fetchRestaurants = () => ({
   type: FETCH_RESTAURANTS,
   callAPI: '/api/restaurants',
 })
+
+export const fetchDishes = () => (dispatch, getState) => {
+  fetch('/api/dishes')
+    .then(res => res.json())
+    .then(res =>
+      dispatch({
+        type: FETCH_DISHES,
+        response: res,
+      })
+    )
+}

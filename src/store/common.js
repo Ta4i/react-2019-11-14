@@ -9,3 +9,5 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 export const ADD_REVIEW = 'ADD_REVIEW'
 
 export const FETCH_RESTAURANTS = 'FETCH_RESTAURANTS'
+
+export const FETCH_DISHES = 'FETCH_DISHES'
