@@ -1,16 +1,22 @@
 import {produce} from 'immer'
-import {normalizedRestaurants} from '../../fixtures'
-import {ADD_REVIEW} from '../common'
+import {ADD_REVIEW, FETCH_RESTAURANTS} from '../common'
 
-export const restaurantsReducer = (
-  restaurantsState = normalizedRestaurants,
-  action
-) =>
+export const restaurantsReducer = (restaurantsState = [], action) =>
   produce(restaurantsState, draft => {
-    if (action.type === ADD_REVIEW) {
-      const targetRestaurant = draft.find(
-        restaurant => restaurant.id === action.payload.restaurantId
-      )
-      targetRestaurant.reviews.push(action.generatedId)
+    console.log(action)
+    switch (action.type) {
+      case ADD_REVIEW: {
+        const targetRestaurant = draft.find(
+          restaurant => restaurant.id === action.payload.restaurantId
+        )
+        targetRestaurant.reviews.push(action.generatedId)
+        break
+      }
+      case FETCH_RESTAURANTS: {
+        action.response.forEach(item => draft.push(item))
+        break
+      }
+      default:
+        return
     }
   })
