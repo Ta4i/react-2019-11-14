@@ -1,24 +1,16 @@
+import {produce} from 'immer'
 import {normalizedRestaurants} from '../../fixtures'
 import {ADD_REVIEW} from '../common'
 
 export const restaurantsReducer = (
   restaurantsState = normalizedRestaurants,
   action
-) => {
-  switch (action.type) {
-    case ADD_REVIEW: {
-      const targetRestaurant = restaurantsState.find(
+) =>
+  produce(restaurantsState, draft => {
+    if (action.type === ADD_REVIEW) {
+      const targetRestaurant = draft.find(
         restaurant => restaurant.id === action.payload.restaurantId
       )
-      const updatedRestaurant = {
-        ...targetRestaurant,
-        reviews: [...targetRestaurant.reviews, action.generatedId],
-      }
-      return restaurantsState.map(restaurant =>
-        restaurant === targetRestaurant ? updatedRestaurant : restaurant
-      )
+      targetRestaurant.reviews.push(action.generatedId)
     }
-    default:
-      return restaurantsState
-  }
-}
+  })

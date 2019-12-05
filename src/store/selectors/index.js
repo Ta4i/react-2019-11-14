@@ -8,7 +8,7 @@ export const selectDishes = state => state.dishes
 
 export const selectDishesMap = store => store.dishes
 
-export const selectReviewsMap = store => store.reviews
+export const selectReviewsMap = store => store.reviews.toJS()
 
 export const selectUsersMap = store => store.users
 
