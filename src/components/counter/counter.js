@@ -6,6 +6,7 @@ import {decrement, increment} from '../../store/action-creators'
 class Counter extends Component {
   render() {
     console.log('Counter render')
+    console.log(this.props.count)
     return (
       <div>
         <span style={{padding: '16px'}}>{this.props.count}</span>

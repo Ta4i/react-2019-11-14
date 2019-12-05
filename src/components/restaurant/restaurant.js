@@ -29,7 +29,7 @@ class Restaurant extends Component {
         <Row>
           <Col span={18} className={styles.restaurantContent}>
             <Reviews reviews={reviews} id={id} />
-            <Dishes menu={menu} />
+            <Dishes menu={menu} id={id} />
           </Col>
           <Col span={6}>
             <Cart />

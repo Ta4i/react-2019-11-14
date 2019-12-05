@@ -5,9 +5,6 @@ import {Col, Row} from 'antd'
 import ReviewForm from '../review-form'
 
 class Reviews extends Component {
-  static defaultProps = {
-    reviews: [],
-  }
   render() {
     const {reviews, id} = this.props
     return (
@@ -24,7 +21,7 @@ class Reviews extends Component {
 }
 
 export const ReviewsPropTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.shape(ReviewPropTypes)),
+  reviews: PropTypes.arrayOf(PropTypes.string),
 }
 
 Review.propTypes = ReviewsPropTypes
