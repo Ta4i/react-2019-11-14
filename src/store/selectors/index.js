@@ -6,10 +6,23 @@ export const selectCart = state => state.cart
 
 export const selectDishes = state => state.dishes
 
+export const selectDishesMap = store => store.dishes
+
+export const selectReviewsMap = store => store.reviews.toJS()
+
+export const selectUsersMap = store => store.users
+
+export const selectUserList = createSelector(
+  selectUsersMap,
+  usersMap => Object.values(usersMap)
+)
+
+export const selectId = (_, ownProps) => ownProps.id
+
 export const selectOrderedDishes = createSelector(
   selectRestaurants,
   selectCart,
-  selectDishes,
+  selectDishesMap,
   (restaurants, cart, dishes) =>
     restaurants.reduce(
       (result, restaurant) => {
@@ -33,4 +46,35 @@ export const selectOrderedDishes = createSelector(
         totalPrice: 0,
       }
     )
+)
+
+export const selectUser = createSelector(
+  selectUsersMap,
+  selectId,
+  (users, id) => {
+    return users[id]
+  }
+)
+
+export const selectReviews = createSelector(
+  selectReviewsMap,
+  selectRestaurants,
+  selectId,
+  (reviews, restaurants, id) => {
+    const restaurant = restaurants.find(item => item.id === id)
+    return restaurant
+      ? restaurant.reviews.map(reviewId => reviews[reviewId])
+      : []
+  }
+)
+
+export const selectAverageRating = createSelector(
+  selectReviews,
+  reviews => {
+    const rawRating =
+      reviews.reduce((acc, {rating}) => {
+        return acc + rating
+      }, 0) / reviews.length
+    return Math.floor(rawRating * 2) / 2
+  }
 )

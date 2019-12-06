@@ -1,23 +1,32 @@
 import {Button, Card, Col, Form, Input, Row, Typography, Rate} from 'antd'
 import React, {useState} from 'react'
+import useInput from '../../custom-hooks/use-input'
 import cx from 'classnames'
 
 import styles from './review-form.module.css'
+import {useDispatch} from 'react-redux'
+import {addReview} from '../../store/action-creators'
 
 const ReviewForm = ({id}) => {
-  const [name, setName] = useState('')
-  const [text, setText] = useState('')
   const [rating, setRating] = useState(0)
+  const [name, setName, isValidName, resetName] = useInput()
+  const [text, setText, isValidText, resetText] = useInput()
+  const dispatch = useDispatch()
 
+  const resetForm = () => {
+    resetName()
+    resetText()
+    setRating(null)
+  }
   const handleSubmit = ev => {
     ev.preventDefault()
-    ev.persist()
-    console.log('Submit', name, text, rating)
+    dispatch(addReview(name, +rating, text, id))
+    resetForm()
   }
 
-  const handleNameChange = e => setName(e.target.value)
+  const handleNameChange = setName
 
-  const handleTextChange = e => setText(e.target.value)
+  const handleTextChange = setText
 
   const handleRatingChange = setRating
 
@@ -33,13 +42,21 @@ const ReviewForm = ({id}) => {
               value={name}
               onChange={handleNameChange}
               placeholder="Your name"
-              className={cx(styles.inputName)}
+              className={cx(
+                {
+                  [styles.invalid]: !isValidName,
+                },
+                styles.inputName
+              )}
             />
             <Input.TextArea
               value={text}
               onChange={handleTextChange}
               rows={3}
               size="large"
+              className={cx({
+                [styles.invalid]: !isValidText,
+              })}
             />
             <div>
               Rating: <Rate value={rating} onChange={handleRatingChange} />

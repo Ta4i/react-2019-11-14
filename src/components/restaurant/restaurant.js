@@ -18,17 +18,20 @@ class Restaurant extends Component {
   }
 
   render() {
+    if (!this.props.restaurant) {
+      return null
+    }
     const {
-      restaurant: {id, name, menu, reviews},
+      restaurant: {id, name, menu},
     } = this.props
     return (
       <div>
         <Hero heading={name}>
-          {this.state.error ? null : <AverageRating reviews={reviews} />}
+          {this.state.error ? null : <AverageRating id={id} />}
         </Hero>
         <Row>
           <Col span={18} className={styles.restaurantContent}>
-            <Reviews reviews={reviews} id={id} />
+            <Reviews id={id} />
             <Dishes menu={menu} />
           </Col>
           <Col span={6}>
@@ -45,7 +48,6 @@ Restaurant.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     menu: PropTypes.array,
-    reviews: PropTypes.array,
   }),
 }
 
