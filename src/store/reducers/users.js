@@ -16,8 +16,8 @@ export const usersReducer = (usersState = initialState, action) => {
       return {
         ...usersState,
         [id]: {
-          id,
-          name,
+          id: id,
+          name: name,
         },
       }
     }
