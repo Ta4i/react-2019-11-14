@@ -1,9 +1,10 @@
 import {normalizedUsers} from '../../fixtures'
 import {arrayToMap} from '../utils'
-import {ADD_REVIEW} from '../common'
+import {ADD_REVIEW, FETCH_USERS} from '../common'
 
 export const usersReducer = (
-  usersState = arrayToMap(normalizedUsers),
+  // usersState = arrayToMap(normalizedUsers),
+  usersState = {},
   action
 ) => {
   switch (action.type) {
@@ -18,6 +19,14 @@ export const usersReducer = (
         }
       } else {
         return usersState
+      }
+      break
+    }
+    case FETCH_USERS: {
+      const mapUsers = arrayToMap(action.response)
+      return {
+        ...usersState,
+        ...mapUsers,
       }
     }
     default:

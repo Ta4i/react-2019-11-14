@@ -7,6 +7,7 @@ import {
   INCREMENT,
   REMOVE_FROM_CART,
   FETCH_REVIEWS,
+  FETCH_USERS,
 } from '../common'
 
 export const increment = () => {
@@ -59,6 +60,11 @@ export const fetchRestaurants = () => ({
 export const fetchReviews = () => ({
   type: FETCH_REVIEWS,
   callAPI: '/api/reviews',
+})
+
+export const fetchUsers = () => ({
+  type: FETCH_USERS,
+  callAPI: '/api/users',
 })
 
 export const fetchDishes = () => (dispatch, getState) => {

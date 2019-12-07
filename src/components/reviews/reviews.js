@@ -5,16 +5,17 @@ import {Col, Row} from 'antd'
 import ReviewForm from '../review-form'
 import {connect} from 'react-redux'
 import {selectReviews} from '../../store/selectors'
-import {fetchReviews} from '../../store/action-creators'
+import {fetchReviews, fetchUsers} from '../../store/action-creators'
 
 class Reviews extends Component {
   static defaultProps = {
     reviews: [],
   }
   render() {
-    const {reviews, id, fetchReviews} = this.props
+    const {reviews, id, fetchReviews, fetchUsers} = this.props
     // console.log('---reviews', reviews)
     if (fetchReviews && reviews.length === 0) {
+      fetchUsers()
       fetchReviews()
       return <h1>Loading...</h1>
     }
@@ -45,6 +46,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = {
   fetchReviews,
+  fetchUsers,
 }
 
 export default connect(
