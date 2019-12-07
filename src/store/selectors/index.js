@@ -6,6 +6,8 @@ export const selectCart = state => state.cart
 
 export const selectDishes = state => state.dishes
 
+export const selectLoadedData = state => state.loadedData
+
 export const selectDishesMap = store => store.dishes
 
 export const selectReviewsMap = store => store.reviews.toJS()
