@@ -1,12 +1,8 @@
-import {normalizedReviews} from '../../fixtures'
 import {arrayToMap} from '../utils'
-import {ADD_REVIEW} from '../common'
+import {ADD_REVIEW, FETCH_REVIEWS} from '../common'
 import {fromJS} from 'immutable'
 
-export const reviewsReducer = (
-  reviewsState = fromJS(arrayToMap(normalizedReviews)),
-  action
-) => {
+export const reviewsReducer = (reviewsState = fromJS({}), action) => {
   switch (action.type) {
     case ADD_REVIEW: {
       return reviewsState.set(
@@ -27,6 +23,10 @@ export const reviewsReducer = (
       //     rating: action.payload.rating,
       //   },
       // }
+    }
+    case FETCH_REVIEWS: {
+      console.log('FETCH_REVIEWS: ', action.response)
+      return fromJS(arrayToMap(action.response))
     }
     default:
       return reviewsState
