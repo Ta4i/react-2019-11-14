@@ -8,7 +8,7 @@ export const selectDishes = state => state.dishes
 
 export const selectDishesMap = store => store.dishes
 
-export const selectReviewsMap = store => store.reviews.toJS()
+export const selectReviewsMap = store => store.reviews
 
 export const selectUsersMap = store => store.users
 
@@ -71,6 +71,9 @@ export const selectReviews = createSelector(
 export const selectAverageRating = createSelector(
   selectReviews,
   reviews => {
+    if (Object.values(reviews).includes(undefined)) {
+      return 0
+    }
     const rawRating =
       reviews.reduce((acc, {rating}) => {
         return acc + rating
