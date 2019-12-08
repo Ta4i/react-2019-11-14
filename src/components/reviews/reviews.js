@@ -4,14 +4,23 @@ import Review from './review'
 import {Col, Row} from 'antd'
 import ReviewForm from '../review-form'
 import {connect} from 'react-redux'
-import {selectReviews} from '../../store/selectors'
+import {selectRestaurantReviews} from '../../store/selectors'
+import {fetchReviewsIfNecessary} from '../../store/action-creators'
 
 class Reviews extends Component {
   static defaultProps = {
     reviews: [],
   }
+
+  componentDidMount() {
+    this.props.fetchReviewsIfNecessary()
+  }
+
   render() {
     const {reviews, id} = this.props
+    if (reviews.length === 0) {
+      return <h1>Loading reviews...</h1>
+    }
     return (
       <Row type="flex" justify="center" gutter={{xs: 8, sm: 16, md: 24}}>
         <Col xs={24} md={16}>
@@ -33,8 +42,15 @@ Review.propTypes = ReviewsPropTypes
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    reviews: selectReviews(state, ownProps),
+    reviews: selectRestaurantReviews(state, ownProps),
   }
 }
 
-export default connect(mapStateToProps)(Reviews)
+const mapDispatchToProps = {
+  fetchReviewsIfNecessary,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Reviews)

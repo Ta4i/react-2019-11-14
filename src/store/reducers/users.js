@@ -1,11 +1,10 @@
-import {normalizedUsers} from '../../fixtures'
-import {arrayToMap} from '../utils'
-import {ADD_REVIEW} from '../common'
+import {ADD_REVIEW, FETCH_USERS} from '../common'
 
-export const usersReducer = (
-  usersState = arrayToMap(normalizedUsers),
-  action
-) => {
+/**
+ * Управление состоянием о всех пользователях ресторанов
+ * Данные о пользователях загружаются с сервера
+ */
+export const usersReducer = (usersState = [], action) => {
   switch (action.type) {
     case ADD_REVIEW: {
       if (!usersState[action.userId]) {
@@ -19,6 +18,16 @@ export const usersReducer = (
       } else {
         return usersState
       }
+    }
+    case FETCH_USERS: {
+      // добавляем пришедших с сервера пользователей в стор
+      return action.response.reduce(
+        (acc, item) => {
+          acc[item.id] = item
+          return acc
+        },
+        {...usersState}
+      )
     }
     default:
       return usersState
