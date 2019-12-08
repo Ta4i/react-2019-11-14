@@ -10,7 +10,7 @@ const Review = ({review, user}) => (
     <Row type="flex" align="middle">
       <Col xs={24} md={16} align="left">
         <Typography.Title className={styles.name} level={4}>
-          {user.name}
+          {user ? user.name : 'Loading...'}
         </Typography.Title>
         <Typography.Text className={styles.comment}>
           {review.text}

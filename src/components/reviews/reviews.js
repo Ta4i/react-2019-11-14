@@ -10,14 +10,21 @@ class Reviews extends Component {
   static defaultProps = {
     reviews: [],
   }
+
   render() {
     const {reviews, id} = this.props
+
+    if (this.props.reviews.length === 0) {
+      return <h1>Loading...</h1>
+    }
+
     return (
       <Row type="flex" justify="center" gutter={{xs: 8, sm: 16, md: 24}}>
         <Col xs={24} md={16}>
-          {reviews.map(review => (
-            <Review review={review} key={review.id} />
-          ))}
+          {reviews.map(review => {
+            if (!review) return <div>Loading...</div>
+            return <Review review={review} key={review.id} />
+          })}
           <ReviewForm id={id} />
         </Col>
       </Row>
