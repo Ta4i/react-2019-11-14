@@ -4,14 +4,19 @@ import Review from './review'
 import {Col, Row} from 'antd'
 import ReviewForm from '../review-form'
 import {connect} from 'react-redux'
-import {selectReviews} from '../../store/selectors'
+import {selectReviews, selectUserList} from '../../store/selectors'
+import {fetchReviews, fetchUsers} from '../../store/action-creators'
 
 class Reviews extends Component {
-  static defaultProps = {
-    reviews: [],
-  }
   render() {
-    const {reviews, id} = this.props
+    const {reviews, id, fetchReviews, fetchUsers, users} = this.props
+
+    // План был вызывать fetch reviews, а заодно и users(они же в reviews нужны) здесь. Но что-то пошло не так...
+    if (Object.values(reviews)[0] === undefined || users.length === 0) {
+      // fetchUsers()       // Вызов отсюда не сработал
+      // fetchReviews()     // Вызов отсюда не сработал
+      return <h1>Ждем fetch reviews/users...</h1>
+    }
     return (
       <Row type="flex" justify="center" gutter={{xs: 8, sm: 16, md: 24}}>
         <Col xs={24} md={16}>
@@ -34,7 +39,18 @@ Review.propTypes = ReviewsPropTypes
 const mapStateToProps = (state, ownProps) => {
   return {
     reviews: selectReviews(state, ownProps),
+    users: selectUserList(state),
   }
 }
 
-export default connect(mapStateToProps)(Reviews)
+const mapDispatchToProps = () => {
+  return {
+    fetchReviews,
+    fetchUsers,
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Reviews)

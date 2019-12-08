@@ -3,7 +3,11 @@ import Restaurant from '../restaurant'
 import RestaurantsNavigation from '../restaurants-navigation'
 import {connect} from 'react-redux'
 import {selectRestaurants} from '../../store/selectors'
-import {fetchRestaurants} from '../../store/action-creators'
+import {
+  fetchRestaurants,
+  fetchUsers,
+  fetchReviews,
+} from '../../store/action-creators'
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(
@@ -19,6 +23,11 @@ function Restaurants(props) {
   useEffect(() => {
     props.fetchRestaurants && props.fetchRestaurants()
   }, [props.fetchRestaurants])
+
+  // Т.к. эти fetch's больше нигде не сработали)), то просто оставил их здесь, чтобы хоть криво, но в store что-то попадало...
+  props.fetchUsers()
+  props.fetchReviews()
+  // -----
 
   const handleRestaurantChange = useCallback(id => setCurrentId(id), [
     setCurrentId,
@@ -49,6 +58,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   fetchRestaurants,
+  fetchUsers,
+  fetchReviews,
 }
 
 export default connect(

@@ -3,7 +3,7 @@ import {ADD_REVIEW, FETCH_RESTAURANTS} from '../common'
 
 export const restaurantsReducer = (restaurantsState = [], action) =>
   produce(restaurantsState, draft => {
-    console.log(action)
+    // console.log(action)
     switch (action.type) {
       case ADD_REVIEW: {
         const targetRestaurant = draft.find(
