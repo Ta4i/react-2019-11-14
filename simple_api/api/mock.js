@@ -16,6 +16,7 @@ const normalizedRestaurants = [
     reviews: [
       '5909796d-5030-4e36-adec-68b8f9ec2d96',
       '429dea85-11dd-4054-a31e-c60c92e17255',
+      '53b642d7-5e86-4717-a466-0640a1de5476',
     ],
   },
   {
@@ -147,6 +148,12 @@ const normalizedReviews = [
     userId: 'dfb982e9-b432-4b7d-aec6-7f6ff2e6af54',
     text: 'No burgers',
     rating: 3,
+  },
+  {
+    id: '53b642d7-5e86-4717-a466-0640a1de5476',
+    userId: '20bed9b5-9c7b-4771-8221-75b74ed1904a',
+    text: 'Diana Again, Perfect Margarita',
+    rating: 5,
   },
   {
     id: '53b642d7-5e86-4717-a466-0640a1dee076',
