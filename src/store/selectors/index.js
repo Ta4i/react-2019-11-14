@@ -8,7 +8,7 @@ export const selectDishes = state => state.dishes
 
 export const selectDishesMap = store => store.dishes
 
-export const selectReviewsMap = store => store.reviews.toJS()
+export const selectReviewsMap = store => store.reviews
 
 export const selectUsersMap = store => store.users
 
@@ -71,9 +71,10 @@ export const selectReviews = createSelector(
 export const selectAverageRating = createSelector(
   selectReviews,
   reviews => {
+    console.log(reviews)
     const rawRating =
-      reviews.reduce((acc, {rating}) => {
-        return acc + rating
+      reviews.reduce((acc, reviews) => {
+        return reviews ? acc + reviews.rating : 0
       }, 0) / reviews.length
     return Math.floor(rawRating * 2) / 2
   }

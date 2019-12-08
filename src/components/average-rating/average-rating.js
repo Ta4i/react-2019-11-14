@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux'
 import {selectAverageRating} from '../../store/selectors'
 
 function AverageRating(props) {
+  console.log(props)
   const normalizedRating = useSelector(state =>
     selectAverageRating(state, props)
   )
