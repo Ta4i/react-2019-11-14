@@ -11,3 +11,9 @@ export const ADD_REVIEW = 'ADD_REVIEW'
 export const FETCH_RESTAURANTS = 'FETCH_RESTAURANTS'
 
 export const FETCH_DISHES = 'FETCH_DISHES'
+
+export const FETCH_REVIEWS = 'FETCH_REVIEWS'
+
+export const FETCH_USERS = 'FETCH_USERS'
+
+export const LOAD_DATA = 'LOAD_DATA'
