@@ -6,7 +6,15 @@ import {
   FETCH_RESTAURANTS,
   INCREMENT,
   REMOVE_FROM_CART,
+  API_REVIEWS,
+  API_USERS,
+  CHANGE_DOWNLOAD_STATUS,
+  DOWNLOAD_IN_PROGRESS,
+  FETCH_REVIEWS,
+  FETCH_USERS,
+  DOWNLOAD_FINISH,
 } from '../common'
+import {isDownloaded} from '../selectors'
 
 export const increment = () => {
   return {
@@ -64,4 +72,74 @@ export const fetchDishes = () => (dispatch, getState) => {
         response: res,
       })
     )
+}
+
+/**
+ * Вызывает загрузку отзывов с сервера, если они еще не загружены
+ */
+export const fetchReviewsIfNecessary = () => (dispatch, getState) => {
+  if (!isDownloaded(getState(), API_REVIEWS)) {
+    console.log('Fetch reviews...')
+    // меняем статус загрузки отзывов на DOWNLOAD_IN_PROGRESS
+    dispatch({
+      type: CHANGE_DOWNLOAD_STATUS,
+      payload: {
+        downloadUrl: API_REVIEWS,
+        downloadStatus: DOWNLOAD_IN_PROGRESS,
+      },
+    })
+    // выполняем загрузку
+    fetch(API_REVIEWS)
+      .then(res => res.json())
+      .then(res => {
+        // меняем статус загрузки отзывов на DOWNLOAD_FINISH
+        dispatch({
+          type: CHANGE_DOWNLOAD_STATUS,
+          payload: {
+            downloadUrl: API_REVIEWS,
+            downloadStatus: DOWNLOAD_FINISH,
+          },
+        })
+        // отправляем загруженные данные в стор
+        dispatch({
+          type: FETCH_REVIEWS,
+          response: res,
+        })
+      })
+  }
+}
+
+/**
+ * Вызывает загрузку пользователей с сервера, если они еще не загружены
+ */
+export const fetchUsersIfNecessary = () => (dispatch, getState) => {
+  if (!isDownloaded(getState(), API_USERS)) {
+    console.log('Fetch users...')
+    // меняем статус загрузки пользователей на DOWNLOAD_IN_PROGRESS
+    dispatch({
+      type: CHANGE_DOWNLOAD_STATUS,
+      payload: {
+        downloadUrl: API_USERS,
+        downloadStatus: DOWNLOAD_IN_PROGRESS,
+      },
+    })
+    // выполняем загрузку
+    fetch(API_USERS)
+      .then(res => res.json())
+      .then(res => {
+        // меняем статус загрузки пользователей на DOWNLOAD_FINISH
+        dispatch({
+          type: CHANGE_DOWNLOAD_STATUS,
+          payload: {
+            downloadUrl: API_USERS,
+            downloadStatus: DOWNLOAD_FINISH,
+          },
+        })
+        // отправляем загруженные данные в стор
+        dispatch({
+          type: FETCH_USERS,
+          response: res,
+        })
+      })
+  }
 }

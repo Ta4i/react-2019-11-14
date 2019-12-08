@@ -1,34 +1,34 @@
-import {normalizedReviews} from '../../fixtures'
-import {arrayToMap} from '../utils'
-import {ADD_REVIEW} from '../common'
-import {fromJS} from 'immutable'
+import {ADD_REVIEW, FETCH_REVIEWS} from '../common'
 
-export const reviewsReducer = (
-  reviewsState = fromJS(arrayToMap(normalizedReviews)),
-  action
-) => {
+/**
+ * Управление состоянием о всех отзывах ресторанов
+ * Данные с отзывами загружаются с сервера
+ */
+export const reviewsReducer = (reviewsState = [], action) => {
   switch (action.type) {
     case ADD_REVIEW: {
-      return reviewsState.set(
-        action.generatedId,
-        fromJS({
+      return {
+        ...reviewsState,
+        [action.generatedId]: {
           id: action.generatedId,
           userId: action.userId,
           text: action.payload.text,
           rating: action.payload.rating,
-        })
-      )
-      // return {
-      //   ...reviewsState,
-      //   [action.generatedId]: {
-      //     id: action.generatedId,
-      //     userId: action.userId,
-      //     text: action.payload.text,
-      //     rating: action.payload.rating,
-      //   },
-      // }
+        },
+      }
     }
-    default:
+    case FETCH_REVIEWS: {
+      // добавляем пришедшие с сервера отзывы в стор
+      return action.response.reduce(
+        (acc, item) => {
+          acc[item.id] = item
+          return acc
+        },
+        {...reviewsState}
+      )
+    }
+    default: {
       return reviewsState
+    }
   }
 }

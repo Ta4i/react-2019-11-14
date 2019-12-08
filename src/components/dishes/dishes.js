@@ -10,7 +10,7 @@ class Dishes extends Component {
     const {menu, fetchDishes, dishes} = this.props
     if (fetchDishes && Object.values(dishes).length === 0) {
       fetchDishes()
-      return <h1>Loading</h1>
+      return <h1>Loading dishes...</h1>
     }
     return (
       <div>

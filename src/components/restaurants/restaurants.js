@@ -25,7 +25,7 @@ function Restaurants(props) {
   ])
 
   if (props.restaurants.length === 0) {
-    return <h1>Loading...</h1>
+    return <h1>Loading restuarants...</h1>
   }
 
   const restaurant = props.restaurants.find(
