@@ -4,14 +4,18 @@ import Review from './review'
 import {Col, Row} from 'antd'
 import ReviewForm from '../review-form'
 import {connect} from 'react-redux'
-import {fetchReviews} from '../../store/action-creators'
-import {selectReviews} from '../../store/selectors'
+import {fetchReviews, fetchUsers} from '../../store/action-creators'
+import {selectReviews, selectUsersMap} from '../../store/selectors'
 
 class Reviews extends Component {
   render() {
-    const {reviews, id, fetchReviews} = this.props
-    if (Object.values(reviews).includes(undefined)) {
+    const {reviews, id, fetchReviews, fetchUsers, users} = this.props
+    if (fetchReviews && Object.values(reviews).length === 0) {
       fetchReviews()
+      return <h1>Loading</h1>
+    }
+    if (fetchUsers && Object.values(users).length === 0) {
+      fetchUsers()
       return <h1>Loading</h1>
     }
     return (
@@ -36,11 +40,13 @@ Review.propTypes = ReviewsPropTypes
 const mapStateToProps = (state, ownProps) => {
   return {
     reviews: selectReviews(state, ownProps),
+    users: selectUsersMap(state),
   }
 }
 
 const mapDispatchToProps = {
   fetchReviews: fetchReviews,
+  fetchUsers: fetchUsers,
 }
 
 export default connect(
