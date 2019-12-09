@@ -17,11 +17,19 @@ class App extends Component {
             <Layout>
               <Header />
               <Layout.Content>
-                <Route path="/counter" component={Counter} />
+                <Route path="/counter" exact component={Counter} />
                 <Route
-                  path="/restaurants"
-                  render={() => {
-                    return <Restaurants />
+                  path="/:foo"
+                  exact
+                  render={options => console.log('😄', options)}
+                />
+                <Route
+                  path="/restaurants/:id"
+                  render={parameters => {
+                    console.log(parameters)
+                    return (
+                      <Restaurants restaurantId={parameters.match.params.id} />
+                    )
                   }}
                 />
               </Layout.Content>

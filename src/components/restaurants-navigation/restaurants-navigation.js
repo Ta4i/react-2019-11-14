@@ -1,20 +1,22 @@
 import React, {Component} from 'react'
 import styles from './restaurants-navigation.module.css'
+import {NavLink} from 'react-router-dom'
 
 class RestaurantsNavigation extends Component {
   render() {
-    const {restaurants, onRestaurantChange} = this.props
+    const {restaurants} = this.props
     return (
       <div className={styles.list}>
         {restaurants.map(({id, name}) => (
-          <span
+          <NavLink
             className={styles.restaurant}
             key={id}
-            onClick={() => onRestaurantChange(id)}
             data-automation-id={`RESTAURANT_NAVIGATION_${id}`}
+            to={`/restaurants/${id}`}
+            activeStyle={{color: 'red'}}
           >
             {name}
-          </span>
+          </NavLink>
         ))}
       </div>
     )
