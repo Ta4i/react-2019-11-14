@@ -20,7 +20,7 @@ class Dishes extends Component {
     if (dishesLoading) {
       return <Loader />
     }
-    console.log(menu)
+
     return (
       <div>
         {menu.map(dishId => (

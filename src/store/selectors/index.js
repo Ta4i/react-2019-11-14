@@ -86,7 +86,7 @@ export const selectReviews = createSelector(
   selectId,
   (reviews, restaurants, id) => {
     const restaurant = restaurants.find(item => item.id === id)
-    console.log(reviews)
+
     return restaurant && Object.values(reviews).length > 0
       ? restaurant.reviews.map(reviewId => reviews[reviewId])
       : []
@@ -96,7 +96,6 @@ export const selectReviews = createSelector(
 export const selectAverageRating = createSelector(
   selectReviews,
   reviews => {
-    console.log(reviews)
     const rawRating =
       reviews.reduce((acc, {rating}) => {
         return acc + rating
