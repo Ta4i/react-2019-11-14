@@ -11,10 +11,9 @@ class Reviews extends Component {
   render() {
     const {reviews, id, fetchReviews, fetchUsers, users} = this.props
 
-    // План был вызывать fetch reviews, а заодно и users(они же в reviews нужны) здесь. Но что-то пошло не так...
     if (Object.values(reviews)[0] === undefined || users.length === 0) {
-      // fetchUsers()       // Вызов отсюда не сработал
-      // fetchReviews()     // Вызов отсюда не сработал
+      fetchUsers()
+      fetchReviews()
       return <h1>Ждем fetch reviews/users...</h1>
     }
     return (
@@ -43,11 +42,11 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = () => {
-  return {
-    fetchReviews,
-    fetchUsers,
-  }
+const mapDispatchToProps = {
+  // return {
+  fetchReviews,
+  fetchUsers,
+  // }
 }
 
 export default connect(

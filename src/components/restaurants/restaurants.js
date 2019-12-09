@@ -24,11 +24,6 @@ function Restaurants(props) {
     props.fetchRestaurants && props.fetchRestaurants()
   }, [props.fetchRestaurants])
 
-  // Т.к. эти fetch's больше нигде не сработали)), то просто оставил их здесь, чтобы хоть криво, но в store что-то попадало...
-  props.fetchUsers()
-  props.fetchReviews()
-  // -----
-
   const handleRestaurantChange = useCallback(id => setCurrentId(id), [
     setCurrentId,
   ])
