@@ -3,7 +3,11 @@ import Restaurant from '../restaurant'
 import RestaurantsNavigation from '../restaurants-navigation'
 import {connect} from 'react-redux'
 import {selectRestaurants} from '../../store/selectors'
-import {fetchRestaurants} from '../../store/action-creators'
+import {
+  fetchRestaurants,
+  fetchUsers,
+  fetchReviews,
+} from '../../store/action-creators'
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(
@@ -49,6 +53,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   fetchRestaurants,
+  fetchUsers,
+  fetchReviews,
 }
 
 export default connect(
