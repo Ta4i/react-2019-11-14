@@ -18,7 +18,7 @@ class App extends Component {
               <Header />
               <Layout.Content>
                 <Switch>
-                  <Route path="/counter" component={CounterPage} />
+                  <Route path="/counter" exact strict component={CounterPage} />
                   <Route path="/restaurant" component={RestaurantPage} />
                   <Route path="/" render={() => <h1>Page not found</h1>} />
                 </Switch>
