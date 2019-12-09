@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import Restaurants from '../restaurants'
 import {Layout} from 'antd'
 import Header from '../header'
 import './app.css'
 import {store} from '../../store'
 import {Provider} from 'react-redux'
-import {BrowserRouter, Route} from 'react-router-dom'
-import Counter from '../counter'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import RestaurantPage from '../../routes/restaurant-page'
+import CounterPage from '../../routes/counter-page'
 
 class App extends Component {
   render() {
@@ -17,21 +17,11 @@ class App extends Component {
             <Layout>
               <Header />
               <Layout.Content>
-                <Route path="/counter" exact component={Counter} />
-                <Route
-                  path="/:foo"
-                  exact
-                  render={options => console.log('😄', options)}
-                />
-                <Route
-                  path="/restaurants/:id"
-                  render={parameters => {
-                    console.log(parameters)
-                    return (
-                      <Restaurants restaurantId={parameters.match.params.id} />
-                    )
-                  }}
-                />
+                <Switch>
+                  <Route path="/counter" component={CounterPage} />
+                  <Route path="/restaurant" component={RestaurantPage} />
+                  <Route path="/" render={() => <h1>Page not found</h1>} />
+                </Switch>
               </Layout.Content>
             </Layout>
           </div>

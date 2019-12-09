@@ -12,8 +12,8 @@ class RestaurantsNavigation extends Component {
             className={styles.restaurant}
             key={id}
             data-automation-id={`RESTAURANT_NAVIGATION_${id}`}
-            to={`/restaurants/${id}`}
-            activeStyle={{color: 'red'}}
+            to={`/restaurant/${id}`}
+            activeClassName={styles.activeLink}
           >
             {name}
           </NavLink>
