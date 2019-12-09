@@ -2,8 +2,16 @@ import React, {useCallback, useEffect, useState} from 'react'
 import Restaurant from '../restaurant'
 import RestaurantsNavigation from '../restaurants-navigation'
 import {connect} from 'react-redux'
-import {selectRestaurants} from '../../store/selectors'
-import {fetchRestaurants} from '../../store/action-creators'
+import {
+  selectRestaurants,
+  selectUsersMap,
+  selectReviewsMap,
+} from '../../store/selectors'
+import {
+  fetchRestaurants,
+  fetchUsers,
+  fetchReviews,
+} from '../../store/action-creators'
 
 function Restaurants(props) {
   const [currentId, setCurrentId] = useState(
@@ -18,13 +26,19 @@ function Restaurants(props) {
 
   useEffect(() => {
     props.fetchRestaurants && props.fetchRestaurants()
-  }, [props.fetchRestaurants])
+    props.fetchUsers && props.fetchUsers()
+    props.fetchReviews && props.fetchReviews()
+  }, [props.fetchRestaurants, props.fetchUsers, props.fetchReviews])
 
   const handleRestaurantChange = useCallback(id => setCurrentId(id), [
     setCurrentId,
   ])
 
-  if (props.restaurants.length === 0) {
+  if (
+    props.restaurants.length === 0 ||
+    Object.values(props.users).length === 0 ||
+    Object.values(props.reviews).length === 0
+  ) {
     return <h1>Loading...</h1>
   }
 
@@ -45,10 +59,14 @@ function Restaurants(props) {
 
 const mapStateToProps = state => ({
   restaurants: selectRestaurants(state),
+  users: selectUsersMap(state),
+  reviews: selectReviewsMap(state),
 })
 
 const mapDispatchToProps = {
   fetchRestaurants,
+  fetchUsers,
+  fetchReviews,
 }
 
 export default connect(
