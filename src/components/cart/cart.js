@@ -9,13 +9,25 @@ import CartItem from './cart-item'
 import {connect} from 'react-redux'
 import './cart.css'
 import {selectOrderedDishes} from '../../store/selectors'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useHistory,
+  useLocation,
+} from 'react-router-dom'
+import OrderComplete from '../../routes/order-complete'
 
 function Cart({className, orderedDishes}) {
   const {dishes, totalPrice} = orderedDishes
+  const history = useHistory()
+
   if (dishes.length === 0) {
     return null
   }
-  console.log('Cart render')
+
   return (
     <div className={cx(styles.cart, className)}>
       <TransitionGroup>
@@ -39,9 +51,34 @@ function Cart({className, orderedDishes}) {
       <CartRow leftContent={'Sub-total'} rightContent={`${totalPrice} $`} />
       <CartRow leftContent={'Delivery costs'} rightContent="FREE" />
       <CartRow leftContent={'Total'} rightContent={`${totalPrice} $`} />
-      <Button type="primary" size="large" block>
-        Order
-      </Button>
+      <Switch>
+        <Route
+          path="/order"
+          render={() => (
+            <Button
+              type="primary"
+              size="large"
+              block
+              onClick={() => (window.location.href = 'orderComplete')}
+            >
+              Submit Order
+            </Button>
+          )}
+        />
+        <Route
+          path="/"
+          render={() => (
+            <Button
+              type="primary"
+              size="large"
+              block
+              onClick={() => history.replace('/order')}
+            >
+              Order
+            </Button>
+          )}
+        />
+      </Switch>
     </div>
   )
 }

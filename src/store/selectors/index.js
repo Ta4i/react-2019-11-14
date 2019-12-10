@@ -47,8 +47,8 @@ export const selectOrderedDishes = createSelector(
   selectRestaurants,
   selectCart,
   selectDishesMap,
-  (restaurants, cart, dishes) =>
-    restaurants.reduce(
+  (restaurants, cart, dishes) => {
+    return restaurants.reduce(
       (result, restaurant) => {
         restaurant.menu.forEach(dishId => {
           const amount = cart[dishId]
@@ -70,6 +70,7 @@ export const selectOrderedDishes = createSelector(
         totalPrice: 0,
       }
     )
+  }
 )
 
 export const selectUser = createSelector(
