@@ -1,0 +1,10 @@
+.order {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+.orderEmpty {
+  text-align: center;
+  padding-top: 50px;
+}
