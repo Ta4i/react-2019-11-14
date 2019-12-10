@@ -1,19 +1,38 @@
 import {produce} from 'immer'
-import {ADD_REVIEW, FETCH_RESTAURANTS} from '../common'
+import {ADD_REVIEW, FAIL, FETCH_RESTAURANTS, START, SUCCESS} from '../common'
 
-export const restaurantsReducer = (restaurantsState = [], action) =>
+const initialState = {
+  loading: false,
+  loaded: false,
+  error: null,
+  entities: [],
+}
+
+export const restaurantsReducer = (restaurantsState = initialState, action) =>
   produce(restaurantsState, draft => {
-    console.log(action)
     switch (action.type) {
       case ADD_REVIEW: {
-        const targetRestaurant = draft.find(
+        const targetRestaurant = draft.entities.find(
           restaurant => restaurant.id === action.payload.restaurantId
         )
         targetRestaurant.reviews.push(action.generatedId)
         break
       }
-      case FETCH_RESTAURANTS: {
-        action.response.forEach(item => draft.push(item))
+      case FETCH_RESTAURANTS + START: {
+        draft.loading = true
+        break
+      }
+      case FETCH_RESTAURANTS + SUCCESS: {
+        draft.loading = false
+        draft.loaded = true
+        draft.error = null
+        draft.entities = action.response
+        break
+      }
+      case FETCH_RESTAURANTS + FAIL: {
+        draft.loading = false
+        draft.loaded = false
+        draft.error = action.error
         break
       }
       default:

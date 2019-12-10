@@ -3,15 +3,24 @@ import Dish from '../dish'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {fetchDishes} from '../../store/action-creators'
-import {selectDishes} from '../../store/selectors'
+import {selectDishesLoaded, selectDishesLoading} from '../../store/selectors'
+import Loader from '../loader'
 
 class Dishes extends Component {
-  render() {
-    const {menu, fetchDishes, dishes} = this.props
-    if (fetchDishes && Object.values(dishes).length === 0) {
+  componentDidMount() {
+    const {fetchDishes, dishesLoading, dishesLoaded} = this.props
+    if (!dishesLoading && !dishesLoaded) {
       fetchDishes()
-      return <h1>Loading</h1>
     }
+  }
+
+  render() {
+    const {menu, dishesLoading} = this.props
+
+    if (dishesLoading) {
+      return <Loader />
+    }
+
     return (
       <div>
         {menu.map(dishId => (
@@ -30,7 +39,8 @@ Dishes.propTypes = DishesPropTypes
 
 export default connect(
   state => ({
-    dishes: selectDishes(state),
+    dishesLoading: selectDishesLoading(state),
+    dishesLoaded: selectDishesLoaded(state),
   }),
   {
     fetchDishes,
