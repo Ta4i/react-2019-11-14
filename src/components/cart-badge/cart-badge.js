@@ -4,17 +4,20 @@ import {Badge, Button} from 'antd'
 import './cart-badge.css'
 import {connect} from 'react-redux'
 import {selectCart} from '../../store/selectors'
+import {NavLink} from 'react-router-dom'
 
 function CartBadge(props) {
   return (
-    <Badge count={props.totalAmount} className={'cart-button-container'}>
-      <Button
-        icon="shopping-cart"
-        size="large"
-        type="primary"
-        className="cart-button"
-      />
-    </Badge>
+    <NavLink to={'/order/'}>
+      <Badge count={props.totalAmount} className={'cart-button-container'}>
+        <Button
+          icon="shopping-cart"
+          size="large"
+          type="primary"
+          className="cart-button"
+        />
+      </Badge>
+    </NavLink>
   )
 }
 
