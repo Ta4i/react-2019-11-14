@@ -11,6 +11,7 @@ import {
   REMOVE_FROM_CART,
   START,
   SUCCESS,
+  RESET_CART,
 } from '../common'
 
 export const increment = () => {
@@ -89,3 +90,7 @@ export const fetchDishes = () => (dispatch, getState) => {
       })
     })
 }
+
+export const resetCart = () => ({
+  type: RESET_CART,
+})
