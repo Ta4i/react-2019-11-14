@@ -12,6 +12,30 @@ export const selectUsers = state => state.users
 
 export const selectId = (_, ownProps) => ownProps.id // '_' -> ф-ия ожидает state, который пропускаем
 
+export const selectAvarageRating = createSelector(
+  selectRestaurants,
+  selectReviews,
+  selectId,
+  (restaurants, reviews, id) => {
+    let restaurant = restaurants.find(restaurant => restaurant.id === id)
+    let ratings = []
+
+    restaurant.reviews.forEach(reviewId => {
+      let {rating} = reviews[reviewId]
+      ratings.push(rating)
+    })
+
+    const rawRating =
+      ratings.reduce((acc, rating) => {
+        return acc + rating
+      }, 0) / ratings.length
+
+    const normalizedRating = Math.floor(rawRating * 2) / 2
+
+    return normalizedRating
+  }
+)
+
 export const selectReviewById = createSelector(
   selectReviews,
   selectUsers,
