@@ -1,6 +1,7 @@
 import {
   ADD_REVIEW,
   ADD_TO_CART,
+  CLEAN_CART,
   DECREMENT,
   FAIL,
   FETCH_DISHES,
@@ -108,6 +109,9 @@ export const postOrder = data => (dispatch, getState) => {
       dispatch({
         type: POST_ORDER + SUCCESS,
         response: res,
+      })
+      dispatch({
+        type: CLEAN_CART,
       })
     })
     .catch(error => {

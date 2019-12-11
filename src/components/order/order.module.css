@@ -1,4 +1,7 @@
 .orderButton {
-  margin-top: 20px;
   float: right;
+}
+
+.buttonsContainer {
+  margin-top: 20px;
 }

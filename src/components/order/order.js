@@ -36,7 +36,17 @@ import { withRouter } from 'react-router-dom';
 
     if (Object.keys(cart).length === 0) {
       return (
-        <Result status="warning" title="Your cart is empty!" />
+        <Result
+          status="warning"
+          title="Your cart is empty!"
+          extra={[
+            <Link to={'/'} key="back">
+              <Button type="primary"  size="large">
+                <Icon type="left" />Back
+              </Button>
+            </Link>,
+          ]}
+        />
       )
     }
 
@@ -80,15 +90,22 @@ import { withRouter } from 'react-router-dom';
             rules: [{ required: true, message: 'Please input your address!', whitespace: true }],
           })(<Input />)}
         </Form.Item>
-        <Button 
-          htmlType="submit"
-          type="primary" 
-          size="large"
-          className={styles.orderButton}
-          disabled={this.hasErrors()}
-        >
+        <Form.Item className={styles.buttonsContainer}>
+          <Link to={'/'}>
+            <Button size="large">
+              <Icon type="left" />Back
+            </Button>
+          </Link>
+          <Button
+            htmlType="submit"
+            type="primary"
+            size="large"
+            className={styles.orderButton}
+            disabled={this.hasErrors()}
+          >
             Order<Icon type="right" />
-        </Button>
+          </Button>
+        </Form.Item>
       </Form>
       </Col>
     </Row>
