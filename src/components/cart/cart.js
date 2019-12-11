@@ -1,6 +1,7 @@
 import Button from 'antd/es/button'
 import cx from 'classnames'
 import React from 'react'
+import {withRouter} from 'react-router'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 
 import styles from './cart.module.css'
@@ -10,7 +11,7 @@ import {connect} from 'react-redux'
 import './cart.css'
 import {selectOrderedDishes} from '../../store/selectors'
 
-function Cart({className, orderedDishes}) {
+function Cart({className, orderedDishes, history}) {
   const {dishes, totalPrice} = orderedDishes
   if (dishes.length === 0) {
     return null
@@ -39,7 +40,12 @@ function Cart({className, orderedDishes}) {
       <CartRow leftContent={'Sub-total'} rightContent={`${totalPrice} $`} />
       <CartRow leftContent={'Delivery costs'} rightContent="FREE" />
       <CartRow leftContent={'Total'} rightContent={`${totalPrice} $`} />
-      <Button type="primary" size="large" block>
+      <Button
+        type="primary"
+        size="large"
+        block
+        onClick={() => history.push('/order')}
+      >
         Order
       </Button>
     </div>
@@ -50,4 +56,4 @@ export default connect(state => {
   return {
     orderedDishes: selectOrderedDishes(state),
   }
-})(Cart)
+})(withRouter(Cart))
