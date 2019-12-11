@@ -21,3 +21,5 @@ export const FETCH_DISHES = 'FETCH_DISHES'
 export const FETCH_REVIEWS = 'FETCH_REVIEWS'
 
 export const FETCH_USERS = 'FETCH_USERS'
+
+export const defaultRestaurantId = 'a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2' // initial value
