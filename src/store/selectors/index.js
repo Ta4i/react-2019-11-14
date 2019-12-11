@@ -17,11 +17,11 @@ export const selectAvarageRating = createSelector(
   selectReviews,
   selectId,
   (restaurants, reviews, id) => {
-    let restaurant = restaurants.find(restaurant => restaurant.id === id)
-    let ratings = []
+    const restaurant = restaurants.find(restaurant => restaurant.id === id)
+    const ratings = []
 
     restaurant.reviews.forEach(reviewId => {
-      let {rating} = reviews[reviewId]
+      const {rating} = reviews[reviewId]
       ratings.push(rating)
     })
 
