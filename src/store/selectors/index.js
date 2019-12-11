@@ -33,6 +33,18 @@ export const selectUsersLoading = state => state.users.loading
 
 export const selectUsersLoaded = state => state.users.loaded
 
+export const selectOrder = state => state.order
+
+export const selectOrderLoading = state => state.order.loading
+
+export const selectOrderResponse = createSelector(
+  selectOrder,
+  order => ({
+    success: !!order.entities.success && !order.error,
+    message: order.entities.message,
+  })
+)
+
 export const selectUserList = createSelector(
   selectUsersMap,
   usersMap => Object.values(usersMap)
