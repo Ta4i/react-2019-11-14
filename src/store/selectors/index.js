@@ -10,7 +10,7 @@ export const selectReviews = state => state.reviews
 
 export const selectUsers = state => state.users
 
-export const selectId = (_, ownProps) => ownProps.id
+export const selectId = (_, ownProps) => ownProps.id // '_' -> ф-ия ожидает state, который пропускаем
 
 export const selectReviewById = createSelector(
   selectReviews,

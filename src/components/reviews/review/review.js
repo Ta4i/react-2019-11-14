@@ -4,21 +4,14 @@ import styles from './review.module.css'
 import PropTypes from 'prop-types'
 
 import {connect} from 'react-redux'
-import {
-  selectReviewById,
-  selectReviews,
-  selectUsers,
-} from '../../../store/selectors'
+import {selectReviewById} from '../../../store/selectors'
 
 const Review = props => {
   const {
     // id прилетает от родителя, можно не декларировать тут, но оставил для полноты картины
     id,
-    review,
-    users,
+    review, //фигачим из selector'a selectReviewById
   } = props
-
-  // let user = users[review.userId];
 
   return (
     <Card className={styles.review}>
@@ -50,9 +43,7 @@ Review.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  // review: state.reviews[ownProps.id],
   review: selectReviewById(state, ownProps),
-  users: selectUsers(state),
 })
 
 export default connect(mapStateToProps)(Review)
