@@ -54,4 +54,8 @@ router.get('/users', function(req, res, next) {
   reply(res, mocks.users)
 })
 
+router.post('/order', function (req, res) {
+  reply(res, {message: `Your order number ******.`, success: "true"})
+});
+
 module.exports = router

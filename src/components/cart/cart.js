@@ -9,9 +9,11 @@ import CartItem from './cart-item'
 import {connect} from 'react-redux'
 import './cart.css'
 import {selectOrderedDishes} from '../../store/selectors'
+import { Link } from 'react-router-dom'
 
 function Cart({className, orderedDishes}) {
   const {dishes, totalPrice} = orderedDishes
+
   if (dishes.length === 0) {
     return null
   }
@@ -39,9 +41,11 @@ function Cart({className, orderedDishes}) {
       <CartRow leftContent={'Sub-total'} rightContent={`${totalPrice} $`} />
       <CartRow leftContent={'Delivery costs'} rightContent="FREE" />
       <CartRow leftContent={'Total'} rightContent={`${totalPrice} $`} />
+      <Link to={'/order'}>
       <Button type="primary" size="large" block>
         Order
       </Button>
+      </Link>
     </div>
   )
 }

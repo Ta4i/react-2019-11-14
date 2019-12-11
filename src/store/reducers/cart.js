@@ -1,4 +1,4 @@
-import {ADD_TO_CART, REMOVE_FROM_CART} from '../common'
+import {ADD_TO_CART, REMOVE_FROM_CART, CLEAN_CART} from '../common'
 
 export const cartReducer = (
   cartState = {
@@ -23,6 +23,9 @@ export const cartReducer = (
         ...cartState,
         [id]: cartState[id] - 1,
       }
+    }
+    case CLEAN_CART: {
+      return {}
     }
     default: {
       return cartState

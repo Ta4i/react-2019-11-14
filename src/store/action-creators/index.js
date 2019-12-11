@@ -1,6 +1,7 @@
 import {
   ADD_REVIEW,
   ADD_TO_CART,
+  CLEAN_CART,
   DECREMENT,
   FAIL,
   FETCH_DISHES,
@@ -11,6 +12,7 @@ import {
   REMOVE_FROM_CART,
   START,
   SUCCESS,
+  POST_ORDER,
 } from '../common'
 
 export const increment = () => {
@@ -85,6 +87,36 @@ export const fetchDishes = () => (dispatch, getState) => {
     .catch(error => {
       dispatch({
         type: FETCH_DISHES + FAIL,
+        error,
+      })
+    })
+}
+
+export const postOrder = data => (dispatch, getState) => {
+  console.log("POST",data)
+  dispatch({
+    type: POST_ORDER + START,
+  })
+  fetch('/api/order', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+    })
+    .then(res => res.json())
+    .then(res => {
+      dispatch({
+        type: POST_ORDER + SUCCESS,
+        response: res,
+      })
+      dispatch({
+        type: CLEAN_CART,
+      })
+    })
+    .catch(error => {
+      dispatch({
+        type: POST_ORDER + FAIL,
         error,
       })
     })
