@@ -24,7 +24,6 @@ class Restaurant extends Component {
     return (
       <div>
         <Hero heading={name}>
-          {/*{this.state.error ? null : <AverageRating reviews={reviews} />}*/}
           {this.state.error ? null : <AverageRating id={id} />}
         </Hero>
         <Row>
