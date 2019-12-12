@@ -22,3 +22,5 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 export default connect(mapStateToProps)(AverageRating)
+
+// реализовать добавление коммента

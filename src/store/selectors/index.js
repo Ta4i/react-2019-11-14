@@ -12,6 +12,17 @@ export const selectUsers = state => state.users
 
 export const selectId = (_, ownProps) => ownProps.id // '_' -> ф-ия ожидает state, который пропускаем
 
+export const selectTotalAmount = createSelector(
+  selectCart,
+  cart => {
+    const totalAmount = Object.values(cart).reduce(
+      (acc, amount) => acc + amount,
+      0
+    )
+    return totalAmount
+  }
+)
+
 export const selectAvarageRating = createSelector(
   selectRestaurants,
   selectReviews,
