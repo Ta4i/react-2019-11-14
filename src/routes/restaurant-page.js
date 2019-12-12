@@ -3,7 +3,6 @@ import {Route} from 'react-router-dom'
 import Restaurants from '../components/restaurants/restaurants'
 import {
   selectFirstRestaurant,
-  selectRestaurants,
   selectRestaurantsLoaded,
   selectRestaurantsLoading,
 } from '../store/selectors'

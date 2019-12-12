@@ -38,6 +38,7 @@ class OrderForm extends Component {
     this.setState({
       userName: value,
     })
+    this.props.onUserNameChange(value)
   }
 
   setRefForSomeHTMLElement = ref => {
