@@ -9,9 +9,11 @@ import {
   FETCH_USERS,
   INCREMENT,
   REMOVE_FROM_CART,
+  SEND_ORDER,
   START,
   SUCCESS,
 } from '../common'
+import {selectCart} from '../selectors'
 
 export const increment = () => {
   return {
@@ -88,4 +90,17 @@ export const fetchDishes = () => (dispatch, getState) => {
         error,
       })
     })
+}
+
+export const sendOrder = details => (dispatch, getState) => {
+  const state = getState()
+  const dishes = selectCart(state)
+  dispatch({
+    type: SEND_ORDER,
+    payload: {
+      cart: dishes,
+      ...details,
+    },
+  })
+  window.location.href = '/order-complete'
 }
