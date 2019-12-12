@@ -32,7 +32,7 @@ function Restaurants({
   return (
     <div data-automation-id="RESTAURANTS">
       <RestaurantsNavigation restaurants={restaurants} />
-      <Restaurant restaurant={restaurant} />
+      <Restaurant id={restaurantId} restaurant={restaurant} />
     </div>
   )
 }
