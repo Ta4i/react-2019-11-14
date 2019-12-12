@@ -103,3 +103,14 @@ export const selectAverageRating = createSelector(
     return Math.floor(rawRating * 2) / 2
   }
 )
+
+export const selectFirstRestaurant = createSelector(
+  selectRestaurantsLoaded,
+  selectRestaurants,
+  (loaded, restaurants) => {
+    if (!loaded) {
+      return null
+    }
+    return restaurants[0]
+  }
+)
