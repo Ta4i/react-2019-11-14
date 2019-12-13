@@ -33,6 +33,8 @@ export const selectUsersLoading = state => state.users.loading
 
 export const selectUsersLoaded = state => state.users.loaded
 
+export const selectDictionaries = state => state.dictionaries
+
 export const selectUserList = createSelector(
   selectUsersMap,
   usersMap => Object.values(usersMap)

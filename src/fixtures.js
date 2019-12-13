@@ -387,10 +387,64 @@ const normalizedUsers = [
   },
 ]
 
+const dictionaries = {
+  reviewForm: {
+    en: {
+      review_title: 'Leave your review',
+      your_name: 'Your name',
+      rating: 'Rating',
+      publish_review: 'PUBLISH REVIEW',
+    },
+    ru: {
+      review_title: 'Оставьте ваш отзыв',
+      your_name: 'Ваше имя',
+      rating: 'Рейтинг',
+      publish_review: 'ОПУБЛИКОВАТЬ ОТЗЫВ',
+    },
+  },
+  cart: {
+    en: {
+      sub_total: 'Sub total',
+      delivery_coast: 'Delivery coast',
+      total: 'Total',
+      order: 'Order',
+      free: 'FREE',
+    },
+    ru: {
+      sub_total: 'Промежуточный итог',
+      delivery_coast: 'Стоимость доставки',
+      total: 'Итого',
+      order: 'Заказать',
+      free: 'БЕСПЛАТНО',
+    },
+  },
+  orderForm: {
+    en: {
+      form: 'Form',
+      user_name: 'User name',
+      send_order: 'Send order',
+    },
+    ru: {
+      form: 'Форма',
+      user_name: 'Имя пользователя',
+      send_order: 'Отправить заказ',
+    },
+  },
+  orderComplite: {
+    en: {
+      thanks: 'Thanks',
+    },
+    ru: {
+      thanks: 'Спасибо',
+    },
+  },
+}
+
 export {
   restaurants,
   normalizedUsers,
   normalizedReviews,
   normalizedDishes,
   normalizedRestaurants,
+  dictionaries,
 }
