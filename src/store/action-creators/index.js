@@ -9,9 +9,16 @@ import {
   FETCH_USERS,
   INCREMENT,
   REMOVE_FROM_CART,
+  SEND_ORDER,
   START,
   SUCCESS,
 } from '../common'
+import {
+  selectCart,
+  selectRestaurants,
+  selectRestaurantsLoaded,
+} from '../selectors'
+import {push, replace} from 'connected-react-router'
 
 export const increment = () => {
   return {
@@ -88,4 +95,29 @@ export const fetchDishes = () => (dispatch, getState) => {
         error,
       })
     })
+}
+
+export const sendOrder = details => (dispatch, getState) => {
+  const state = getState()
+  const dishes = selectCart(state)
+  dispatch({
+    type: SEND_ORDER,
+    payload: {
+      cart: dishes,
+      ...details,
+    },
+  })
+  dispatch(push('/order-complete'))
+}
+
+export const validateRestaurant = id => (dispatch, getState) => {
+  const restaurant = selectRestaurants(getState()).find(
+    restaurant => restaurant.id === id
+  )
+
+  const loaded = selectRestaurantsLoaded(getState())
+
+  if (loaded && !restaurant) {
+    dispatch(replace('/404'))
+  }
 }
