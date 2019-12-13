@@ -28,7 +28,12 @@ function RestaurantPage({
         path="/restaurant/:id"
         render={({match}) => <Restaurants restaurantId={match.params.id} />}
       />
-      <Redirect from={'/restaurant'} to={`/restaurant/${firstRestaurant.id}`} />
+      <Route>
+        <Redirect
+          from={'/restaurant'}
+          to={`/restaurant/${firstRestaurant.id}`}
+        />
+      </Route>
     </Switch>
   )
 }

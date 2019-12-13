@@ -2,7 +2,6 @@ import Button from 'antd/es/button'
 import cx from 'classnames'
 import React from 'react'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
-
 import styles from './cart.module.css'
 import CartRow from './cart-row'
 import CartItem from './cart-item'
@@ -11,12 +10,15 @@ import './cart.css'
 import {selectOrderedDishes} from '../../store/selectors'
 import {NavLink} from 'react-router-dom'
 
+import {Consumer as InterConsumer, interValuesCart} from '../../contexts/inter'
+
 function Cart({className, orderedDishes}) {
   const {dishes, totalPrice} = orderedDishes
   if (dishes.length === 0) {
     return null
   }
-  console.log('Cart render')
+
+  const contextValue = interValuesCart
   return (
     <div className={cx(styles.cart, className)}>
       <TransitionGroup>
@@ -36,15 +38,29 @@ function Cart({className, orderedDishes}) {
         ))}
       </TransitionGroup>
       <hr />
-
-      <CartRow leftContent={'Sub-total'} rightContent={`${totalPrice} $`} />
-      <CartRow leftContent={'Delivery costs'} rightContent="FREE" />
-      <CartRow leftContent={'Total'} rightContent={`${totalPrice} $`} />
-      <NavLink to={'/order'} activeStyle={{display: 'none'}}>
-        <Button type="primary" size="large" block>
-          Order
-        </Button>
-      </NavLink>
+      <InterConsumer>
+        {interType => (
+          <div>
+            <CartRow
+              leftContent={contextValue.cartSubTotal[interType]}
+              rightContent={`${totalPrice} $`}
+            />
+            <CartRow
+              leftContent={contextValue.cartDeliveryCostName[interType]}
+              rightContent={contextValue.cartDeliveryCost[interType]}
+            />
+            <CartRow
+              leftContent={contextValue.cartTotal[interType]}
+              rightContent={`${totalPrice} $`}
+            />
+            <NavLink to={'/order'} activeStyle={{display: 'none'}}>
+              <Button type="primary" size="large" block>
+                {contextValue.cartButton[interType]}
+              </Button>
+            </NavLink>
+          </div>
+        )}
+      </InterConsumer>
     </div>
   )
 }
