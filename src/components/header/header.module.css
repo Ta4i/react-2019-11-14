@@ -1,6 +1,16 @@
 .header {
+  position: relative;
   height: 60px;
   background: #1d1d1d;
   padding: 18px;
   text-align: center;
+}
+
+.inter {
+  position: absolute;
+  box-sizing: border-box;
+  width: 80px;
+  height: 32px;
+  top: 15px;
+  right: 80px;
 }
