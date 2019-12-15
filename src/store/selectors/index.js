@@ -2,7 +2,11 @@ import {createSelector} from 'reselect'
 
 export const selectId = (state, ownProps) => ownProps.id
 
+export const selectLang = (state, ownProps) => ownProps.lang
+
 export const selectCart = state => state.cart
+
+export const selectBundles = state => state.bundles
 
 export const selectRestaurants = state => state.restaurants.entities
 
@@ -112,5 +116,28 @@ export const selectFirstRestaurant = createSelector(
       return null
     }
     return restaurants[0]
+  }
+)
+
+export const selectReviewFormBundle = createSelector(
+  selectBundles,
+  selectLang,
+  (bundles, lang) => {
+    console.log(lang)
+    if (lang && lang === 'Ru') {
+      return bundles.bundleRu.reviewForm
+    }
+    return bundles.bundleEn.reviewForm
+  }
+)
+
+export const selectOrderBundle = createSelector(
+  selectBundles,
+  selectLang,
+  (bundles, lang) => {
+    if (lang && lang === 'Ru') {
+      return bundles.bundleRu.order
+    }
+    return bundles.bundleEn.order
   }
 )

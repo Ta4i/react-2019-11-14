@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Input, Button, Form} from 'antd'
 import {connect} from 'react-redux'
 import {sendOrder} from '../../store/action-creators'
+import {selectOrderBundle} from '../../store/selectors/'
 
 class OrderForm extends Component {
   state = {
@@ -9,17 +10,18 @@ class OrderForm extends Component {
   }
 
   render() {
+    const {bundle} = this.props
     return (
       <Form
         layout={'inline'}
         style={{padding: '24px'}}
         onSubmit={this.handleSubmit}
       >
-        <h1 ref={this.setRefForSomeHTMLElement}>{'Form'}</h1>
+        <h1 ref={this.setRefForSomeHTMLElement}>{bundle.formName}</h1>
         <Form.Item>
           <Input
             ref={this.setInput}
-            placeholder={'User name'}
+            placeholder={bundle.tip}
             value={this.state.userName}
             onChange={this.handleUserNameInputChange}
             style={{width: '120px'}}
@@ -27,7 +29,7 @@ class OrderForm extends Component {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            {'Send order'}
+            {bundle.sendOrderButton}
           </Button>
         </Form.Item>
       </Form>
@@ -56,6 +58,10 @@ class OrderForm extends Component {
 }
 
 export default connect(
-  null,
+  (state, ownProps) => {
+    return {
+      bundle: selectOrderBundle(state, {lang: ownProps.language}),
+    }
+  },
   {sendOrder}
 )(OrderForm)

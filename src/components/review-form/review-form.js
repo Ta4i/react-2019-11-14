@@ -2,12 +2,14 @@ import {Button, Card, Col, Form, Input, Row, Typography, Rate} from 'antd'
 import React, {useState} from 'react'
 import useInput from '../../custom-hooks/use-input'
 import cx from 'classnames'
+import {selectReviewFormBundle} from '../../store/selectors'
+import {connect} from 'react-redux'
 
 import styles from './review-form.module.css'
 import {useDispatch} from 'react-redux'
 import {addReview} from '../../store/action-creators'
 
-const ReviewForm = ({id}) => {
+const ReviewForm = ({id, bundle, language}) => {
   const [rating, setRating] = useState(0)
   const [name, setName, isValidName, resetName] = useInput()
   const [text, setText, isValidText, resetText] = useInput()
@@ -35,13 +37,13 @@ const ReviewForm = ({id}) => {
       <Row type="flex" align="middle">
         <Col xs={24} md={18} align="left">
           <Typography.Title className={styles.addReviewTitle} level={4}>
-            Leave your review
+            {bundle.reviewFormName}
           </Typography.Title>
           <Form onSubmit={handleSubmit}>
             <Input
               value={name}
               onChange={handleNameChange}
-              placeholder="Your name"
+              placeholder={bundle.tip}
               className={cx(
                 {
                   [styles.invalid]: !isValidName,
@@ -59,10 +61,11 @@ const ReviewForm = ({id}) => {
               })}
             />
             <div>
-              Rating: <Rate value={rating} onChange={handleRatingChange} />
+              {bundle.rating}:{' '}
+              <Rate value={rating} onChange={handleRatingChange} />
             </div>
             <Button htmlType="submit" className={styles.submitButton}>
-              PUBLISH REVIEW
+              {bundle.publishButton}
             </Button>
           </Form>
         </Col>
@@ -71,4 +74,8 @@ const ReviewForm = ({id}) => {
   )
 }
 
-export default ReviewForm
+export default connect((state, ownProps) => {
+  return {
+    bundle: selectReviewFormBundle(state, {lang: ownProps.language}),
+  }
+})(ReviewForm)

@@ -5,6 +5,7 @@ import {cartReducer} from './cart'
 import {dishesReducer} from './dishes'
 import {usersReducer} from './users'
 import {reviewsReducer} from './reviews'
+import {bundleReducer} from './bundle'
 
 import {connectRouter} from 'connected-react-router'
 import {history} from '../history'
@@ -17,4 +18,5 @@ export const reducer = combineReducers({
   dishes: dishesReducer,
   users: usersReducer,
   reviews: reviewsReducer,
+  bundles: bundleReducer,
 })
