@@ -5,6 +5,8 @@ import styles from './dish.module.css'
 import {addToCart, removeFromCart} from '../../store/action-creators'
 import {connect, useSelector} from 'react-redux'
 import {selectDishesMap} from '../../store/selectors'
+import { LEFT } from '../../languages/orientation'
+import {withLanguageContext} from '../../decorators/language'
 
 function Dish(props) {
   const {
@@ -14,6 +16,7 @@ function Dish(props) {
     amount,
     increase,
     decrease,
+    language: {orientation}
   } = props
 
   const dishes = useSelector(state => selectDishesMap(state))
@@ -26,7 +29,10 @@ function Dish(props) {
   return (
     <Card data-automation-id="DISH" className={styles.productDetailedOrderCard}>
       <Row type="flex" justify="space-between">
-        <Col xs={16} md={16} lg={20} align="left">
+        <Col xs={16} md={16} lg={20}
+          align={orientation === LEFT ? "left" : "right"}
+          order={orientation === LEFT ? 0 : 1}
+        >
           <Typography.Title
             level={4}
             className={styles.title}
@@ -39,7 +45,10 @@ function Dish(props) {
           </Typography.Paragraph>
           <div className={styles.price}>{dish.price} $</div>
         </Col>
-        <Col xs={8} md={6} lg={4} align="right">
+        <Col xs={8} md={6} lg={4}
+          align={orientation === LEFT ? "right" : "left"}
+          order={orientation === LEFT ? 1 : 0}
+        >
           <div className={styles.counter}>
             <div className={styles.count} data-automation-id="AMOUNT">
               {amount}
@@ -90,4 +99,4 @@ const mapDispatchToProps = {
 export default connect(
   mapsStateToProps,
   mapDispatchToProps
-)(Dish)
+)(withLanguageContext(Dish))

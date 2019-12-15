@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import {Rate} from 'antd'
 import {useSelector} from 'react-redux'
 import {selectAverageRating, selectReviewsLoaded} from '../../store/selectors'
+import { RIGHT } from '../../languages/orientation'
+import {withLanguageContext} from '../../decorators/language'
 
 function AverageRating(props) {
   const reviewsLoaded = useSelector(selectReviewsLoaded)
@@ -16,7 +18,7 @@ function AverageRating(props) {
   }
 
   return (
-    <div>
+    <div style={{transform: props.language.orientation === RIGHT ? 'scale(-1, 1)' : 'none'}}>
       <Rate value={normalizedRating} disabled allowHalf />
     </div>
   )
@@ -26,4 +28,4 @@ AverageRating.propTypes = {
   id: PropTypes.string.isRequired,
 }
 
-export default AverageRating
+export default withLanguageContext(AverageRating)

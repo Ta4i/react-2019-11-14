@@ -48,3 +48,7 @@
     line-height: 20px;
   }
 }
+
+.rateRight {
+  transform: scale(-1, 1);
+}
