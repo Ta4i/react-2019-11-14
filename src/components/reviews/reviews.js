@@ -13,6 +13,8 @@ import {
 } from '../../store/selectors'
 import {fetchUsers, fetchReviews} from '../../store/action-creators'
 import Loader from '../loader'
+import {Consumer as UserConsumer} from '../../contexts/user'
+import {Consumer as LangConsumer} from '../../contexts/language'
 
 class Reviews extends Component {
   static defaultProps = {
@@ -46,14 +48,26 @@ class Reviews extends Component {
     }
 
     return (
-      <Row type="flex" justify="center" gutter={{xs: 8, sm: 16, md: 24}}>
-        <Col xs={24} md={16}>
-          {reviews.map(review => (
-            <Review review={review} key={review.id} />
-          ))}
-          <ReviewForm id={id} />
-        </Col>
-      </Row>
+      <LangConsumer>
+        {language => (
+          <UserConsumer>
+            {userName => (
+              <Row
+                type="flex"
+                justify="center"
+                gutter={{xs: 8, sm: 16, md: 24}}
+              >
+                <Col xs={24} md={16}>
+                  {reviews.map(review => (
+                    <Review review={review} key={review.id} />
+                  ))}
+                  <ReviewForm id={id} language={language} />
+                </Col>
+              </Row>
+            )}
+          </UserConsumer>
+        )}
+      </LangConsumer>
     )
   }
 }

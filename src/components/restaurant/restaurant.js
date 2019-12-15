@@ -9,6 +9,8 @@ import {Col, Row} from 'antd'
 import Cart from '../cart'
 import {connect} from 'react-redux'
 import {validateRestaurant} from '../../store/action-creators'
+import {Consumer as LangConsumer} from '../../contexts/language'
+import {Consumer as UserConsumer} from '../../contexts/user'
 
 class Restaurant extends Component {
   state = {
@@ -31,20 +33,28 @@ class Restaurant extends Component {
     } = this.props
 
     return (
-      <div>
-        <Hero heading={name}>
-          {this.state.error ? null : <AverageRating id={id} />}
-        </Hero>
-        <Row>
-          <Col span={18} className={styles.restaurantContent}>
-            <Reviews id={id} />
-            <Dishes menu={menu} />
-          </Col>
-          <Col span={6}>
-            <Cart />
-          </Col>
-        </Row>
-      </div>
+      <LangConsumer>
+        {language => (
+          <UserConsumer>
+            {userName => (
+              <div>
+                <Hero heading={name}>
+                  {this.state.error ? null : <AverageRating id={id} />}
+                </Hero>
+                <Row>
+                  <Col span={18} className={styles.restaurantContent}>
+                    <Reviews id={id} />
+                    <Dishes menu={menu} />
+                  </Col>
+                  <Col span={6}>
+                    <Cart language={language} />
+                  </Col>
+                </Row>
+              </div>
+            )}
+          </UserConsumer>
+        )}
+      </LangConsumer>
     )
   }
 }
