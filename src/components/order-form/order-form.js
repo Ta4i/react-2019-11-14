@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {Input, Button, Form} from 'antd'
 import {connect} from 'react-redux'
 import {sendOrder} from '../../store/action-creators'
+import { LEFT } from '../../languages/orientation'
+import {withLanguageContext} from '../../decorators/language'
 
 class OrderForm extends Component {
   state = {
@@ -9,17 +11,19 @@ class OrderForm extends Component {
   }
 
   render() {
+    const {titles, orientation} = this.props.language
+    
     return (
       <Form
         layout={'inline'}
-        style={{padding: '24px'}}
+        style={{padding: '24px', textAlign: (orientation === LEFT) ? "left" : "right"}}
         onSubmit={this.handleSubmit}
       >
-        <h1 ref={this.setRefForSomeHTMLElement}>{'Form'}</h1>
-        <Form.Item>
+        <h1 ref={this.setRefForSomeHTMLElement}>{titles.form}</h1>
+        <Form.Item style={{float: (orientation === LEFT) ? "left" : "right"}}>
           <Input
             ref={this.setInput}
-            placeholder={'User name'}
+            placeholder={titles.userName}
             value={this.state.userName}
             onChange={this.handleUserNameInputChange}
             style={{width: '120px'}}
@@ -27,7 +31,7 @@ class OrderForm extends Component {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            {'Send order'}
+            {titles.sendOrder}
           </Button>
         </Form.Item>
       </Form>
@@ -58,4 +62,4 @@ class OrderForm extends Component {
 export default connect(
   null,
   {sendOrder}
-)(OrderForm)
+)(withLanguageContext(OrderForm))

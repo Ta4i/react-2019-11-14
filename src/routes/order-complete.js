@@ -1,17 +1,22 @@
 import React from 'react'
 import {Consumer as UserConsumer} from '../contexts/user'
+import {withLanguageContext} from '../decorators/language'
+import { LEFT } from '../languages/orientation'
 
-function OrderComplete() {
+function OrderComplete({language: {titles, orientation}}) {
   return (
     <UserConsumer>
       {userName => (
         <h1
           style={{
-            textAlign: 'center',
             padding: '128px 0',
+            display: 'flex',
+            flexDirection: (orientation === LEFT) ? 'row' : 'row-reverse',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
-          {`Thanks ${userName}`}
+          <span style={{padding: '5px'}}>{titles.thanks}</span><span>{userName}</span>
           <span
             role={'img'}
             aria-label={'cook'}
@@ -27,4 +32,4 @@ function OrderComplete() {
   )
 }
 
-export default OrderComplete
+export default withLanguageContext(OrderComplete)

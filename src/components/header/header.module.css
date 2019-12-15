@@ -2,5 +2,14 @@
   height: 60px;
   background: #1d1d1d;
   padding: 18px;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left {
+  flex-direction: row;
+}
+
+.right {
+  flex-direction: row-reverse;
 }

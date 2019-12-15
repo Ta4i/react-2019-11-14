@@ -28,6 +28,32 @@
   border-color: red !important;
 }
 
+.right {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.rateTitleLeft:after {
+  content: ':';
+  padding-right: 5px;
+}
+
+.rateTitleRight:before {
+  content: ':';
+  padding-left: 5px;
+}
+
+.rateRight {
+  transform: scale(-1, 1);
+}
+
 @media all and (max-width: 767px) {
   .reviewForm {
     margin-bottom: 16px;

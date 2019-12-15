@@ -6,8 +6,10 @@ import cx from 'classnames'
 import styles from './review-form.module.css'
 import {useDispatch} from 'react-redux'
 import {addReview} from '../../store/action-creators'
+import { LEFT } from '../../languages/orientation'
+import {withLanguageContext} from '../../decorators/language'
 
-const ReviewForm = ({id}) => {
+const ReviewForm = ({id, language: {titles, orientation}}) => {
   const [rating, setRating] = useState(0)
   const [name, setName, isValidName, resetName] = useInput()
   const [text, setText, isValidText, resetText] = useInput()
@@ -32,16 +34,22 @@ const ReviewForm = ({id}) => {
 
   return (
     <Card className={styles.reviewForm}>
-      <Row type="flex" align="middle">
-        <Col xs={24} md={18} align="left">
+      <Row 
+        type="flex"
+        align="middle"
+        justify={orientation === LEFT ? "start" : "end"}
+      >
+        <Col xs={24} md={18}
+          align={orientation === LEFT ? "left" : "right"}
+        >
           <Typography.Title className={styles.addReviewTitle} level={4}>
-            Leave your review
+            {titles.leaveYourReview}
           </Typography.Title>
           <Form onSubmit={handleSubmit}>
             <Input
               value={name}
               onChange={handleNameChange}
-              placeholder="Your name"
+              placeholder={titles.yourName}
               className={cx(
                 {
                   [styles.invalid]: !isValidName,
@@ -58,11 +66,20 @@ const ReviewForm = ({id}) => {
                 [styles.invalid]: !isValidText,
               })}
             />
-            <div>
-              Rating: <Rate value={rating} onChange={handleRatingChange} />
+            <div className={orientation === LEFT ? styles.left : styles.right}>
+              <span
+                className={orientation === LEFT ? styles.rateTitleLeft : styles.rateTitleRight}
+              >
+                {titles.rating}
+              </span>
+              <Rate 
+                value={rating}
+                onChange={handleRatingChange}
+                className={orientation === LEFT ? '' : styles.rateRight}
+              />
             </div>
             <Button htmlType="submit" className={styles.submitButton}>
-              PUBLISH REVIEW
+              {titles.publishReview}
             </Button>
           </Form>
         </Col>
@@ -71,4 +88,4 @@ const ReviewForm = ({id}) => {
   )
 }
 
-export default ReviewForm
+export default withLanguageContext(ReviewForm)

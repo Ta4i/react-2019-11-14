@@ -9,6 +9,8 @@ import {Col, Row} from 'antd'
 import Cart from '../cart'
 import {connect} from 'react-redux'
 import {validateRestaurant} from '../../store/action-creators'
+import { LEFT } from '../../languages/orientation'
+import {withLanguageContext} from '../../decorators/language'
 
 class Restaurant extends Component {
   state = {
@@ -28,6 +30,7 @@ class Restaurant extends Component {
     const {
       id,
       restaurant: {name, menu},
+      language: {orientation},
     } = this.props
 
     return (
@@ -35,12 +38,19 @@ class Restaurant extends Component {
         <Hero heading={name}>
           {this.state.error ? null : <AverageRating id={id} />}
         </Hero>
-        <Row>
-          <Col span={18} className={styles.restaurantContent}>
+        <Row type="flex">
+          <Col 
+            span={18} 
+            className={styles.restaurantContent}
+            order={orientation === LEFT ? 0 : 1}
+          >
             <Reviews id={id} />
             <Dishes menu={menu} />
           </Col>
-          <Col span={6}>
+          <Col 
+            span={6}
+            order={orientation === LEFT ? 1 : 0}
+          >
             <Cart />
           </Col>
         </Row>
@@ -64,4 +74,4 @@ export default connect(
       validateRestaurant: id => dispatch(validateRestaurant(id)),
     }
   }
-)(Restaurant)
+)(withLanguageContext(Restaurant))

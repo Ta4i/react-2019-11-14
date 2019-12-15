@@ -1,0 +1,25 @@
+.link {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: lightgray;
+    cursor: pointer;
+    padding: 0;
+}
+
+.link:after {
+    border-right: 1px solid lightgray;
+    margin: 0 10px;
+}
+
+.left:not(:last-child):after {
+    content: '';
+}
+
+.right:not(:first-child):after {
+    content: '';
+}
+
+.activeLink {
+    font-weight: bold;
+}

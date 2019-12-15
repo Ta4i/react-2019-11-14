@@ -12,10 +12,13 @@ import OrderComplete from '../../routes/order-complete'
 import {ConnectedRouter} from 'connected-react-router'
 import {history} from '../../store/history'
 import {Provider as UserProvider} from '../../contexts/user'
+import {Provider as LanguageProvider} from '../../contexts/language'
+import {languages} from '../../languages'
 
 class App extends Component {
   state = {
     userName: 'foo bar',
+    language: languages[0],
   }
 
   handleUserNameChange = userName => {
@@ -24,14 +27,24 @@ class App extends Component {
     })
   }
 
+  handleLanguageChange = language => {
+    console.log(this.state.language, language)
+    this.setState({
+      language,
+    })
+  }
+
   render() {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <UserProvider value={this.state.userName}>
+            <LanguageProvider value={this.state.language}>
             <div>
               <Layout>
-                <Header />
+                <Header
+                  onLanguageChange={this.handleLanguageChange}
+                />
                 <Layout.Content>
                   <Switch>
                     <Route
@@ -57,6 +70,7 @@ class App extends Component {
                 </Layout.Content>
               </Layout>
             </div>
+            </LanguageProvider>
           </UserProvider>
         </ConnectedRouter>
       </Provider>
