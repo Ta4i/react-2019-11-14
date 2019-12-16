@@ -1,0 +1,26 @@
+.switcher {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  color: white;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+.switcher__heading {
+  margin-right: 10px;
+}
+
+.switcher__items {
+  display: flex;
+  align-items: center;
+}
+
+.switcher__item {
+  display: flex;
+  align-items: center;
+  color: white;
+  margin-left: 5px;
+  margin-right: 5px;
+}

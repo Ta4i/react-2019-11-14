@@ -26,7 +26,7 @@ class App extends Component {
     })
   }
 
-  handleLanguageChange = language => {
+  handleLanguageSwitch = language => {
     this.setState({
       language,
     })
@@ -40,7 +40,7 @@ class App extends Component {
             <LanguageProvider value={this.state.language}>
               <div>
                 <Layout>
-                  <Header onLanguageChange={this.handleLanguageChange} />
+                  <Header onLanguageSwitch={this.handleLanguageSwitch} />
                   <Layout.Content>
                     <Switch>
                       <Route
