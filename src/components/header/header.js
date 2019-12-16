@@ -2,13 +2,13 @@ import React from 'react'
 
 import Logo from './logo'
 import styles from './header.module.css'
-import CartBadge from '../cart-badge'
+import LangSelect from '../lang-select'
 
-function Header() {
+function Header({lang, setLang}) {
   return (
     <header className={styles.header}>
       <Logo />
-      <CartBadge />
+      <LangSelect currentLang={lang} setLang={setLang} />
     </header>
   )
 }

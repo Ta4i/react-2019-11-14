@@ -1,7 +1,8 @@
 import React from 'react'
 import {Consumer as UserConsumer} from '../contexts/user'
+import i18n from '../decorators/i18n'
 
-function OrderComplete() {
+function OrderComplete({t}) {
   return (
     <UserConsumer>
       {userName => (
@@ -11,7 +12,7 @@ function OrderComplete() {
             padding: '128px 0',
           }}
         >
-          {`Thanks ${userName}`}
+          {`${userName}, ${t('Thanks')}`}
           <span
             role={'img'}
             aria-label={'cook'}
@@ -27,4 +28,4 @@ function OrderComplete() {
   )
 }
 
-export default OrderComplete
+export default i18n(OrderComplete)
