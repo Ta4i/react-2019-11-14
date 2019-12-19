@@ -5,8 +5,11 @@ import {connect} from 'react-redux'
 import {fetchDishes} from '../../store/action-creators'
 import {selectDishesLoaded, selectDishesLoading} from '../../store/selectors'
 import Loader from '../loader'
+import {LangContext} from '../../contexts/i18n'
 
 class Dishes extends Component {
+  static contextType = LangContext
+
   componentDidMount() {
     const {fetchDishes, dishesLoading, dishesLoaded} = this.props
     if (!dishesLoading && !dishesLoaded) {
@@ -16,7 +19,7 @@ class Dishes extends Component {
 
   render() {
     const {menu, dishesLoading} = this.props
-
+    console.log(this.context)
     if (dishesLoading) {
       return <Loader />
     }
