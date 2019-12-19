@@ -12,7 +12,7 @@ import OrderComplete from '../../routes/order-complete'
 import {ConnectedRouter} from 'connected-react-router'
 import {history} from '../../store/history'
 import {Provider as UserProvider} from '../../contexts/user'
-import {Provider as LangProvider} from '../../contexts/i18n'
+import {LangContext} from '../../contexts/i18n'
 
 class App extends Component {
   state = {
@@ -37,7 +37,7 @@ class App extends Component {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <UserProvider value={this.state.userName}>
-            <LangProvider value={this.state.lang}>
+            <LangContext.Provider value={this.state.lang}>
               <div>
                 <Layout>
                   <Header
@@ -69,7 +69,7 @@ class App extends Component {
                   </Layout.Content>
                 </Layout>
               </div>
-            </LangProvider>
+            </LangContext.Provider>
           </UserProvider>
         </ConnectedRouter>
       </Provider>

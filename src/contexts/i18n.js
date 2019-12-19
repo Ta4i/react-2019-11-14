@@ -1,3 +1,3 @@
 import {createContext} from 'react'
 
-export const {Provider, Consumer} = createContext('en')
+export const LangContext = createContext('en')

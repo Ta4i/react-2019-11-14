@@ -1,14 +1,11 @@
-import React from 'react'
-import {Consumer} from '../contexts/i18n'
+import React, {useContext} from 'react'
+import {LangContext} from '../contexts/i18n'
 import dictionaries from '../dictionaries'
 
 const i18n = OriginalComponent => props => {
+  const lang = useContext(LangContext)
   return (
-    <Consumer>
-      {lang => (
-        <OriginalComponent {...props} t={createTranslate(dictionaries[lang])} />
-      )}
-    </Consumer>
+    <OriginalComponent {...props} t={createTranslate(dictionaries[lang])} />
   )
 }
 
