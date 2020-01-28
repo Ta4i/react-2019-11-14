@@ -2,8 +2,7 @@ import React, {Component} from 'react'
 import {Input, Button, Form} from 'antd'
 import {connect} from 'react-redux'
 import {sendOrder} from '../../store/action-creators'
-import {Consumer as LanguageConsumer} from '../../contexts/language'
-import {selectDictionaries} from '../../store/selectors'
+import i18n from '../../decorators/i18n'
 
 class OrderForm extends Component {
   state = {
@@ -11,36 +10,29 @@ class OrderForm extends Component {
   }
 
   render() {
-    const {dictionary} = this.props
-
+    const {t} = this.props
     return (
-      <LanguageConsumer>
-        {language => (
-          <Form
-            layout={'inline'}
-            style={{padding: '24px'}}
-            onSubmit={this.handleSubmit}
-          >
-            <h1 ref={this.setRefForSomeHTMLElement}>
-              {dictionary[language].form}
-            </h1>
-            <Form.Item>
-              <Input
-                ref={this.setInput}
-                placeholder={dictionary[language].user_name}
-                value={this.state.userName}
-                onChange={this.handleUserNameInputChange}
-                style={{width: '120px'}}
-              />
-            </Form.Item>
-            <Form.Item>
-              <Button type="primary" htmlType="submit">
-                {dictionary[language].send_order}
-              </Button>
-            </Form.Item>
-          </Form>
-        )}
-      </LanguageConsumer>
+      <Form
+        layout={'inline'}
+        style={{padding: '24px'}}
+        onSubmit={this.handleSubmit}
+      >
+        <h1 ref={this.setRefForSomeHTMLElement}>{t('Form')}</h1>
+        <Form.Item>
+          <Input
+            ref={this.setInput}
+            placeholder={t('User name')}
+            value={this.state.userName}
+            onChange={this.handleUserNameInputChange}
+            style={{width: '120px'}}
+          />
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            {t('Send order')}
+          </Button>
+        </Form.Item>
+      </Form>
     )
   }
 
@@ -72,4 +64,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {sendOrder}
-)(OrderForm)
+)(i18n(OrderForm))
